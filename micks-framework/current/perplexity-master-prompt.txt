@@ -1,0 +1,60 @@
+Run today’s Micks Picks all-sports card.
+
+Use Micks-first rules:
+- Scan all sports, but do not force plays.
+- Outside handicappers are supporting only.
+- Max 4 official straight bets.
+- Max 3 official props.
+- Max 1 parlay.
+- Max 3 longshots.
+- Watchlist/pass records must have Units = 0.
+- Pick of the Day must be real, actionable, odds available, Grade A/B, Units > 0.
+- No generic watchlist can become Pick of the Day.
+- For MLB, confirm pitcher, lineup, weather, bullpen usage, odds, and independent edge.
+- Avoid same-game overstacking.
+- Produce human card and valid Airtable JSON with batches: picks, propsLab, lottoParlays, longshots.
+
+For each official pick include:
+Why We Like It
+Game Script
+Metric Edge
+How It Cashes
+What Can Go Wrong
+Best Number / Cutoff
+Micks Picks Verdict
+
+Airtable JSON shape:
+{
+  "batches": [
+    { "table": "picks", "records": [] },
+    { "table": "propsLab", "records": [] },
+    { "table": "lottoParlays", "records": [] },
+    { "table": "longshots", "records": [] }
+  ]
+}
+
+Valid aliases: picks, propsLab, lottoParlays, longshots.
+
+Official pick defaults:
+- Status = Pending
+- Official Bet = Yes
+- Units > 0
+- Pick of the Day Eligible = Yes only if eligible
+- Access = Free unless Grade is A or A+
+
+Watchlist defaults:
+- Status = Watchlist
+- Category = Watchlist
+- Official Bet = No
+- Units = 0
+- Featured = No
+- Pick of the Day Eligible = No
+
+Pass defaults:
+- Status = Pass
+- Category = Pass
+- Official Bet = No
+- Units = 0
+- Pick of the Day Eligible = No
+
+Do not include settled Result, Outcome, or Profit/Loss fields in new import JSON.
