@@ -1,0 +1,168 @@
+{
+  "backup_version": "2026-06-07-current-setup",
+  "brand": "Micks Picks",
+  "principle": "Micks-first. Outside handicappers and models are supporting confirmation only, not the engine.",
+  "run_every_time": [
+    "Master Picks",
+    "Props Lab",
+    "Lotto Parlays",
+    "Longshots",
+    "Watchlist / Live-only angles",
+    "Passes",
+    "Pick of the Day",
+    "Separate import JSON files",
+    "Complete all-sections import JSON"
+  ],
+  "grading": {
+    "A+": "Rare premium straight bet. VIP eligible.",
+    "A": "Strong straight bet. VIP eligible.",
+    "B": "Playable straight bet.",
+    "B-": "Small straight bet.",
+    "C": "Lean, watchlist, longshot, live-only, or optional sprinkle.",
+    "Pass": "No edge."
+  },
+  "limits": {
+    "official_straight_bets_max": 4,
+    "official_props_max": 3,
+    "main_parlay_max": 1,
+    "longshots_max": 3,
+    "longshot_total_units_max": 0.15,
+    "target_official_units": "1.25u to 2.25u",
+    "do_not_force_all_sports_bets": true
+  },
+  "pick_of_the_day": {
+    "must_have": [
+      "Real team/player/matchup",
+      "Real odds",
+      "Units > 0",
+      "Grade A+, A, or B",
+      "Status Pending, Released, VIP Released, or Free Released",
+      "Not Watchlist",
+      "Not Pass",
+      "Not live-only",
+      "Not generic framework rule"
+    ],
+    "never_eligible": [
+      "Elite Favorite Set-1 Loss Live Watchlist",
+      "No Game Today",
+      "Pass Today",
+      "Game 3 Watchlist",
+      "Live Watchlist",
+      "Units = 0",
+      "Odds = Watchlist",
+      "Odds = Live only",
+      "Odds = Pass",
+      "Odds = N/A"
+    ]
+  },
+  "airtable": {
+    "valid_aliases": ["picks", "propsLab", "lottoParlays", "longshots"],
+    "accepted_shapes": [
+      {"table": "propsLab", "records": []},
+      {"batches": []}
+    ],
+    "do_not_import_fields": ["Result", "Outcome", "Profit/Loss", "Profit-Loss"],
+    "standard_fields": [
+      "Date",
+      "Sport",
+      "League",
+      "Game",
+      "Pick",
+      "Bet Type",
+      "Category",
+      "Access",
+      "Odds",
+      "Sportsbook",
+      "Grade",
+      "Units",
+      "Best Number",
+      "No Bet Cutoff",
+      "Confidence",
+      "Status",
+      "Release Status",
+      "Official Bet",
+      "Featured",
+      "Pick of the Day Eligible",
+      "Correlation Group",
+      "Primary Edge Type",
+      "Secondary Edge Type",
+      "Source Influence Level",
+      "Micks Independent Confirmation",
+      "Writeup",
+      "Market Notes",
+      "Injury Notes",
+      "Source Verification",
+      "Full Analysis",
+      "Posted Time"
+    ]
+  },
+  "results_archive": {
+    "final_results": ["Win", "Loss", "Push", "Void", "Cancelled"],
+    "archive_table": "Results Archive",
+    "rules": [
+      "Calculate Profit/Loss, ROI, CLV, CLV Result",
+      "Copy completed row to Results Archive",
+      "Include Original Table, Original Record ID, Record Key, Archived At",
+      "Delete from active table only after archive creation succeeds",
+      "Avoid duplicates by Record Key or Original Record ID"
+    ]
+  },
+  "full_analysis_sections": [
+    "Why We Like It",
+    "Game Script",
+    "Metric Edge",
+    "How It Cashes",
+    "What Can Go Wrong",
+    "Best Number / Cutoff",
+    "Micks Picks Verdict"
+  ],
+  "sport_modules": {
+    "MLB": {
+      "B_or_higher_gate": [
+        "Starting pitcher confirmed",
+        "Lineup confirmed or projected lineup supports handicap",
+        "Weather/wind/park checked",
+        "Bullpen usage last 2 days checked",
+        "Current odds inside cutoff",
+        "Not dependent on one source/capper",
+        "At least two independent paths to cash"
+      ],
+      "correlation_rule": "Do not stack side + pitcher K + pitcher outs + team total as official plays from same game."
+    },
+    "WNBA": {
+      "rules": [
+        "Model gap plus injury/role confirmation required",
+        "Expansion-team volatility matters",
+        "Avoid forcing large favorites",
+        "Use live triggers when pregame number is uncertain"
+      ]
+    },
+    "NBA": {
+      "rules": [
+        "Prefer spread protection over ML when close-game script is likely",
+        "Check injuries, minutes, foul trouble, pace, and late-game path",
+        "Role-stable props preferred"
+      ]
+    },
+    "NHL": {
+      "rules": [
+        "Confirm goalies",
+        "Playoff ML coin flips stay B- or lower unless price is strong",
+        "Use live entry when pace/goalie/penalty flow determines edge"
+      ]
+    },
+    "UFC_Boxing": {
+      "rules": [
+        "Confirm fight active",
+        "Confirm weigh-ins",
+        "Prefer one clear ML/value side over multiple underdog darts"
+      ]
+    },
+    "Tennis": {
+      "status": "Pilot only. Generic live rules are watchlist only unless actual player/match/odds/units are specified."
+    },
+    "NASCAR": {
+      "rule": "No official NASCAR after race starts unless using live-market edge. Without price, Watchlist only."
+    }
+  }
+}
