@@ -1,0 +1,9 @@
+{
+  "name": "mickspicks-vip",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:airtable-results": "node scripts/test-airtable-results-archive.js"
+  }
+}
