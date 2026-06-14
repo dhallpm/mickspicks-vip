@@ -1,78 +1,129 @@
-/* Micks Picks VIP Vault Engine
-   Dedicated VIP-only script. Does not use public app.js.
-   Counts only official released VIP picks, not combined/public/imported Live rows.
-*/
-const VIP_RECORD_SHEET_ID='15txBM8qsck7f0ZA_za7xYEykBxKpuq0no3x7yHcKNeE';
-const VIP_RECORD_GIDS={vipArchive:'210503117',websiteFeed:'1231201305'};
-function vrCsv(gid){return `https://docs.google.com/spreadsheets/d/${VIP_RECORD_SHEET_ID}/export?format=csv&gid=${gid}&cache=${Date.now()}`}
-function vrEsc(s){return String(s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
-function vrClean(s){return String(s||'').trim().toLowerCase().replace(/\s+/g,' ')}
-function vrCompact(s){return vrClean(s).replace(/[^a-z0-9]/g,'')}
-function vrNum(v){const n=parseFloat(String(v||'').replace(/[^0-9.+-]/g,''));return Number.isFinite(n)?n:0}
-function vrHas(v){return String(v||'').trim().length>0}
-function vrSet(id,v){const el=document.getElementById(id); if(el)el.textContent=v}
-function vrParseCSV(text){const rows=[];let row=[],cur='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(c==='"'&&q&&n==='"'){cur+='"';i++}else if(c==='"'){q=!q}else if(c===','&&!q){row.push(cur);cur=''}else if((c==='\n'||c==='\r')&&!q){if(cur!==''||row.length){row.push(cur);rows.push(row);row=[];cur=''}if(c==='\r'&&n==='\n')i++}else cur+=c}if(cur!==''||row.length){row.push(cur);rows.push(row)}return rows}
-function vrNorm(h){return String(h||'').trim().toLowerCase().replace(/\s+/g,' ').replace(/[^\w#/% ]/g,'')}
-const VR_ALIASES={date:['Date'],sport:['Sport'],league:['League'],game:['Game','Matchup'],team:['Team'],opponent:['Opponent'],player:['Player','Athlete','Player Name'],pick:['Pick','Play'],category:['Category'],betType:['Bet Type','Market'],odds:['Odds'],sportsbook:['Sportsbook','Book'],grade:['Grade'],units:['Units'],bestNumber:['Best Number','Best #'],noBetCutoff:['No Bet Cutoff'],status:['Status'],result:['Result','Outcome'],profitLoss:['Profit/Loss','P/L','PL'],access:['Access','Tier'],featured:['Featured','Featured?'],officialBet:['Official Bet'],pickOfDayEligible:['Pick of the Day Eligible'],correlationGroup:['Correlation Group','Parlay Group'],micksIndependentConfirmation:['Micks Independent Confirmation'],failureReason:['Failure Reason'],wasCorrelatedStack:['Was Correlated Stack'],roiBucket:['ROI Bucket'],originalTable:['Original Table','originalTable'],section:['__section','Section'],closingNumber:['Closing Number','Closing #'],sourceVerification:['Source Verification'],releaseStatus:['Release Status'],releaseNotes:['Release Notes'],postedTime:['Posted Time','Start Time','Game Time','Start','Timestamp'],fullAnalysis:['Full Analysis'],writeup:['Writeup','Write Up'],marketNotes:['Market Notes'],injuryNotes:['Injury Notes'],confidence:['Confidence']};
-function vrAlias(headers,aliases){return headers.find(h=>aliases.some(a=>vrNorm(a)===vrNorm(h)))}
-function vrObjects(rows,source){if(!rows.length)return[];const headers=rows[0].map(h=>String(h||'').trim());return rows.slice(1).map(r=>{const raw={};headers.forEach((h,i)=>raw[h]=String(r[i]||'').trim());const obj={_sourceTab:source,_raw:raw};Object.entries(VR_ALIASES).forEach(([k,aliases])=>{const real=vrAlias(headers,aliases);obj[k]=real?String(raw[real]||'').trim():''});return obj}).filter(r=>Object.values(r._raw).some(v=>String(v||'').trim()!==''))}
-async function vrRows(gid,source){const res=await fetch(vrCsv(gid),{cache:'no-store'});const txt=await res.text();if(txt.toLowerCase().includes('<html'))throw new Error(source+' unavailable');return vrObjects(vrParseCSV(txt),source)}
-function vrApiObj(row,source){const raw={...row};const keys=Object.keys(row||{});const obj={_sourceTab:source,_raw:raw};Object.entries(VR_ALIASES).forEach(([k,aliases])=>{const real=keys.find(key=>aliases.some(a=>vrNorm(a)===vrNorm(key)||vrCompact(a)===vrCompact(key)));obj[k]=real?String(row[real]||'').trim():''});if(source==='VIP Archive'&&!obj.releaseStatus&&obj.access)obj.releaseStatus='Released';return obj}
-async function vrApiRows(path,source){const res=await fetch(path,{cache:'no-store'});if(!res.ok)throw new Error(source+' API unavailable');const data=await res.json();const rows=Array.isArray(data.rows)?data.rows:Array.isArray(data.results)?data.results:[];return rows.map(r=>vrApiObj(r,source)).filter(r=>Object.values(r._raw).some(v=>String(v||'').trim()!==''))}
-function vrDateVal(v){const s=String(v||'').trim();if(!s)return 0;let m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);if(m)return new Date(+m[1],+m[2]-1,+m[3]).getTime();m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);if(m){let y=+m[3];if(y<100)y+=2000;return new Date(y,+m[1]-1,+m[2]).getTime()}const d=new Date(s);return Number.isNaN(d.getTime())?0:d.getTime()}
-function vrFmtDate(v){const t=vrDateVal(v);if(!t)return vrEsc(v||'');const d=new Date(t);return `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()}`}
-function vrWin(r){const pl=vrNum(r.profitLoss);if(pl>0)return true;const x=vrClean(`${r.result} ${r.status}`);return x==='win'||x==='won'||x==='w'||x.includes('graded - win')}
-function vrLoss(r){const pl=vrNum(r.profitLoss);if(pl<0)return true;const x=vrClean(`${r.result} ${r.status}`);return x==='loss'||x==='lost'||x==='l'||x.includes('graded - loss')}
-function vrPush(r){const x=vrClean(`${r.result} ${r.status}`);return x==='push'||x.includes(' push')}
-function vrVoid(r){const x=vrClean(`${r.result} ${r.status}`);return x==='void'||x.includes(' void')}
-function vrCancelled(r){const x=vrClean(`${r.result} ${r.status}`);return x==='cancelled'||x==='canceled'||x.includes(' cancelled')||x.includes(' canceled')}
-function vrClosed(r){return vrWin(r)||vrLoss(r)||vrPush(r)||vrVoid(r)||vrCancelled(r)||vrClean(r.status).includes('graded')||vrClean(r.status).includes('closed')}
-function vrNoBet(r){const t=vrClean(`${r.grade} ${r.status} ${r.result} ${r.releaseStatus} ${r.betType}`);return t.includes('pass')||t.includes('no bet')||t.includes('price moved')||(vrClosed(r)&&vrNum(r.units)<=0)||t.includes('lotto prop')}
-function vrOfficialVip(r){
-  const release=vrClean(r.releaseStatus);
-  const access=vrClean(r.access);
-  const notes=vrClean(`${r.releaseNotes} ${r.sourceVerification}`);
-  if(notes.includes('auto unlocked'))return false;
-  if(!['released','pending','watchlist','live only','live-only','active'].includes(release))return false;
-  if(access!=='vip' && access!=='premium')return false;
-  return true;
+/* Micks Picks VIP Vault Engine — Google Sheets live feed fix */
+const VIP_RECORD_SHEET_ID = '1wber196DbbsSXwcITRXWbIF-IZzOJGwkIKPMIWv0AC4';
+const VIP_RECORD_GIDS = {
+  master: '1678595374',
+  props: '1786223862',
+  lotto: '762362650',
+  longshots: '1573645110'
+};
+
+function vrCsv(gid){ return `https://docs.google.com/spreadsheets/d/${VIP_RECORD_SHEET_ID}/export?format=csv&gid=${gid}&cache=${Date.now()}`; }
+function vrEsc(s){ return String(s ?? '').replace(/[&<>"]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
+function vrClean(s){ return String(s ?? '').trim().toLowerCase().replace(/[-_]+/g,' ').replace(/\s+/g,' '); }
+function vrCompact(s){ return vrClean(s).replace(/[^a-z0-9]/g,''); }
+function vrNum(v){ const n = parseFloat(String(v ?? '').replace(/[^0-9.+-]/g,'')); return Number.isFinite(n) ? n : 0; }
+function vrHas(v){ return String(v ?? '').trim().length > 0; }
+function vrSet(id,v){ const el = document.getElementById(id); if(el) el.textContent = v; }
+
+function vrParseCSV(text){
+  const rows=[]; let row=[], cur='', q=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i], n=text[i+1];
+    if(c==='"' && q && n==='"'){ cur+='"'; i++; }
+    else if(c==='"'){ q=!q; }
+    else if(c===',' && !q){ row.push(cur); cur=''; }
+    else if((c==='\n'||c==='\r') && !q){
+      if(cur!=='' || row.length){ row.push(cur); rows.push(row); row=[]; cur=''; }
+      if(c==='\r' && n==='\n') i++;
+    } else cur += c;
+  }
+  if(cur!=='' || row.length){ row.push(cur); rows.push(row); }
+  return rows;
 }
-function vrYes(v){return /^(yes|true|1|y|featured)$/i.test(String(v||'').trim())}
-function vrNo(v){return /^(no|false|0|n)$/i.test(String(v||'').trim())}
-function vrActionableStatus(r){const states=[r.status,r.releaseStatus].map(vrClean).filter(Boolean);const bad=['watchlist','pass','live only','no release','cancelled','canceled','void','win','loss','push'];if(states.some(s=>bad.includes(s)))return false;return states.some(s=>['pending','released','vip released','free released'].includes(s))}
-function vrActionableOdds(r){const odds=String(r.odds||'').trim();if(!odds||/^(live only|watchlist|pass|n\/?a|na|none|-+)$/i.test(odds))return false;return Number.isFinite(parseFloat(odds.replace(/[^0-9.+-]/g,'')))}
-function vrGradeRank(r){const g=String(r.grade||'').trim().toUpperCase();if(g==='A+')return 4;if(g==='A')return 3;if(g==='B')return 2;if(g==='B-')return 1;return-1}
-function vrGenericPick(p){const x=vrClean(p);return !x||/^(elite favorite )?set ?1 loss live watchlist$/.test(x)||/^(no game today|pass today|live watchlist)$/.test(x)||/^game \d+ (live )?watchlist$/.test(x)||(/\bwatchlist\b/.test(x)&&!/\b(over|under|ml|moneyline|spread|total|[+-]\d+(\.\d+)?)\b/.test(x))}
-function vrSpecificPick(r){if(vrGenericPick(r.pick))return false;const game=String(r.game||'');const context=/\b(vs|versus)\b|@/i.test(game)||vrHas(r.player)||vrHas(r.opponent)||vrHas(r.team);const side=/\b(over|under|ml|moneyline|spread|total|team total|points|assists|rebounds|strikeouts)\b|[+-]\d+(\.\d+)?/i.test(String(r.pick||''));return context&&side}
-function vrCategoryAllowed(r){const c=vrClean(r.category||r.betType);if(!['watchlist','pass','live tennis','live total','live spread'].includes(c))return true;return vrSpecificPick(r)&&vrActionableOdds(r)&&vrNum(r.units)>0}
-function vrOfficialBet(r){if(vrHas(r.officialBet))return vrYes(r.officialBet);return vrActionableStatus(r)&&vrNum(r.units)>0&&!vrWatchlistLike(r)&&!vrNoBet(r)}
-function vrPotdFlag(r){return !vrNo(r.pickOfDayEligible)}
-function vrOfficialProfile(r){return !vrClosed(r)&&!vrNoBet(r)&&vrActionableStatus(r)&&vrNum(r.units)>0&&vrActionableOdds(r)&&vrGradeRank(r)>=0&&vrSpecificPick(r)&&vrCategoryAllowed(r)}
-function vrTrackable(r){const bucket=vrClean(r.roiBucket);return vrOfficialVip(r)&&vrHas(r.pick)&&!vrNoBet(r)&&!vrNo(r.officialBet)&&!['longshots','watchlist triggered','pass'].includes(bucket)}
-function vrPotdEligible(r){return vrOfficialBet(r)&&vrPotdFlag(r)&&vrOfficialProfile(r)&&vrGradeRank(r)>=2}
-function vrCardEligible(r){return vrTrackable(r)&&vrOfficialBet(r)&&vrOfficialProfile(r)}
-function vrActive(r){return vrCardEligible(r)}
-function vrWatchlistLike(r){const t=vrClean(`${r.status} ${r.releaseStatus} ${r.category} ${r.betType} ${r.odds}`);return !vrClosed(r)&&!t.includes('pass')&&(t.includes('watchlist')||t.includes('live only')||t.includes('live tennis')||t.includes('live total')||t.includes('live spread'))}
-function vrKey(r){return [r.date,r.league||r.sport,r.game,r.pick,r.betType].map(vrCompact).join('|')}
-function vrDedupe(rows){const map=new Map();rows.forEach(r=>{const k=vrKey(r);if(!k)return;const old=map.get(k);if(!old||vrDateVal(r.date)>=vrDateVal(old.date))map.set(k,r)});return Array.from(map.values())}
-function vrSection(r){const t=vrClean(`${r.section} ${r.originalTable} ${r._sourceTab} ${r.category} ${r.betType} ${r.pick}`);if(t.includes('longshot'))return'longshots';if(t.includes('lotto')||t.includes('parlay'))return'lotto';if(t.includes('props')||t.includes('prop')||vrHas(r.player))return'props';return'picks'}
-function vrCorrGroup(r){return vrClean(r.correlationGroup)||[r.date,r.league||r.sport,r.game].map(vrCompact).filter(Boolean).join('|')}
-function vrCardSort(a,b){return vrGradeRank(b)-vrGradeRank(a)||vrNum(b.units)-vrNum(a.units)||vrDateVal(a.postedTime||a.date)-vrDateVal(b.postedTime||b.date)}
-function vrDemote(r,reason){r.officialBet='No';r.pickOfDayEligible='No';r.wasCorrelatedStack='Yes';r.failureReason=r.failureReason||reason;if(vrSection(r)!=='longshots'){r.status='Watchlist';r.category='Watchlist';r.units='0'}}
-function vrApplyCardRules(rows){const all=rows.map(r=>({...r}));const groups=new Map();all.filter(vrCardEligible).forEach(r=>{const g=vrCorrGroup(r);if(!g)return;if(!groups.has(g))groups.set(g,[]);groups.get(g).push(r)});groups.forEach(group=>{if(group.length<2)return;group.sort(vrCardSort);group.forEach(r=>r.wasCorrelatedStack='Yes');group.slice(1).forEach(r=>{if(vrYes(r.micksIndependentConfirmation))return;vrDemote(r,'Over-correlated stack')})});const limits={picks:4,props:3,lotto:1,longshots:3};Object.keys(limits).forEach(section=>{const official=all.filter(r=>vrSection(r)===section&&vrCardEligible(r)).sort(vrCardSort);official.slice(limits[section]).forEach(r=>vrDemote(r,section==='longshots'?'Forced longshot':'Card limit overflow'));if(section==='longshots'){let exposure=0,count=0;official.forEach(r=>{if(!vrCardEligible(r))return;count++;exposure+=vrNum(r.units);if(count>3||exposure>0.150000001)vrDemote(r,'Forced longshot')})}});return all}
-function vrResult(r){if(vrWin(r))return'Win';if(vrLoss(r))return'Loss';if(vrPush(r))return'Push';if(vrVoid(r))return'Void';if(vrCancelled(r))return'Cancelled';return r.result||r.status||'Pending'}
-function vrClass(r){if(vrWin(r))return'status-win';if(vrLoss(r))return'status-loss';if(vrPush(r)||vrVoid(r)||vrCancelled(r))return'status-push';return'status-pending'}
-function vrStats(archiveRows,activeRows){const graded=archiveRows.filter(r=>vrTrackable(r)&&(vrWin(r)||vrLoss(r)));const wins=graded.filter(vrWin).length;const losses=graded.filter(vrLoss).length;const total=wins+losses;const units=graded.reduce((s,r)=>s+vrNum(r.profitLoss),0);const active=activeRows.filter(vrActive).length;return{record:total?`${wins}-${losses}`:'--',winRate:total?`${Math.round(wins/total*100)}%`:'--',units:total||units?`${units>0?'+':''}${units.toFixed(2)}u`:'--',count:(total+active)||'--'}}
-function vrAnalysis(r){return [r.fullAnalysis,r.marketNotes?`Market Notes: ${r.marketNotes}`:'',r.injuryNotes?`Injury Notes: ${r.injuryNotes}`:'',r.noBetCutoff?`No-Bet Cutoff: ${r.noBetCutoff}`:''].filter(Boolean).join(' ')||r.writeup||'VIP analysis loading.'}
-function vrPickOfDay(rows){const eligible=vrApplyCardRules(vrDedupe(rows)).filter(vrPotdEligible);if(!eligible.length)return null;return eligible.sort((a,b)=>Number(vrYes(b.featured))-Number(vrYes(a.featured))||vrGradeRank(b)-vrGradeRank(a)||vrNum(b.units)-vrNum(a.units)||vrDateVal(a.postedTime||a.date)-vrDateVal(b.postedTime||b.date))[0]}
-function vrUnitText(v){const n=vrNum(v);return n?`${n}u`:''}
-function vrPickCard(r){return `<div class="pick-card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><div style="color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:1000;letter-spacing:.9px">${vrEsc(r.league||r.sport||'Sports')} | ${vrEsc(r.betType||'VIP Pick')}</div><div class="pick-title">${vrEsc(r.pick||'Pick Pending')}</div><p style="color:var(--muted);line-height:1.5">${vrEsc(r.game||'')}</p></div><div style="background:linear-gradient(135deg,#9b6d15,#ffe28a 54%,#b98821);color:#090909;padding:9px 11px;border-radius:10px;font-weight:1000">${vrEsc(r.grade||'VIP')}</div></div><div class="metric-grid"><div class="metric"><strong>${vrEsc(r.odds||'--')}</strong><span>Odds</span></div><div class="metric"><strong>${vrEsc(r.units||'--')}</strong><span>Units</span></div><div class="metric"><strong>${vrEsc(r.bestNumber||'--')}</strong><span>Best Number</span></div><div class="metric"><strong>${vrEsc(r.confidence||'--')}</strong><span>Confidence</span></div></div><p style="color:#e7dcc4;line-height:1.55;margin-top:14px">${vrEsc(vrAnalysis(r))}</p></div>`}
-function vrWatchlistCard(r){return `<div class="pick-card"><div style="color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:1000;letter-spacing:.9px">${vrEsc(r.league||r.sport||'Sports')} | Watchlist</div><div class="pick-title">${vrEsc(r.pick||'Live angle')}</div><p style="color:var(--muted);line-height:1.5">${vrEsc(r.game||'')}</p><div class="metric-grid"><div class="metric"><strong>${vrEsc(r.status||r.releaseStatus||'Watchlist')}</strong><span>Status</span></div><div class="metric"><strong>${vrEsc(r.odds||'Live only')}</strong><span>Trigger</span></div><div class="metric"><strong>${vrEsc(r.bestNumber||'--')}</strong><span>Target</span></div><div class="metric"><strong>${vrEsc(r.grade||'C')}</strong><span>Lean</span></div></div><p style="color:#e7dcc4;line-height:1.55;margin-top:14px">${vrEsc(vrAnalysis(r))}</p></div>`}
-function vrPickOfDayCard(r){return `<div class="pick-card"><div style="color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:1000;letter-spacing:.9px">Pick of the Day</div><div class="pick-title">${vrEsc(r.pick||'')}</div><p style="color:var(--muted);line-height:1.5">${vrEsc([r.league||r.sport,r.game].filter(Boolean).join(' — '))}</p><div class="metric-grid"><div class="metric"><strong>${vrEsc(r.grade||'--')}</strong><span>Grade</span></div><div class="metric"><strong>${vrEsc(vrUnitText(r.units)||r.units||'--')}</strong><span>Units</span></div><div class="metric"><strong>${vrEsc(r.odds||'--')}</strong><span>Odds</span></div><div class="metric"><strong>${vrEsc(r.sportsbook||'--')}</strong><span>Sportsbook</span></div><div class="metric"><strong>${vrEsc(r.bestNumber||'--')}</strong><span>Best Number</span></div></div><p style="color:#e7dcc4;line-height:1.55;margin-top:14px">${vrEsc(r.noBetCutoff?`No Bet Cutoff: ${r.noBetCutoff}`:'')}</p><p style="color:#e7dcc4;line-height:1.55;margin-top:10px">${vrEsc(r.writeup||r.marketNotes||r.fullAnalysis||'')}</p></div>`}
-function vrRenderPickOfDay(rows){const el=document.getElementById('pickOfDayCard');if(!el)return;const pick=vrPickOfDay(rows);el.innerHTML=pick?vrPickOfDayCard(pick):'<div class="empty">No Pick of the Day yet — check back after lines confirm.</div>'}
-function vrRenderActive(rows){const grid=document.getElementById('vipPicksGrid');if(!grid)return;const active=vrApplyCardRules(vrDedupe(rows)).filter(vrActive).sort((a,b)=>vrDateVal(b.date)-vrDateVal(a.date));grid.innerHTML=active.length?active.map(vrPickCard).join(''):'<div class="empty">No active official VIP picks loaded right now.</div>'}
-function vrRenderWatchlist(rows){const grid=document.getElementById('vipWatchlistGrid');if(!grid)return;const watchlist=vrDedupe(rows).filter(vrWatchlistLike).sort((a,b)=>vrDateVal(b.date)-vrDateVal(a.date));grid.innerHTML=watchlist.length?watchlist.map(vrWatchlistCard).join(''):'<div class="empty">No watchlist angles loaded right now.</div>'}
-function vrRenderArchive(rows){const body=document.getElementById('vipArchiveBody');if(!body)return;const official=vrDedupe(rows).filter(vrTrackable).filter(vrClosed).sort((a,b)=>vrDateVal(b.date)-vrDateVal(a.date));if(!official.length){body.innerHTML='<tr><td colspan="7">No official released VIP results yet.</td></tr>';return}body.innerHTML=official.slice(0,100).map(r=>`<tr><td>${vrFmtDate(r.date)}</td><td>${vrEsc(r.league||r.sport||'')}</td><td><strong>${vrEsc(r.pick||'')}</strong><br><span style="color:var(--muted)">${vrEsc(r.game||'')}</span></td><td>${vrEsc(r.grade||'')}</td><td class="${vrClass(r)}">${vrEsc(vrResult(r))}</td><td>${vrEsc(r.profitLoss||'')}</td><td>${vrEsc(r.closingNumber||r.bestNumber||'')}</td></tr>`).join('')}
-async function bootVipVault(){try{let archive,feed,allActive,watchlist;try{[archive,feed,allActive,watchlist]=await Promise.all([vrApiRows('./api/results?access=vip&days=3650','VIP Archive'),vrApiRows('./api/todays-picks?access=vip','Website Feed').catch(()=>[]),vrApiRows('./api/todays-picks','Website Feed').catch(()=>[]),vrApiRows('./api/todays-picks?access=vip&section=watchlist','VIP Watchlist').catch(()=>[])]);if(!archive.length&&!feed.length&&!allActive.length&&!watchlist.length)throw new Error('Airtable API returned no VIP rows')}catch(apiError){[archive,feed]=await Promise.all([vrRows(VIP_RECORD_GIDS.vipArchive,'VIP Archive'),vrRows(VIP_RECORD_GIDS.websiteFeed,'Website Feed').catch(()=>[])]);allActive=feed;watchlist=feed.filter(vrWatchlistLike)}const protectedFeed=vrApplyCardRules(vrDedupe(feed));const protectedAllActive=vrApplyCardRules(vrDedupe(allActive));const archiveOfficial=vrDedupe(archive).filter(vrTrackable);const activeOfficial=protectedFeed.filter(vrActive);const stats=vrStats(archiveOfficial,activeOfficial);vrSet('vipRecord',stats.record);vrSet('vipWinRate',stats.winRate);vrSet('vipTotalUnits',stats.units);vrSet('vipCount',stats.count);vrRenderPickOfDay(protectedAllActive);vrRenderActive(activeOfficial);vrRenderWatchlist(watchlist.concat(protectedAllActive.filter(vrWatchlistLike)));vrRenderArchive(archiveOfficial);document.querySelectorAll('.sync-time').forEach(el=>{el.textContent=new Date().toLocaleTimeString([],{hour:'numeric',minute:'2-digit'})})}catch(e){console.error('VIP vault engine failed:',e);vrSet('vipRecord','VIP Error');const grid=document.getElementById('vipPicksGrid');if(grid)grid.innerHTML='<div class="empty">VIP sheet data could not load.</div>';vrRenderPickOfDay([]);vrRenderWatchlist([])}}
+
+const ALIASES = {
+  date:['Date','date'], sport:['Sport','sport'], league:['League','league'], game:['Game','game','Matchup'],
+  pick:['Pick','pick','Play'], betType:['Bet Type','market','Market','Type'], odds:['Odds','odds'], sportsbook:['Sportsbook','Book'],
+  grade:['Grade','grade'], units:['Units','units'], bestNumber:['Best Number','Line / Number'], noBetCutoff:['No Bet Cutoff'],
+  confidence:['Confidence','confidence'], status:['Status','status','Display Status'], releaseStatus:['Release Status','Display Release Status'],
+  access:['Access','access','Tier'], featured:['Featured'], officialBet:['Official Bet'], pickOfDayEligible:['Pick of the Day Eligible'],
+  writeup:['Writeup','Write Up'], marketNotes:['Market Notes'], injuryNotes:['Injury Notes'], sourceVerification:['Source Verification'],
+  fullAnalysis:['Full Analysis'], result:['Result','Outcome'], profitLoss:['Profit/Loss','P/L'], closingNumber:['Closing Number','Closing #'],
+  player:['Player','player'], prop:['Prop','prop'], category:['Category'], parlayGroup:['Parlay Group','Correlation Group']
+};
+function vrNorm(h){ return String(h ?? '').trim().toLowerCase().replace(/\s+/g,' ').replace(/[^\w#/% ]/g,''); }
+function vrAlias(headers, aliases){ return headers.find(h => aliases.some(a => vrNorm(a) === vrNorm(h) || vrCompact(a) === vrCompact(h))); }
+function vrObjects(rows, source){
+  if(!rows.length) return [];
+  const headers = rows[0].map(h => String(h ?? '').trim());
+  return rows.slice(1).map(r => {
+    const raw = {}; headers.forEach((h,i) => raw[h] = String(r[i] ?? '').trim());
+    const obj = {_sourceTab:source, _raw:raw};
+    Object.entries(ALIASES).forEach(([k, aliases]) => { const real = vrAlias(headers, aliases); obj[k] = real ? String(raw[real] ?? '').trim() : ''; });
+    return obj;
+  }).filter(r => Object.values(r._raw).some(v => String(v ?? '').trim() !== ''));
+}
+async function vrRows(gid, source){
+  const res = await fetch(vrCsv(gid), {cache:'no-store'});
+  const txt = await res.text();
+  if(txt.toLowerCase().includes('<html')) throw new Error(source + ' sheet unavailable');
+  return vrObjects(vrParseCSV(txt), source);
+}
+
+function vrDateVal(v){
+  const s=String(v ?? '').trim(); if(!s) return 0;
+  let m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/); if(m) return new Date(+m[1],+m[2]-1,+m[3]).getTime();
+  m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/); if(m){ let y=+m[3]; if(y<100)y+=2000; return new Date(y,+m[1]-1,+m[2]).getTime(); }
+  const d=new Date(s); return Number.isNaN(d.getTime()) ? 0 : d.getTime();
+}
+function vrFmtDate(v){ const t=vrDateVal(v); if(!t) return vrEsc(v); const d=new Date(t); return `${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()}`; }
+function vrTodayKey(){ const d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime(); }
+function vrWin(r){ const pl=vrNum(r.profitLoss); if(pl>0) return true; return ['win','won','w'].includes(vrClean(r.result)); }
+function vrLoss(r){ const pl=vrNum(r.profitLoss); if(pl<0) return true; return ['loss','lost','l'].includes(vrClean(r.result)); }
+function vrClosed(r){ const x=vrClean(`${r.status} ${r.result}`); return vrWin(r)||vrLoss(r)||x.includes('settled')||x.includes('closed')||x.includes('push')||x.includes('void')||x.includes('no bet'); }
+function vrNoBet(r){ const x=vrClean(`${r.status} ${r.result} ${r.releaseStatus} ${r.grade} ${r.betType}`); return x.includes('no bet') || x.includes('pass') || x.includes('no release'); }
+function vrYes(v){ return /^(yes|true|1|y|featured)$/i.test(String(v ?? '').trim()); }
+function vrNo(v){ return /^(no|false|0|n)$/i.test(String(v ?? '').trim()); }
+function vrGradeRank(r){ const g=String(r.grade ?? '').trim().toUpperCase(); if(g==='A+')return 5; if(g==='A')return 4; if(g==='A-')return 3; if(g==='B+')return 2; if(g==='B')return 1; return 0; }
+function vrActionable(r){
+  const st = vrClean(r.status), rel = vrClean(r.releaseStatus), access = vrClean(r.access);
+  if(vrClosed(r) || vrNoBet(r)) return false;
+  if(!(st === 'pending' || st === 'released' || st === 'active')) return false;
+  if(!['vip released','free released','released','pending','active'].includes(rel)) return false;
+  if(!vrHas(r.pick) || !vrHas(r.game)) return false;
+  if(vrNum(r.units) <= 0) return false;
+  if(!vrHas(r.odds) || /^(watchlist|live only|pass|na|n\/a)$/i.test(r.odds)) return false;
+  return access === 'vip' || access === 'premium';
+}
+function vrPickOfDayEligible(r){ return !vrNo(r.pickOfDayEligible) && vrActionable(r) && vrGradeRank(r) >= 1; }
+function vrKey(r){ return [r.date,r.league||r.sport,r.game,r.pick,r.betType].map(vrCompact).join('|'); }
+function vrDedupe(rows){ const map=new Map(); rows.forEach(r => { const k=vrKey(r); if(!k) return; const old=map.get(k); if(!old || vrHas(r.fullAnalysis) || vrDateVal(r.date) >= vrDateVal(old.date)) map.set(k,r); }); return [...map.values()]; }
+function vrSection(r){ const t=vrClean(`${r._sourceTab} ${r.category} ${r.betType} ${r.pick}`); if(t.includes('lotto')||t.includes('parlay')) return 'lotto'; if(t.includes('prop') || vrHas(r.player)) return 'props'; if(t.includes('longshot')) return 'longshots'; return 'picks'; }
+function vrSort(a,b){ return vrDateVal(b.date)-vrDateVal(a.date) || vrGradeRank(b)-vrGradeRank(a) || vrNum(b.units)-vrNum(a.units); }
+function vrAnalysis(r){ return [r.fullAnalysis, r.writeup, r.marketNotes ? `Market Notes: ${r.marketNotes}` : '', r.injuryNotes ? `Injury Notes: ${r.injuryNotes}` : '', r.noBetCutoff ? `No-Bet Cutoff: ${r.noBetCutoff}` : ''].filter(Boolean).join('\n\n'); }
+function vrUnitText(v){ const n=vrNum(v); return n ? `${n}u` : ''; }
+function vrResult(r){ if(vrWin(r)) return 'Win'; if(vrLoss(r)) return 'Loss'; const x=vrClean(`${r.result} ${r.status}`); if(x.includes('no bet')) return 'No Bet'; if(x.includes('push')) return 'Push'; if(x.includes('void')) return 'Void'; return r.result || r.status || 'Pending'; }
+function vrClass(r){ if(vrWin(r)) return 'status-win'; if(vrLoss(r)) return 'status-loss'; if(vrClean(vrResult(r)).match(/push|void|no bet/)) return 'status-push'; return 'status-pending'; }
+
+function vrPickCard(r){
+  return `<div class="pick-card"><div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start"><div><div style="color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:1000;letter-spacing:.9px">${vrEsc(r.league||r.sport||'Sports')} | ${vrEsc(r.betType||'VIP Pick')}</div><div class="pick-title">${vrEsc(r.pick||'Pick Pending')}</div><p style="color:var(--muted);line-height:1.5">${vrEsc(r.game||'')}</p></div><div style="background:linear-gradient(135deg,#9b6d15,#ffe28a 54%,#b98821);color:#090909;padding:9px 11px;border-radius:10px;font-weight:1000">${vrEsc(r.grade||'VIP')}</div></div><div class="metric-grid"><div class="metric"><strong>${vrEsc(r.odds||'--')}</strong><span>Odds</span></div><div class="metric"><strong>${vrEsc(vrUnitText(r.units)||r.units||'--')}</strong><span>Units</span></div><div class="metric"><strong>${vrEsc(r.bestNumber||'--')}</strong><span>Best Number</span></div><div class="metric"><strong>${vrEsc(r.confidence||'--')}</strong><span>Confidence</span></div></div><p style="color:#e7dcc4;line-height:1.55;margin-top:14px;white-space:pre-line">${vrEsc(vrAnalysis(r))}</p></div>`;
+}
+function vrPickOfDayCard(r){ return `<div class="pick-card"><div style="color:var(--muted);font-size:11px;text-transform:uppercase;font-weight:1000;letter-spacing:.9px">Pick of the Day</div><div class="pick-title">${vrEsc(r.pick||'')}</div><p style="color:var(--muted);line-height:1.5">${vrEsc([r.league||r.sport,r.game].filter(Boolean).join(' — '))}</p><div class="metric-grid"><div class="metric"><strong>${vrEsc(r.grade||'--')}</strong><span>Grade</span></div><div class="metric"><strong>${vrEsc(vrUnitText(r.units)||r.units||'--')}</strong><span>Units</span></div><div class="metric"><strong>${vrEsc(r.odds||'--')}</strong><span>Odds</span></div><div class="metric"><strong>${vrEsc(r.sportsbook||'--')}</strong><span>Sportsbook</span></div><div class="metric"><strong>${vrEsc(r.bestNumber||'--')}</strong><span>Best Number</span></div></div><p style="color:#e7dcc4;line-height:1.55;margin-top:10px;white-space:pre-line">${vrEsc(vrAnalysis(r))}</p></div>`; }
+function vrRenderPickOfDay(rows){ const el=document.getElementById('pickOfDayCard'); if(!el)return; const pick=rows.filter(vrPickOfDayEligible).sort(vrSort)[0]; el.innerHTML=pick?vrPickOfDayCard(pick):'<div class="empty">No Pick of the Day yet — check back after lines confirm.</div>'; }
+function vrRenderActive(rows){ const grid=document.getElementById('vipPicksGrid'); if(!grid)return; const active=vrDedupe(rows).filter(vrActionable).sort(vrSort); grid.innerHTML=active.length?active.map(vrPickCard).join(''):'<div class="empty">No active official VIP picks loaded right now.</div>'; }
+function vrRenderWatchlist(rows){ const grid=document.getElementById('vipWatchlistGrid'); if(!grid)return; const wl=vrDedupe(rows).filter(r => vrClean(`${r.status} ${r.releaseStatus} ${r.category}`).includes('watchlist')).sort(vrSort); grid.innerHTML=wl.length?wl.map(vrPickCard).join(''):'<div class="empty">No watchlist angles loaded right now.</div>'; }
+function vrRenderArchive(rows){ const body=document.getElementById('vipArchiveBody'); if(!body)return; const official=vrDedupe(rows).filter(r => (vrClean(r.access)==='vip'||vrClean(r.access)==='premium') && vrClosed(r)).sort(vrSort); if(!official.length){ body.innerHTML='<tr><td colspan="7">No official released VIP results yet.</td></tr>'; return; } body.innerHTML=official.slice(0,100).map(r=>`<tr><td>${vrFmtDate(r.date)}</td><td>${vrEsc(r.league||r.sport||'')}</td><td><strong>${vrEsc(r.pick||'')}</strong><br><span style="color:var(--muted)">${vrEsc(r.game||'')}</span></td><td>${vrEsc(r.grade||'')}</td><td class="${vrClass(r)}">${vrEsc(vrResult(r))}</td><td>${vrEsc(r.profitLoss||'')}</td><td>${vrEsc(r.closingNumber||r.bestNumber||'')}</td></tr>`).join(''); }
+function vrStats(rows){ const graded=rows.filter(r => (vrClean(r.access)==='vip'||vrClean(r.access)==='premium') && (vrWin(r)||vrLoss(r))); const wins=graded.filter(vrWin).length; const losses=graded.filter(vrLoss).length; const total=wins+losses; const units=graded.reduce((s,r)=>s+vrNum(r.profitLoss),0); const active=rows.filter(vrActionable).length; return {record: total?`${wins}-${losses}`:'--', winRate: total?`${Math.round(wins/total*100)}%`:'--', units: total||units?`${units>0?'+':''}${units.toFixed(2)}u`:'--', count: (total+active)||'--'}; }
+
+async function bootVipVault(){
+  try{
+    const [master, props, lotto, longshots] = await Promise.all([
+      vrRows(VIP_RECORD_GIDS.master,'Master Picks'),
+      vrRows(VIP_RECORD_GIDS.props,'Props Lab').catch(()=>[]),
+      vrRows(VIP_RECORD_GIDS.lotto,'Lotto Parlays').catch(()=>[]),
+      vrRows(VIP_RECORD_GIDS.longshots,'Longshots').catch(()=>[])
+    ]);
+    const rows = vrDedupe([...master, ...props, ...lotto, ...longshots]);
+    const stats = vrStats(rows);
+    vrSet('vipRecord', stats.record); vrSet('vipWinRate', stats.winRate); vrSet('vipTotalUnits', stats.units); vrSet('vipCount', stats.count);
+    vrRenderPickOfDay(rows); vrRenderActive(rows); vrRenderWatchlist(rows); vrRenderArchive(rows);
+    document.querySelectorAll('.sync-time').forEach(el => { el.textContent = new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'}); });
+  } catch(e){
+    console.error('VIP vault engine failed:', e);
+    vrSet('vipRecord','Sheet Error');
+    const grid=document.getElementById('vipPicksGrid'); if(grid) grid.innerHTML='<div class="empty">VIP sheet data could not load. Check Google Sheet publish/share settings.</div>';
+    vrRenderPickOfDay([]); vrRenderWatchlist([]); vrRenderArchive([]);
+  }
+}
 bootVipVault();
 setInterval(bootVipVault,30000);
