@@ -1,11 +1,11 @@
-import {
-  listActivePicks,
-  parseRequestBody
-} from '../lib/airtableResultsWorkflow.js'
-
 const DEFAULT_SPREADSHEET_ID = '1wber196DbbsSXwcITRXWbIF-IZzOJGwkIKPMIWv0AC4'
-const GOOGLE_SHEETS = ['Master Picks', 'Lotto Parlays', 'Longshots']
+const GOOGLE_SHEETS = ['Master Picks', 'Props Lab', 'Lotto Parlays', 'Longshots']
 const RANGE = 'A:CC'
+
+function json(res, status, payload) {
+  res.status(status).setHeader('Content-Type', 'application/json')
+  res.end(JSON.stringify(payload))
+}
 
 function text(value) {
   return String(value ?? '').trim()
@@ -18,7 +18,9 @@ function base64url(input) {
 async function getGoogleAccessToken() {
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || process.env.GOOGLE_CLIENT_EMAIL
   let key = process.env.GOOGLE_PRIVATE_KEY || process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY
-  if (!email || !key) return ''
+  if (!email || !key) {
+    throw new Error('Missing Google service account env vars. Set GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY in Vercel, then share the Google Sheet with that service account email.')
+  }
   key = key.replace(/\\n/g, '\n')
   const now = Math.floor(Date.now() / 1000)
   const header = { alg: 'RS256', typ: 'JWT' }
@@ -42,7 +44,7 @@ async function getGoogleAccessToken() {
     body: new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion })
   })
   const tokenJson = await tokenRes.json().catch(() => ({}))
-  if (!tokenRes.ok) return ''
+  if (!tokenRes.ok) throw new Error(tokenJson.error_description || tokenJson.error || 'Google token request failed')
   return tokenJson.access_token || ''
 }
 
@@ -51,7 +53,7 @@ async function readSheetRows(spreadsheetId, sheetName, token) {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE`
   const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } })
   const data = await res.json().catch(() => ({}))
-  if (!res.ok) return []
+  if (!res.ok) throw new Error(data?.error?.message || `Unable to read ${sheetName}`)
   const values = Array.isArray(data.values) ? data.values : []
   if (values.length < 2) return []
   const headers = values[0].map(text)
@@ -60,7 +62,9 @@ async function readSheetRows(spreadsheetId, sheetName, token) {
     headers.forEach((header, columnIndex) => {
       if (!header) return
       const value = row[columnIndex]
-      if (value !== undefined && text(value)) fields[header] = value
+      if (value === undefined || !text(value)) return
+      if (fields[header] === undefined) fields[header] = value
+      fields[`__col_${columnIndex}`] = value
     })
     fields.__sheetName = sheetName
     fields.__rowNumber = index + 2
@@ -68,11 +72,23 @@ async function readSheetRows(spreadsheetId, sheetName, token) {
   })
 }
 
+function compactKey(value) {
+  return String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '')
+}
+
 function first(fields, names) {
-  const compact = key => String(key || '').toLowerCase().replace(/[^a-z0-9]/g, '')
-  const wanted = new Set(names.map(compact))
+  const wanted = new Set(names.map(compactKey))
   for (const [key, value] of Object.entries(fields || {})) {
-    if (wanted.has(compact(key)) && text(value)) return value
+    if (key.startsWith('__')) continue
+    if (wanted.has(compactKey(key)) && text(value)) return value
+  }
+  return ''
+}
+
+function firstCol(fields, indexes = []) {
+  for (const index of indexes) {
+    const value = fields?.[`__col_${index}`]
+    if (text(value)) return value
   }
   return ''
 }
@@ -110,46 +126,61 @@ function isCompleted(fields) {
   return /^(win|won|w|loss|lost|l|push|void|cancelled|canceled|no action)$/.test(result)
 }
 
+function normalizedStatus(fields) {
+  return text(first(fields, ['Status', 'Display Status', 'Pick Status', 'Release Status'])).toLowerCase()
+}
+
 function isActive(fields) {
-  const status = text(first(fields, ['Status', 'Display Status', 'Pick Status', 'Release Status'])).toLowerCase()
+  const status = normalizedStatus(fields)
   if (isCompleted(fields)) return false
   if (/archive|no release|watchlist|pass|cancelled|canceled|void|settled|result posted/.test(status)) return false
-  if (parseUnits(first(fields, ['Units', 'Units to Commit', 'Stake'])) <= 0) return false
-  return true
+  const units = parseUnits(first(fields, ['Units', 'Units to Commit', 'Stake']) || firstCol(fields, [9, 71]))
+  if (units <= 0) return false
+  const pick = first(fields, ['Pick', 'Selection', 'Play', 'Prop']) || firstCol(fields, [4, 62])
+  return Boolean(text(pick))
 }
 
 function classifySection(fields) {
   const sourceSheet = text(fields.__sheetName).toLowerCase()
   const haystack = [
     sourceSheet,
-    first(fields, ['Sport']),
-    first(fields, ['League']),
-    first(fields, ['Game', 'Matchup', 'Event']),
-    first(fields, ['Pick', 'Selection', 'Play', 'Prop']),
-    first(fields, ['Bet Type', 'Type', 'Market']),
-    first(fields, ['Access', 'Tier', 'Access Tier']),
-    first(fields, ['Category']),
-    first(fields, ['Tags'])
+    first(fields, ['Sport']) || firstCol(fields, [1, 60]),
+    first(fields, ['League']) || firstCol(fields, [2, 61]),
+    first(fields, ['Game', 'Matchup', 'Event']) || firstCol(fields, [3]),
+    first(fields, ['Pick', 'Selection', 'Play', 'Prop']) || firstCol(fields, [4, 62]),
+    first(fields, ['Bet Type', 'Type', 'Market']) || firstCol(fields, [5, 63]),
+    first(fields, ['Access', 'Tier', 'Access Tier']) || firstCol(fields, [25, 67]),
+    first(fields, ['Category']) || firstCol(fields, [47, 67]),
+    first(fields, ['Tags']) || firstCol(fields, [43])
   ].map(text).join(' ').toLowerCase()
-  if (sourceSheet.includes('longshot') || /\blongshot\b/.test(haystack)) return 'longshots'
-  if (sourceSheet.includes('lotto') || /\b(parlay|lotto|sgp)\b/.test(haystack)) return 'longshots'
+  if (sourceSheet.includes('longshot') || sourceSheet.includes('lotto')) return 'longshots'
+  if (/\b(parlay|lotto|sgp|longshot)\b/.test(haystack)) return 'longshots'
   if (sourceSheet.includes('props') || /\bprop\b/.test(haystack)) return 'props'
   return 'picks'
 }
 
 function normalizeGoogleRow(fields) {
   const section = classifySection(fields)
-  const access = first(fields, ['Access', 'Tier', 'Access Tier']) || (section === 'longshots' ? 'Lotto' : 'Free')
-  const date = first(fields, ['Date', 'Game Date', 'Posted Time', 'Timestamp'])
-  const game = first(fields, ['Game', 'Matchup', 'Event'])
-  const pick = first(fields, ['Pick', 'Selection', 'Play', 'Prop'])
-  const betType = first(fields, ['Bet Type', 'Type', 'Market', 'Prop Type'])
-  const grade = first(fields, ['Grade', 'Card Grade'])
+  const date = first(fields, ['Date', 'Game Date', 'Posted Time', 'Timestamp']) || firstCol(fields, [0, 58])
+  const sport = first(fields, ['Sport']) || firstCol(fields, [1, 59])
+  const league = first(fields, ['League']) || firstCol(fields, [2, 60])
+  const game = first(fields, ['Game', 'Matchup', 'Event']) || firstCol(fields, [3, 75])
+  const pick = first(fields, ['Pick', 'Selection', 'Play', 'Prop']) || firstCol(fields, [4, 62])
+  const betType = first(fields, ['Bet Type', 'Type', 'Market', 'Prop Type']) || firstCol(fields, [5, 63, 76])
+  const odds = first(fields, ['Odds', 'Posted Odds', 'American Odds']) || firstCol(fields, [6, 75])
+  const sportsbook = first(fields, ['Sportsbook', 'Book']) || firstCol(fields, [7])
+  const grade = first(fields, ['Grade', 'Card Grade']) || firstCol(fields, [8, 64])
+  const units = first(fields, ['Units', 'Units to Commit', 'Stake']) || firstCol(fields, [9, 71])
+  const access = first(fields, ['Access', 'Tier', 'Access Tier']) || firstCol(fields, [25, 67]) || (section === 'longshots' ? 'Lotto' : 'Free')
+  const releaseStatus = first(fields, ['Release Status']) || firstCol(fields, [24]) || (section === 'longshots' ? 'Lotto Released' : 'Released')
   const originalTable = section === 'longshots' ? 'longshots' : section === 'props' ? 'propsLab' : 'picks'
-  const recordKey = first(fields, ['Record Key']) || [date, first(fields, ['League', 'Sport']), game, pick, betType, originalTable].map(value => text(value).toLowerCase().replace(/[^a-z0-9]+/g, '')).filter(Boolean).join('|')
+  const recordKey = first(fields, ['Record Key']) || [date, league || sport, game, pick, betType, originalTable].map(value => text(value).toLowerCase().replace(/[^a-z0-9]+/g, '')).filter(Boolean).join('|')
+  const writeup = first(fields, ['Writeup', 'Write Up', 'Public Writeup', 'Summary', 'Short Take']) || firstCol(fields, [29, 73])
+  const fullAnalysis = first(fields, ['Full Analysis', 'Analysis']) || firstCol(fields, [34, 86])
+  const risk = first(fields, ['Risk']) || firstCol(fields, [78])
+
   return {
     id: `gs-${fields.__sheetName}-${fields.__rowNumber}`,
-    airtableRecordId: '',
     __source: 'Google Sheets Active Picks',
     __table: fields.__sheetName,
     __section: section,
@@ -157,67 +188,66 @@ function normalizeGoogleRow(fields) {
     recordKey,
     Date: date,
     date,
-    Sport: first(fields, ['Sport']),
-    sport: first(fields, ['Sport']),
-    League: first(fields, ['League', 'Sport']),
-    league: first(fields, ['League', 'Sport']),
+    Sport: sport,
+    sport,
+    League: league || sport,
+    league: league || sport,
     Game: game,
     game,
     Pick: pick,
     pick,
     'Bet Type': betType,
     betType,
-    Odds: first(fields, ['Odds', 'Posted Odds', 'American Odds']),
-    odds: first(fields, ['Odds', 'Posted Odds', 'American Odds']),
-    Sportsbook: first(fields, ['Sportsbook', 'Book']),
-    sportsbook: first(fields, ['Sportsbook', 'Book']),
+    Odds: odds,
+    odds,
+    Sportsbook: sportsbook,
+    sportsbook,
     Grade: grade,
     grade,
-    Category: first(fields, ['Category', 'Bet Type', 'Type', 'Market']) || (section === 'longshots' ? 'Lotto' : ''),
-    category: first(fields, ['Category', 'Bet Type', 'Type', 'Market']) || (section === 'longshots' ? 'Lotto' : ''),
-    Units: first(fields, ['Units', 'Units to Commit', 'Stake']),
-    units: first(fields, ['Units', 'Units to Commit', 'Stake']),
-    'Best Number': first(fields, ['Best Number', 'Line', 'Number']),
-    bestNumber: first(fields, ['Best Number', 'Line', 'Number']),
-    'No Bet Cutoff': first(fields, ['No Bet Cutoff']),
-    noBetCutoff: first(fields, ['No Bet Cutoff']),
-    Confidence: first(fields, ['Confidence']),
-    confidence: first(fields, ['Confidence']),
-    Status: first(fields, ['Status', 'Display Status', 'Pick Status']) || 'Pending',
-    status: first(fields, ['Status', 'Display Status', 'Pick Status']) || 'Pending',
-    releaseStatus: first(fields, ['Release Status']) || (section === 'longshots' ? 'Lotto Released' : 'Released'),
+    Category: first(fields, ['Category']) || firstCol(fields, [47, 67]) || (section === 'longshots' ? 'Lotto' : ''),
+    category: first(fields, ['Category']) || firstCol(fields, [47, 67]) || (section === 'longshots' ? 'Lotto' : ''),
+    Units: units,
+    units,
+    'Best Number': first(fields, ['Best Number', 'Line', 'Number']) || firstCol(fields, [10, 84]),
+    bestNumber: first(fields, ['Best Number', 'Line', 'Number']) || firstCol(fields, [10, 84]),
+    'No Bet Cutoff': first(fields, ['No Bet Cutoff']) || firstCol(fields, [11, 85]),
+    noBetCutoff: first(fields, ['No Bet Cutoff']) || firstCol(fields, [11, 85]),
+    Confidence: first(fields, ['Confidence']) || firstCol(fields, [22, 63]),
+    confidence: first(fields, ['Confidence']) || firstCol(fields, [22, 63]),
+    Status: first(fields, ['Status', 'Display Status', 'Pick Status']) || firstCol(fields, [23, 65]) || 'Pending',
+    status: first(fields, ['Status', 'Display Status', 'Pick Status']) || firstCol(fields, [23, 65]) || 'Pending',
+    releaseStatus,
     Access: access,
     access,
-    Featured: first(fields, ['Featured', 'Featured?']),
-    featured: first(fields, ['Featured', 'Featured?']),
-    'Official Bet': first(fields, ['Official Bet']) || 'Yes',
-    officialBet: first(fields, ['Official Bet']) || 'Yes',
-    'Pick of the Day Eligible': first(fields, ['Pick of the Day Eligible']) || 'No',
-    pickOfTheDayEligible: first(fields, ['Pick of the Day Eligible']) || 'No',
-    Writeup: first(fields, ['Writeup', 'Write Up', 'Public Writeup', 'Summary', 'Short Take']),
-    writeup: first(fields, ['Writeup', 'Write Up', 'Public Writeup', 'Summary', 'Short Take']),
-    'Market Notes': first(fields, ['Market Notes']),
-    marketNotes: first(fields, ['Market Notes']),
-    'Injury Notes': first(fields, ['Injury Notes']),
-    injuryNotes: first(fields, ['Injury Notes']),
-    'Source Verification': first(fields, ['Source Verification', 'Source']),
-    sourceVerification: first(fields, ['Source Verification', 'Source']),
-    'Full Analysis': first(fields, ['Full Analysis', 'Analysis']),
-    fullAnalysis: first(fields, ['Full Analysis', 'Analysis']),
-    Risk: first(fields, ['Risk']),
-    risk: first(fields, ['Risk']),
-    'Start Time': first(fields, ['Start Time', 'Game Time', 'Start', 'Posted Time', 'Timestamp']),
-    startTime: first(fields, ['Start Time', 'Game Time', 'Start', 'Posted Time', 'Timestamp']),
+    Featured: first(fields, ['Featured', 'Featured?']) || firstCol(fields, [26]),
+    featured: first(fields, ['Featured', 'Featured?']) || firstCol(fields, [26]),
+    'Official Bet': first(fields, ['Official Bet']) || firstCol(fields, [27]) || 'Yes',
+    officialBet: first(fields, ['Official Bet']) || firstCol(fields, [27]) || 'Yes',
+    'Pick of the Day Eligible': first(fields, ['Pick of the Day Eligible']) || firstCol(fields, [28]) || 'No',
+    pickOfTheDayEligible: first(fields, ['Pick of the Day Eligible']) || firstCol(fields, [28]) || 'No',
+    Writeup: writeup,
+    writeup,
+    'Market Notes': first(fields, ['Market Notes']) || firstCol(fields, [30]),
+    marketNotes: first(fields, ['Market Notes']) || firstCol(fields, [30]),
+    'Injury Notes': first(fields, ['Injury Notes']) || firstCol(fields, [31]),
+    injuryNotes: first(fields, ['Injury Notes']) || firstCol(fields, [31]),
+    'Source Verification': first(fields, ['Source Verification', 'Source']) || firstCol(fields, [32, 68]),
+    sourceVerification: first(fields, ['Source Verification', 'Source']) || firstCol(fields, [32, 68]),
+    'Full Analysis': fullAnalysis,
+    fullAnalysis,
+    Risk: risk,
+    risk,
+    'Start Time': first(fields, ['Start Time', 'Game Time', 'Start', 'Posted Time', 'Timestamp']) || firstCol(fields, [33, 58]),
+    startTime: first(fields, ['Start Time', 'Game Time', 'Start', 'Posted Time', 'Timestamp']) || firstCol(fields, [33, 58]),
     Result: '',
     Outcome: '',
     result: ''
   }
 }
 
-async function listGoogleSheetActiveRows() {
+async function listGoogleSheetActiveRows({ date }) {
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || DEFAULT_SPREADSHEET_ID
   const token = await getGoogleAccessToken()
-  if (!token) return { rows: [], errors: ['Google Sheets active feed skipped: missing service account env vars.'] }
   const rows = []
   const errors = []
   for (const sheetName of GOOGLE_SHEETS) {
@@ -227,12 +257,12 @@ async function listGoogleSheetActiveRows() {
       errors.push(`${sheetName}: ${error.message || String(error)}`)
     }
   }
-  const today = todayKey()
+  const wantedDate = date || todayKey()
   const active = rows
-    .filter(row => dateKey(first(row, ['Date', 'Game Date', 'Posted Time', 'Timestamp'])) === today)
+    .filter(row => dateKey(first(row, ['Date', 'Game Date', 'Posted Time', 'Timestamp']) || firstCol(row, [0, 58])) === wantedDate)
     .filter(isActive)
     .map(normalizeGoogleRow)
-  return { rows: active, errors }
+  return { rows: active, errors, spreadsheetId, date: wantedDate }
 }
 
 function dedupeRows(rows = []) {
@@ -250,47 +280,71 @@ function isVip(row = {}) {
   const grade = text(row.Grade || row.grade).toUpperCase()
   if (access === 'free' || releaseStatus === 'free released') return false
   const premium = access.includes('vip') || access.includes('premium') || releaseStatus === 'vip released'
-  return (premium || grade === 'A' || grade === 'A+') && (grade === 'A' || grade === 'A+')
+  return premium && (grade === 'A' || grade === 'A+')
 }
 
 function isFeatured(row = {}) {
   return /^(yes|true|1|y|featured)$/i.test(text(row.Featured || row.featured))
 }
 
-function reshape(result, googleRows = [], googleErrors = []) {
-  const rows = dedupeRows([...(result.rows || result.results || []), ...googleRows])
-  const vip = rows.filter(isVip)
-  const free = rows.filter(row => !isVip(row))
-  const props = rows.filter(row => row.__section === 'props' || row.originalTable === 'propsLab')
-  const lotto = rows.filter(row => row.__section === 'lotto' || row.originalTable === 'lottoParlays' || row.__section === 'longshots')
-  const longshots = rows.filter(row => row.__section === 'longshots' || row.originalTable === 'longshots')
+function applySectionFilter(rows, section) {
+  const requested = text(section).toLowerCase()
+  if (!requested) return rows
+  if (requested === 'longshots' || requested === 'lotto' || requested === 'parlays') {
+    return rows.filter(row => row.__section === 'longshots' || row.originalTable === 'longshots' || /parlay|lotto|sgp/i.test(`${row.Sport} ${row.Game} ${row.Pick} ${row.betType} ${row.category}`))
+  }
+  if (requested === 'props' || requested === 'propslab') {
+    return rows.filter(row => row.__section === 'props' || row.originalTable === 'propsLab')
+  }
+  if (requested === 'vip') return rows.filter(isVip)
+  if (requested === 'free') return rows.filter(row => !isVip(row))
+  return rows
+}
+
+function buildPayload({ rows, errors, spreadsheetId, date, section }) {
+  const allRows = dedupeRows(rows)
+  const filteredRows = applySectionFilter(allRows, section)
+  const vip = allRows.filter(isVip)
+  const free = allRows.filter(row => !isVip(row) && row.__section !== 'longshots')
+  const props = allRows.filter(row => row.__section === 'props' || row.originalTable === 'propsLab')
+  const lotto = allRows.filter(row => row.__section === 'longshots' || row.originalTable === 'longshots')
+  const longshots = lotto
   return {
-    ...result,
-    rows,
-    results: rows,
+    ok: true,
+    success: true,
+    source: 'Google Sheets',
+    spreadsheetId,
+    date,
+    section: section || '',
+    rows: filteredRows,
+    results: filteredRows,
+    allRows,
     free,
     vip,
     props,
     lotto,
     longshots,
-    featured: rows.filter(isFeatured),
-    counts: { rows: rows.length, free: free.length, vip: vip.length },
-    errors: [...(result.errors || []), ...googleErrors]
+    featured: allRows.filter(isFeatured),
+    counts: {
+      rows: filteredRows.length,
+      allRows: allRows.length,
+      free: free.length,
+      vip: vip.length,
+      props: props.length,
+      lotto: lotto.length,
+      longshots: longshots.length
+    },
+    errors
   }
 }
 
 export default async function handler(req, res) {
   try {
-    const body = req.method === 'POST' ? parseRequestBody(req) : {}
-    const result = await listActivePicks({
-      access: req.query?.access || body.access || '',
-      section: req.query?.section || body.section || '',
-      watchlist: req.query?.watchlist || body.watchlist || false
-    })
-    const google = await listGoogleSheetActiveRows()
-    res.status(result.errors?.length ? 207 : 200).json(reshape(result, google.rows, google.errors))
+    const section = req.query?.section || ''
+    const date = req.query?.date || ''
+    const google = await listGoogleSheetActiveRows({ date })
+    json(res, google.errors.length ? 207 : 200, buildPayload({ ...google, section }))
   } catch (error) {
-    console.error(error)
-    res.status(500).json({ success: false, error: error.message || String(error) })
+    json(res, 500, { ok: false, success: false, source: 'Google Sheets', error: error.message || String(error) })
   }
 }
