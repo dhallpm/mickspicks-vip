@@ -1,0 +1,7 @@
+{
+  "redirects": [
+    { "source": "/vip", "destination": "/index.html", "permanent": false },
+    { "source": "/vip/", "destination": "/index.html", "permanent": false },
+    { "source": "/premium.html", "destination": "/index.html", "permanent": false }
+  ]
+}
