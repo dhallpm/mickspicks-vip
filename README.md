@@ -1,19 +1,18 @@
 # Mick's Picks VIP
 
-This repo backs the standalone VIP project:
+This repo backs the standalone VIP project.
 
-https://mickspicks-vip.vercel.app/premium.html
+Canonical VIP destination:
 
-The public site at `www.mickspicks.us` should link VIP entry buttons to that
-premium vault page, not to the public `#vip` preview tab.
+https://vip.mickspicks.us/index.html
 
 ## Routing
 
-- `/premium.html` is the VIP Vault page.
-- `/vip/` redirects to `/premium.html?v=fullanalysis4#vip` for old internal links.
+- `/index.html` is the VIP page Darren wants VIP routing to use.
+- Old `/premium.html`, `/vip`, and `/vip/` paths should route back to `/index.html`.
 - Public teaser pages should not include full VIP analysis in their HTML payload.
 
 ## Projects
 
-- Public repo: `mickstaste` -> `www.mickspicks.us`
-- VIP repo: `mickspicks-vip` -> `mickspicks-vip.vercel.app/premium.html`
+- Public project: `mickstaste-live` -> `www.mickspicks.us`
+- VIP project: `mickspicks-vip` -> `vip.mickspicks.us/index.html`
