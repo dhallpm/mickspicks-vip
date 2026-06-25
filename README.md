@@ -1,62 +1,19 @@
-# Mick's Picks VIP Repo Starter
+# Mick's Picks VIP
 
-Use this as a separate GitHub Pages repo for:
+This repo backs the standalone VIP project:
 
-https://vip.mickspicks.us
+https://mickspicks-vip.vercel.app/premium.html
 
-This fixes the 404 after Cloudflare login.
+The public site at `www.mickspicks.us` should link VIP entry buttons to that
+premium vault page, not to the public `#vip` preview tab.
 
-## Why the 404 happened
+## Routing
 
-Cloudflare Access worked because it sent you a login code.
+- `/premium.html` is the VIP Vault page.
+- `/vip/` redirects to `/premium.html?v=fullanalysis4#vip` for old internal links.
+- Public teaser pages should not include full VIP analysis in their HTML payload.
 
-The 404 happened after login because GitHub Pages does not yet have a separate site/repository assigned to the custom hostname:
+## Projects
 
-vip.mickspicks.us
-
-## How to use
-
-1. Create a new GitHub repo named:
-
-mickspicks-vip
-
-2. Upload these files:
-- index.html
-- CNAME
-- .nojekyll
-
-3. Go to the new repo:
-Settings → Pages
-
-4. Set:
-Source: Deploy from a branch
-Branch: main
-Folder: /root
-
-5. Under Custom domain, enter:
-
-vip.mickspicks.us
-
-6. Save.
-
-7. Wait for the DNS check.
-
-8. Open:
-
-https://vip.mickspicks.us
-
-Cloudflare should ask for email/code first, then the VIP portal should load.
-
-## Important
-
-Do not change the custom domain on your current public repo if it is already using:
-
-www.mickspicks.us
-
-Keep public and VIP separate:
-
-Public repo:
-mickstaste → www.mickspicks.us
-
-VIP repo:
-mickspicks-vip → vip.mickspicks.us
+- Public repo: `mickstaste` -> `www.mickspicks.us`
+- VIP repo: `mickspicks-vip` -> `mickspicks-vip.vercel.app/premium.html`
