@@ -1,7 +1,6 @@
 {
   "redirects": [
-    { "source": "/vip", "destination": "/index.html", "permanent": false },
-    { "source": "/vip/", "destination": "/index.html", "permanent": false },
-    { "source": "/premium.html", "destination": "/index.html", "permanent": false }
+    { "source": "/vip", "destination": "/premium.html?v=fullanalysis4#vip", "permanent": false },
+    { "source": "/vip/", "destination": "/premium.html?v=fullanalysis4#vip", "permanent": false }
   ]
 }
