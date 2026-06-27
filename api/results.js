@@ -31,7 +31,7 @@ function resultOf(row) { return String(row.Result || '').trim() }
 function unitValue(row) { const m = String(row['Profit/Loss'] || '').replace(/,/g, '').match(/[+-]?\d+(?:\.\d+)?/); return m ? Number(m[0]) : 0 }
 function summary(rows) { const wins = rows.filter(row => resultOf(row)==='Win').length; const losses = rows.filter(row => resultOf(row)==='Loss').length; const pushes = rows.filter(row => /Push|Void/i.test(resultOf(row))).length; const units = rows.reduce((s,r)=>s+unitValue(r),0); return { wins, losses, pushes, record:`${wins}-${losses}${pushes?'-'+pushes:''}`, units:`${units>=0?'+':''}${units.toFixed(2)}u`, totalUnits:`${units>=0?'+':''}${units.toFixed(2)}u`, winRate:wins+losses?`${Math.round(wins/(wins+losses)*100)}%`:'0%' } }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   const stats = summary(WEEKLY_RESULTS)
   res.status(200)
   res.setHeader('Content-Type','application/json')

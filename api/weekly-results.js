@@ -1,1 +1,1 @@
-module.exports = require('./results.js')
+export { default } from './results.js'
