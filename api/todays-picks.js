@@ -1,27 +1,4 @@
-const ACTIVE_PICKS = [
-  {
-    Date: '2026-06-27',
-    Sport: 'UFC',
-    League: 'UFC Baku',
-    Game: 'Rafael Fiziev vs Manuel Torres',
-    Pick: 'Manuel Torres ML',
-    'Bet Type': 'Moneyline',
-    Odds: '+100',
-    Grade: 'A-',
-    Units: 0.75,
-    Status: 'Released',
-    Result: '',
-    'Profit/Loss': '',
-    Access: 'VIP',
-    Tier: 'VIP',
-    vip: true,
-    'Best Number': '+100 or better',
-    Cutoff: '-115',
-    Writeup: 'Torres is the value side in the UFC main event. The model likes his power, pace, and finishing upside at a near pick’em price.',
-    'Full Analysis': 'Manuel Torres ML is the UFC value play at pick’em pricing. The edge comes from Torres’ finishing profile and striking efficiency against Rafael Fiziev, who has been in a rough recent form cycle and has been finished multiple times. Torres brings higher output, more early finishing upside, and a dangerous first-round pressure style that can punish Fiziev if exchanges stay at distance. My projection makes Torres closer to a small favorite, around -125, so +100 gives usable line value. Best number is plus money; playable to -115. The main risk is sample size because Torres’ UFC fights have been short, and Fiziev still owns elite technical striking with the ability to mix in takedowns if needed.',
-    Analysis: 'Manuel Torres ML is the UFC value play at pick’em pricing. The edge comes from Torres’ finishing profile and striking efficiency against Rafael Fiziev, who has been in a rough recent form cycle and has been finished multiple times. Torres brings higher output, more early finishing upside, and a dangerous first-round pressure style that can punish Fiziev if exchanges stay at distance. My projection makes Torres closer to a small favorite, around -125, so +100 gives usable line value. Best number is plus money; playable to -115. The main risk is sample size because Torres’ UFC fights have been short, and Fiziev still owns elite technical striking with the ability to mix in takedowns if needed.'
-  }
-]
+const ACTIVE_PICKS = []
 
 const WEEKLY_RESULTS = [
   { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Braves at Padres', Pick:'Braves ML', Odds:'-115', Grade:'A-', Units:0.75, Result:'Loss', 'Profit/Loss':'-0.75u', Access:'VIP' },
@@ -49,7 +26,8 @@ const WEEKLY_RESULTS = [
   { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Astros at Tigers', Pick:'Yordan Alvarez Over 1.5 Total Bases', Odds:'-115', Grade:'B+', Units:0.35, Result:'Loss', 'Profit/Loss':'-0.35u', Access:'Props' },
   { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Phillies at Nationals', Pick:'Bryce Harper Over 1.5 Total Bases', Odds:'+102', Grade:'B+', Units:0.35, Result:'Win', 'Profit/Loss':'+0.36u', Access:'Props' },
   { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Athletics at Giants', Pick:'Nick Kurtz Over 1.5 Hits + Runs + RBIs', Odds:'-103', Grade:'B', Units:0.25, Result:'Win', 'Profit/Loss':'+0.24u', Access:'Props' },
-  { Date:'2026-06-25', Sport:'Parlay', League:'Micks Picks Parlays', Game:'Props Parlay', Pick:'Schlittler Ks / Bryce Miller Ks / Harper TB', Odds:'+2376', Grade:'B-', Units:0.1, Result:'Win', 'Profit/Loss':'+2.38u', Access:'Parlay' }
+  { Date:'2026-06-25', Sport:'Parlay', League:'Micks Picks Parlays', Game:'Props Parlay', Pick:'Schlittler Ks / Bryce Miller Ks / Harper TB', Odds:'+2376', Grade:'B-', Units:0.1, Result:'Win', 'Profit/Loss':'+2.38u', Access:'Parlay' },
+  { Date:'2026-06-27', Sport:'UFC', League:'UFC Baku', Game:'Rafael Fiziev vs Manuel Torres', Pick:'Manuel Torres ML', Odds:'+100', Grade:'A-', Units:0.75, Result:'Loss', 'Profit/Loss':'-0.75u', Access:'VIP' }
 ]
 
 function resultOf(row) { return String(row.Result || row.result || '').trim() }
@@ -61,8 +39,9 @@ function summary(rows) {
   const net = rows.reduce((s,r)=>s+units(r),0)
   return { wins, losses, pushes, record: `${wins}-${losses}${pushes ? '-' + pushes : ''}`, units: `${net >= 0 ? '+' : ''}${net.toFixed(2)}u`, netUnits: net, winRate: wins + losses ? `${Math.round((wins/(wins+losses))*100)}%` : '0%' }
 }
+function isTorres(row) { return /manuel torres|fiziev/i.test([row.Pick, row.Game, row.pick, row.game].join(' ')) }
 function keyOf(row) { return [row.Date, row.League || row.Sport, row.Game, row.Pick, row.Odds].map(v => String(v || '').toLowerCase()).join('|') }
-function mergeRows(a, b) { const map = new Map(); [...(a || []), ...(b || [])].forEach(row => { if (row && row.Pick) map.set(keyOf(row), row) }); return [...map.values()] }
+function mergeRows(a, b) { const map = new Map(); [...(a || []), ...(b || [])].forEach(row => { if (row && row.Pick && !isTorres(row)) map.set(keyOf(row), row) }); return [...map.values()] }
 
 export default async function handler(req, res) {
   let upstream = {}
