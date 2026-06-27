@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Micks Picks VIP Vault</title>
 <meta name="robots" content="noindex,nofollow" />
-<!-- MICKS_VIP_VISIBLE_PAGE: casino-board-root-v4-weekly-results -->
-<link rel="stylesheet" href="/vip-casino.css?v=casino-root-v4-weekly-results" />
+<!-- MICKS_VIP_VISIBLE_PAGE: polished-vip-vault-target-layout-0627 -->
+<link rel="stylesheet" href="/vip-casino.css?v=vip-vault-polish-0627-v1" />
 </head>
 <body>
 <header class="top">
@@ -22,39 +22,47 @@
     <a class="btn" href="#vip-picks">View VIP Card</a>
   </div>
 </header>
+
 <section class="hero" id="top">
   <div class="shell hero-inner">
-    <div class="members">♛ Members Only</div>
-    <h1 class="title">VIP Vault</h1>
-    <div class="sub">Premium Releases <span>•</span> Full Analysis <span>•</span> Weekly Results</div>
+    <div class="hero-copy">
+      <div class="members">♛ Members Only</div>
+      <h1 class="title">VIP Vault</h1>
+      <div class="sub">Premium Releases <span>•</span> Full Analysis <span>•</span> Official Results</div>
+    </div>
     <div class="stats">
-      <div class="stat"><small>Record</small><b id="vipRecord">--</b></div>
-      <div class="stat"><small>Units</small><b id="vipTotalUnits">--</b></div>
-      <div class="stat"><small>Win Rate</small><b id="vipWinRate">--</b></div>
-      <div class="stat"><small>Active Picks</small><b id="vipCount">--</b></div>
+      <div class="stat"><span class="stat-icon">↗</span><small>Record</small><b id="vipRecord">--</b><em>Since inception</em></div>
+      <div class="stat"><span class="stat-icon">◎</span><small>Units</small><b id="vipTotalUnits">--</b><em>Total profit</em></div>
+      <div class="stat"><span class="stat-icon">◉</span><small>Win Rate</small><b id="vipWinRate">--</b><em>Winning percentage</em></div>
+      <div class="stat"><span class="stat-icon">⚡</span><small>Active Picks</small><b id="vipCount">--</b><em>Today</em></div>
     </div>
   </div>
 </section>
-<div class="ticker"><div class="track"><span>Official tracker active</span><span>Live card feed</span><span>Premium analysis</span><span>Weekly results board</span><span>Market notes</span><span>Official tracker active</span><span>Live card feed</span><span>Premium analysis</span></div></div>
+
+<div class="ticker"><div class="track"><span>Official tracker active</span><span>Live card feed</span><span>Premium analysis</span><span>Market notes</span><span>Weekly results board</span><span>Official tracker active</span><span>Live card feed</span><span>Premium analysis</span></div></div>
+
 <main>
   <section class="section shell" id="vip-picks">
     <div class="panel">
-      <div class="head"><div><h2>♛ Today's VIP Picks</h2><div class="muted">Released member plays from the live card.</div></div><a class="btn" href="#vip-results">View Results</a></div>
+      <div class="head"><div><h2>♛ Today's VIP Picks</h2><div class="muted">Released member plays from the live card.</div></div><a class="btn small" href="#vip-results">View Results</a></div>
       <div class="grid" id="pickOfDayCard"><div class="empty">Loading Pick of the Day...</div></div>
       <div class="grid" id="vipPicksGrid"><div class="empty">Loading VIP picks...</div></div>
     </div>
   </section>
+
   <section class="section shell" id="supporting-vip-sections" style="display:none">
     <div id="freePicksGrid"></div><div id="propsLabGrid"></div><div id="longshotsGrid"></div><div id="vipWatchlistGrid"></div>
   </section>
+
   <section class="section shell" id="vip-results">
     <div class="panel data-card">
-      <div class="head"><div><h2>Weekly Results Board</h2><div class="muted">All posted Micks Picks results from June 24 through current week.</div></div><button class="btn" onclick="location.reload()">Refresh</button></div>
+      <div class="head"><div><h2>VIP Results</h2><div class="muted">Archived member results.</div></div><button class="btn small" onclick="location.reload()">Refresh</button></div>
       <div class="table-wrap"><table class="tbl"><thead><tr><th>Date</th><th>League</th><th>Pick</th><th>Grade</th><th>Result</th><th>P/L</th><th>Closing #</th></tr></thead><tbody id="vipArchiveBody"><tr><td colspan="7">Loading weekly results...</td></tr></tbody></table></div>
     </div>
   </section>
 </main>
+
 <footer class="footer">Micks Picks educational tracker. Entertainment and educational purposes only.</footer>
-<script src="/vip-record-fix.js?v=weekly-results-0627-v2"></script>
+<script src="/vip-record-fix.js?v=weekly-results-0627-v3"></script>
 </body>
 </html>
