@@ -1,19 +1,75 @@
+const WEEKLY_RESULTS = [
+  { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Braves at Padres', Pick:'Braves ML', Odds:'-115', Grade:'A-', Units:0.75, Result:'Loss', 'Profit/Loss':'-0.75u', Access:'VIP' },
+  { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Dodgers at Twins', Pick:'Dodgers ML', Odds:'-172', Grade:'B+', Units:0.75, Result:'Win', 'Profit/Loss':'+0.44u', Access:'VIP' },
+  { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Brewers at Reds', Pick:'Brewers ML', Odds:'-128', Grade:'B+', Units:0.5, Result:'Win', 'Profit/Loss':'+0.39u', Access:'Free' },
+  { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Diamondbacks at Cardinals', Pick:'Diamondbacks ML', Odds:'+100', Grade:'B', Units:0.5, Result:'Win', 'Profit/Loss':'+0.50u', Access:'Free' },
+  { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Royals at Rays', Pick:'Under 8', Odds:'-136', Grade:'B', Units:0.5, Result:'Push', 'Profit/Loss':'0.00u', Access:'Free' },
+  { Date:'2026-06-24', Sport:'WNBA', League:'WNBA', Game:'Lynx at Mystics', Pick:'Lynx -9.5', Odds:'-110', Grade:'B', Units:0.5, Result:'Loss', 'Profit/Loss':'-0.50u', Access:'Free' },
+  { Date:'2026-06-24', Sport:'WNBA', League:'WNBA', Game:'Dream at Valkyries', Pick:'Valkyries +2.5', Odds:'-110', Grade:'B', Units:0.5, Result:'Win', 'Profit/Loss':'+0.45u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'MLB', League:'MLB', Game:'Yankees at Red Sox', Pick:'Yankees -1.5', Odds:'+111', Grade:'A', Units:1, Result:'Loss', 'Profit/Loss':'-1.00u', Access:'VIP' },
+  { Date:'2026-06-25', Sport:'World Cup', League:'FIFA World Cup', Game:'Japan vs Sweden', Pick:'Japan ML', Odds:'-110', Grade:'A-', Units:0.75, Result:'Loss', 'Profit/Loss':'-0.75u', Access:'VIP' },
+  { Date:'2026-06-25', Sport:'World Cup', League:'FIFA World Cup', Game:'Netherlands vs Tunisia', Pick:'Netherlands -2.5', Odds:'-129', Grade:'A-', Units:0.75, Result:'Loss', 'Profit/Loss':'-0.75u', Access:'VIP' },
+  { Date:'2026-06-25', Sport:'MLB', League:'MLB', Game:'Mariners at Pirates', Pick:'Mariners ML', Odds:'-150', Grade:'B+', Units:0.5, Result:'Loss', 'Profit/Loss':'-0.50u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'MLB', League:'MLB', Game:'Mets vs Cubs', Pick:'Mets ML', Odds:'-115', Grade:'B', Units:0.5, Result:'Loss', 'Profit/Loss':'-0.50u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'MLB', League:'MLB', Game:'Cardinals vs Diamondbacks', Pick:'Cardinals ML', Odds:'-135', Grade:'B', Units:0.5, Result:'Void', 'Profit/Loss':'0.00u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'World Cup', League:'FIFA World Cup', Game:'Curacao vs Ivory Coast', Pick:'Ivory Coast Win Both Halves', Odds:'+100', Grade:'B+', Units:0.5, Result:'Win', 'Profit/Loss':'+0.50u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'World Cup', League:'FIFA World Cup', Game:'Japan vs Sweden', Pick:'Japan Team Total Over 1.5', Odds:'-110', Grade:'B+', Units:0.5, Result:'Loss', 'Profit/Loss':'-0.50u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'World Cup', League:'FIFA World Cup', Game:'Netherlands vs Tunisia', Pick:'Netherlands Team Total Over 2.5', Odds:'-186', Grade:'B+', Units:0.5, Result:'Win', 'Profit/Loss':'+0.27u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'WNBA', League:'WNBA', Game:'Sparks at Tempo', Pick:'Under 179.5', Odds:'-110', Grade:'B', Units:0.5, Result:'Loss', 'Profit/Loss':'-0.50u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'WNBA', League:'WNBA', Game:'Wings at Aces', Pick:'Over 178.5', Odds:'-110', Grade:'B-', Units:0.35, Result:'Win', 'Profit/Loss':'+0.32u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'WNBA', League:'WNBA', Game:'Liberty at Storm', Pick:'Storm +11.5', Odds:'-110', Grade:'C+', Units:0.25, Result:'Win', 'Profit/Loss':'+0.23u', Access:'Free' },
+  { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Yankees at Red Sox', Pick:'Cam Schlittler Over 6.5 Strikeouts', Odds:'+102', Grade:'A-', Units:0.5, Result:'Win', 'Profit/Loss':'+0.51u', Access:'Props' },
+  { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Mariners at Pirates', Pick:'Bryce Miller Over 5.5 Strikeouts', Odds:'+102', Grade:'B+', Units:0.35, Result:'Win', 'Profit/Loss':'+0.36u', Access:'Props' },
+  { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Cubs at Mets', Pick:'Matthew Boyd Over 4.5 Strikeouts', Odds:'+113', Grade:'B+', Units:0.35, Result:'Loss', 'Profit/Loss':'-0.35u', Access:'Props' },
+  { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Astros at Tigers', Pick:'Yordan Alvarez Over 1.5 Total Bases', Odds:'-115', Grade:'B+', Units:0.35, Result:'Loss', 'Profit/Loss':'-0.35u', Access:'Props' },
+  { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Phillies at Nationals', Pick:'Bryce Harper Over 1.5 Total Bases', Odds:'+102', Grade:'B+', Units:0.35, Result:'Win', 'Profit/Loss':'+0.36u', Access:'Props' },
+  { Date:'2026-06-25', Sport:'MLB Props', League:'MLB Props', Game:'Athletics at Giants', Pick:'Nick Kurtz Over 1.5 Hits + Runs + RBIs', Odds:'-103', Grade:'B', Units:0.25, Result:'Win', 'Profit/Loss':'+0.24u', Access:'Props' },
+  { Date:'2026-06-25', Sport:'Parlay', League:'Micks Picks Parlays', Game:'Props Parlay', Pick:'Schlittler Ks / Bryce Miller Ks / Harper TB', Odds:'+2376', Grade:'B-', Units:0.1, Result:'Win', 'Profit/Loss':'+2.38u', Access:'Parlay' }
+]
+
+function resultOf(row) { return String(row.Result || row.result || '').trim() }
+function units(row) { const m = String(row['Profit/Loss'] || row.profitLoss || row.pl || '').match(/[+-]?\d+(?:\.\d+)?/); return m ? Number(m[0]) : 0 }
+function summary(rows) {
+  const wins = rows.filter(r => resultOf(r) === 'Win').length
+  const losses = rows.filter(r => resultOf(r) === 'Loss').length
+  const pushes = rows.filter(r => /Push|Void/i.test(resultOf(r))).length
+  const net = rows.reduce((s,r)=>s+units(r),0)
+  return { wins, losses, pushes, record: `${wins}-${losses}${pushes ? '-' + pushes : ''}`, units: `${net >= 0 ? '+' : ''}${net.toFixed(2)}u`, netUnits: net, winRate: wins + losses ? `${Math.round((wins/(wins+losses))*100)}%` : '0%' }
+}
+
 module.exports = async function handler(req, res) {
+  let upstream = {}
   try {
     const params = new URLSearchParams()
-    for (const [key, value] of Object.entries(req.query || {})) {
-      if (value !== undefined && value !== null) params.set(key, String(value))
-    }
+    for (const [key, value] of Object.entries(req.query || {})) if (value !== undefined && value !== null) params.set(key, String(value))
     const target = `https://www.mickspicks.us/api/todays-picks${params.toString() ? `?${params.toString()}` : ''}`
     const response = await fetch(target, { cache: 'no-store' })
-    const body = await response.text()
-    res.status(response.status)
-    res.setHeader('Content-Type', response.headers.get('content-type') || 'application/json')
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
-    res.end(body)
+    upstream = await response.json().catch(async () => ({ raw: await response.text() }))
   } catch (error) {
-    res.status(500).setHeader('Content-Type', 'application/json')
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
-    res.end(JSON.stringify({ ok: false, success: false, error: error.message || String(error), rows: [], allRows: [], vip: [], free: [], props: [], lotto: [], longshots: [], featured: [] }))
+    upstream = { ok: false, success: false, error: error.message || String(error) }
   }
+  const stats = summary(WEEKLY_RESULTS)
+  const payload = {
+    ...upstream,
+    ok: true,
+    success: true,
+    record: stats.record,
+    overallRecord: stats.record,
+    units: stats.units,
+    totalUnits: stats.units,
+    winRate: stats.winRate,
+    weeklyResults: WEEKLY_RESULTS,
+    results: WEEKLY_RESULTS,
+    records: upstream.records || upstream.rows || [],
+    resultRows: WEEKLY_RESULTS,
+    archive: WEEKLY_RESULTS,
+    resultsArchive: WEEKLY_RESULTS,
+    sectionRecords: stats,
+    metrics: { ...(upstream.metrics || {}), ...stats },
+    stats
+  }
+  res.status(200)
+  res.setHeader('Content-Type', 'application/json')
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
+  res.end(JSON.stringify(payload))
 }
