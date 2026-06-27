@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check:api": "node --check api/todays-picks.js && node --check api/results.js && node --check api/final-results.js && node --check api/results-board.js && node --check api/public-results.js && node --check api/weekly-results.js",
     "test:vip-routing": "node scripts/test-vip-routing.js",
     "test:airtable-results": "node scripts/test-airtable-results-archive.js"
   }

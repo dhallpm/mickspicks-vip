@@ -37,7 +37,7 @@ function summary(rows) {
   return { wins, losses, pushes, record: `${wins}-${losses}${pushes ? '-' + pushes : ''}`, units: `${net >= 0 ? '+' : ''}${net.toFixed(2)}u`, netUnits: net, winRate: wins + losses ? `${Math.round((wins/(wins+losses))*100)}%` : '0%' }
 }
 
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   let upstream = {}
   try {
     const params = new URLSearchParams()
