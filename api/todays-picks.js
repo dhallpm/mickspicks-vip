@@ -43,7 +43,9 @@ module.exports = async function handler(req, res) {
     const params = new URLSearchParams()
     for (const [key, value] of Object.entries(req.query || {})) if (value !== undefined && value !== null) params.set(key, String(value))
     const target = `https://www.mickspicks.us/api/todays-picks${params.toString() ? `?${params.toString()}` : ''}`
-    const response = await fetch(target, { cache: 'no-store' })
+    const accessToken = String(req.headers?.['cf-access-jwt-assertion'] || '').trim()
+    const headers = accessToken ? { 'cf-access-jwt-assertion': accessToken } : {}
+    const response = await fetch(target, { cache: 'no-store', headers })
     upstream = await response.json().catch(async () => ({ raw: await response.text() }))
   } catch (error) {
     upstream = { ok: false, success: false, error: error.message || String(error) }
