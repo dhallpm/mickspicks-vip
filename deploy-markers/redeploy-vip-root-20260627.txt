@@ -1,0 +1,6 @@
+Redeploy marker for VIP root page.
+
+Latest intended page: VIP root.
+Latest runtime change: casino board VIP runtime.
+
+If the live hostname does not update after this commit deploys, check DNS, Access, custom domain attachment, and production project mapping.
