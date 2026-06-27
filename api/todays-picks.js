@@ -1,3 +1,28 @@
+const ACTIVE_PICKS = [
+  {
+    Date: '2026-06-27',
+    Sport: 'UFC',
+    League: 'UFC Baku',
+    Game: 'Rafael Fiziev vs Manuel Torres',
+    Pick: 'Manuel Torres ML',
+    'Bet Type': 'Moneyline',
+    Odds: '+100',
+    Grade: 'A-',
+    Units: 0.75,
+    Status: 'Released',
+    Result: '',
+    'Profit/Loss': '',
+    Access: 'VIP',
+    Tier: 'VIP',
+    vip: true,
+    'Best Number': '+100 or better',
+    Cutoff: '-115',
+    Writeup: 'Torres is the value side in the UFC main event. The model likes his power, pace, and finishing upside at a near pick’em price.',
+    'Full Analysis': 'Manuel Torres ML is the UFC value play at pick’em pricing. The edge comes from Torres’ finishing profile and striking efficiency against Rafael Fiziev, who has been in a rough recent form cycle and has been finished multiple times. Torres brings higher output, more early finishing upside, and a dangerous first-round pressure style that can punish Fiziev if exchanges stay at distance. My projection makes Torres closer to a small favorite, around -125, so +100 gives usable line value. Best number is plus money; playable to -115. The main risk is sample size because Torres’ UFC fights have been short, and Fiziev still owns elite technical striking with the ability to mix in takedowns if needed.',
+    Analysis: 'Manuel Torres ML is the UFC value play at pick’em pricing. The edge comes from Torres’ finishing profile and striking efficiency against Rafael Fiziev, who has been in a rough recent form cycle and has been finished multiple times. Torres brings higher output, more early finishing upside, and a dangerous first-round pressure style that can punish Fiziev if exchanges stay at distance. My projection makes Torres closer to a small favorite, around -125, so +100 gives usable line value. Best number is plus money; playable to -115. The main risk is sample size because Torres’ UFC fights have been short, and Fiziev still owns elite technical striking with the ability to mix in takedowns if needed.'
+  }
+]
+
 const WEEKLY_RESULTS = [
   { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Braves at Padres', Pick:'Braves ML', Odds:'-115', Grade:'A-', Units:0.75, Result:'Loss', 'Profit/Loss':'-0.75u', Access:'VIP' },
   { Date:'2026-06-24', Sport:'MLB', League:'MLB', Game:'Dodgers at Twins', Pick:'Dodgers ML', Odds:'-172', Grade:'B+', Units:0.75, Result:'Win', 'Profit/Loss':'+0.44u', Access:'VIP' },
@@ -36,6 +61,8 @@ function summary(rows) {
   const net = rows.reduce((s,r)=>s+units(r),0)
   return { wins, losses, pushes, record: `${wins}-${losses}${pushes ? '-' + pushes : ''}`, units: `${net >= 0 ? '+' : ''}${net.toFixed(2)}u`, netUnits: net, winRate: wins + losses ? `${Math.round((wins/(wins+losses))*100)}%` : '0%' }
 }
+function keyOf(row) { return [row.Date, row.League || row.Sport, row.Game, row.Pick, row.Odds].map(v => String(v || '').toLowerCase()).join('|') }
+function mergeRows(a, b) { const map = new Map(); [...(a || []), ...(b || [])].forEach(row => { if (row && row.Pick) map.set(keyOf(row), row) }); return [...map.values()] }
 
 export default async function handler(req, res) {
   let upstream = {}
@@ -51,6 +78,8 @@ export default async function handler(req, res) {
     upstream = { ok: false, success: false, error: error.message || String(error) }
   }
   const stats = summary(WEEKLY_RESULTS)
+  const upstreamRecords = upstream.records || upstream.rows || []
+  const activeRecords = mergeRows(ACTIVE_PICKS, upstreamRecords)
   const payload = {
     ...upstream,
     ok: true,
@@ -60,9 +89,13 @@ export default async function handler(req, res) {
     units: stats.units,
     totalUnits: stats.units,
     winRate: stats.winRate,
+    activePicks: ACTIVE_PICKS,
+    vip: mergeRows(ACTIVE_PICKS, upstream.vip || []),
+    rows: activeRecords,
+    records: activeRecords,
+    picks: activeRecords,
     weeklyResults: WEEKLY_RESULTS,
     results: WEEKLY_RESULTS,
-    records: upstream.records || upstream.rows || [],
     resultRows: WEEKLY_RESULTS,
     archive: WEEKLY_RESULTS,
     resultsArchive: WEEKLY_RESULTS,
