@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test:vip-routing": "node scripts/test-vip-routing.js",
     "test:airtable-results": "node scripts/test-airtable-results-archive.js"
   }
 }
