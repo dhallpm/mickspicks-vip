@@ -7,6 +7,30 @@
 <meta name="robots" content="noindex,nofollow" />
 <!-- MICKS_VIP_VISIBLE_PAGE: sportsbook-odds-board-vip-layout-0627 -->
 <link rel="stylesheet" href="/vip-casino.css?v=sportsbook-board-0627-v2" />
+<style>
+  .pick-card::after,
+  .pick-card:after {
+    content: none !important;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  .vip-topline > div:first-child {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    padding-right: 10px !important;
+  }
+  .grade-badge {
+    flex: 0 0 auto !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+  .vip-badge {
+    position: static !important;
+    max-width: max-content !important;
+  }
+</style>
 </head>
 <body>
 <header class="top">
@@ -77,6 +101,6 @@
 </main>
 
 <footer class="footer">Micks Picks educational tracker. Entertainment and educational purposes only.</footer>
-<script src="/vip-record-fix.js?v=weekly-results-0627-v3"></script>
+<script src="/vip-record-fix.js?v=vip-card-overlap-fix-0702-v1"></script>
 </body>
 </html>
