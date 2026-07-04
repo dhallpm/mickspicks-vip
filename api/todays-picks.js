@@ -1,44 +1,6 @@
 const ACTIVE_PICKS = [
   {
     date: '2026-07-03',
-    sport: 'WNBA',
-    league: 'WNBA',
-    category: 'VIP',
-    access: 'VIP',
-    section: 'vip',
-    game: 'Las Vegas Aces vs Chicago Sky',
-    pick: 'Las Vegas Aces -8.5',
-    betType: 'Spread',
-    bet_type: 'Spread',
-    pick_type: 'Spread',
-    odds: '-110',
-    units: '0.75u',
-    grade: 'B+',
-    confidence: '8.5/10',
-    bestNumber: '-8.5',
-    best_number: '-8.5',
-    line: '-8.5',
-    playableTo: '-9.5 without Wilson / -13 with Wilson',
-    noBetCutoff: '-10 or worse without Aja / -13.5 or worse with Aja',
-    no_bet_cutoff: '-10 or worse without Aja / -13.5 or worse with Aja',
-    risk: 'Medium',
-    status: 'Active',
-    releaseStatus: 'VIP Released',
-    sportsbook: 'Shop best number',
-    projectedEdge: 'TSI projects Aces -15 with Aja Wilson and about -10 without her',
-    shortAnalysis: 'Top WNBA position after the TSI update. The projection still leaves cushion at -8.5 even if Aja Wilson is limited or out.',
-    analysis: 'Aces -8.5 becomes the top WNBA position after the TSI update. TSI projects Las Vegas -15 with Aja Wilson in the lineup and roughly -10 without her, so the current -8.5 number still has cushion either way. Chicago has been much worse on the road, and its last five road games show a profile that can get stretched if the Aces create early separation. Aja Wilson being questionable keeps this from a full A-grade pregame, but the projection gap is strong enough to make this the VIP side. Upgrade to A- / 1u only if Aja is confirmed active.',
-    fullAnalysis: `Aces -8.5 becomes the top WNBA position after the TSI update. TSI projects Las Vegas -15 with Aja Wilson in the lineup and roughly -10 without her, so the current -8.5 number still has cushion either way. That is the key reason this gets VIP treatment: the market is still below the projection even after accounting for the injury uncertainty.
-
-Chicago has been much worse on the road than at home, and its last five road games show a profile that can get stretched if the opponent creates early separation. Las Vegas has also been playing above its season baseline over the recent sample, and the Aces have enough guard creation through Jackie Young and Chelsea Gray to remain dangerous even if Aja is not fully healthy.
-
-The risk is obvious: Aja Wilson is officially the swing factor. If she is confirmed active, this can be upgraded to A- / 1u and played deeper. If she is ruled out, it is still playable only to -9.5 because TSI still makes the number about Aces -10. The edge is real, but the injury variable keeps this at B+ pregame.
-
-Micks Verdict: VIP B+, 0.75u. Best number is Aces -8.5. Play to -9.5 without Wilson, play to -13 with Wilson. Pass at -10 or worse if Aja is out and pass at -13.5 or worse if she is in.`,
-    writeup: `Aces -8.5 becomes the top WNBA position after the TSI update. TSI projects Las Vegas -15 with Aja Wilson in the lineup and roughly -10 without her, so the current -8.5 number still has cushion either way. Chicago has been much worse on the road, and its last five road games show a profile that can get stretched if the Aces create early separation. Aja Wilson being questionable keeps this from a full A-grade pregame, but the projection gap is strong enough to make this the VIP side. Upgrade to A- / 1u only if Aja is confirmed active.`
-  },
-  {
-    date: '2026-07-03',
     sport: 'Soccer',
     league: 'FIFA World Cup',
     category: 'VIP',
@@ -97,9 +59,9 @@ export default async function handler(req, res) {
   res.end(JSON.stringify({
     ok: true,
     success: true,
-    source: 'vip-vault-july-3-active-picks',
+    source: 'vip-vault-july-3-aces-archived',
     sourceOfTruth: 'Micks Picks VIP Vault',
-    date: '2026-07-03',
+    date: '2026-07-04',
     activePicks: active,
     vip: active,
     vipVault: active,
