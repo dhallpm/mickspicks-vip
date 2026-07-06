@@ -1,49 +1,32 @@
-const emptyStats = { wins: 0, losses: 0, pushes: 0, record: '0-0', units: '+0.00u', netUnits: 0, winRate: '0%' }
+const vipRows = [
+  { date: '2026-07-06', sport: 'Soccer', league: 'FIFA World Cup', access: 'VIP', category: 'VIP', section: 'vip', game: 'Spain vs Portugal', pick: 'Spain to Advance', cardTitle: 'Spain to Advance', betType: 'To Advance', odds: '-210', units: '1.00u', grade: 'A-', confidence: '8.6/10', bestNumber: '-210', lineNumber: '-210', noBetCutoff: '-240 or worse', status: 'Active', releaseStatus: 'VIP Released', sportsbook: 'Circa', writeup: 'Spain to Advance is the safer knockout-market position over Spain 90-minute ML.', fullAnalysis: 'Spain to Advance protects against extra time and penalties while still backing the better side to survive the tie. Micks Verdict: VIP A-, 1.00u.' },
+  { date: '2026-07-06', sport: 'Soccer', league: 'FIFA World Cup', access: 'VIP', category: 'VIP', section: 'vip', game: 'USA vs Belgium', pick: 'Over 2.5 Goals', cardTitle: 'USA/Belgium Over 2.5 Goals', betType: 'Total', odds: '-125', units: '0.75u', grade: 'B+', confidence: '8.1/10', bestNumber: '-125', lineNumber: 'Over 2.5', noBetCutoff: '-140 or worse', status: 'Active', releaseStatus: 'VIP Released', sportsbook: 'Circa', writeup: 'The cleaner angle is goals instead of picking a side.', fullAnalysis: 'USA and Belgium both have enough attacking quality to create an open match. Micks Verdict: VIP B+, 0.75u.' }
+]
+
+const freeRows = [
+  { date: '2026-07-06', sport: 'WNBA', league: 'WNBA', access: 'Free', category: 'Free', section: 'free', game: 'Connecticut Sun vs Minnesota Lynx', pick: 'Minnesota Lynx -13', cardTitle: 'Minnesota Lynx -13', betType: 'Spread', odds: '-110', units: '0.75u', grade: 'B+', confidence: '7.9/10', bestNumber: '-13', lineNumber: '-13', noBetCutoff: '-14.5 or worse', status: 'Active', releaseStatus: 'Free Released', sportsbook: 'Circa', writeup: 'Minnesota is clearly superior, but the spread size keeps this out of VIP.' },
+  { date: '2026-07-06', sport: 'WNBA', league: 'WNBA', access: 'Free', category: 'Free', section: 'free', game: 'Golden State Valkyries vs Washington Mystics', pick: 'Golden State Valkyries -6', cardTitle: 'Golden State Valkyries -6', betType: 'Spread', odds: '-110', units: '0.50u', grade: 'B', confidence: '7.2/10', bestNumber: '-6', lineNumber: '-6', noBetCutoff: '-6.5 or worse', status: 'Active', releaseStatus: 'Free Released', sportsbook: 'Circa', writeup: 'Golden State is playable small only at -6.' },
+  { date: '2026-07-06', sport: 'WNBA', league: 'WNBA', access: 'Free', category: 'Free', section: 'free', game: 'Seattle Storm vs Los Angeles Sparks', pick: 'Los Angeles Sparks -4', cardTitle: 'Los Angeles Sparks -4', betType: 'Spread', odds: '-110', units: '0.50u', grade: 'B', confidence: '7.1/10', bestNumber: '-4', lineNumber: '-4', noBetCutoff: '-4.5 or worse', status: 'Active', releaseStatus: 'Free Released', sportsbook: 'Circa', writeup: 'Sparks have the home and offensive edge.' },
+  { date: '2026-07-06', sport: 'MLB', league: 'MLB', access: 'Free', category: 'Free', section: 'free', game: 'Colorado Rockies vs Los Angeles Dodgers', pick: 'Los Angeles Dodgers -1.5', cardTitle: 'Los Angeles Dodgers -1.5', betType: 'Run Line', odds: '-118', units: '0.50u', grade: 'B', confidence: '7.4/10', bestNumber: '-118', lineNumber: '-1.5', noBetCutoff: '-130 or worse', status: 'Active', releaseStatus: 'Free Released', sportsbook: 'Circa', writeup: 'Dodgers moneyline is too expensive, so the run line is the better angle.' },
+  { date: '2026-07-06', sport: 'MLB', league: 'MLB', access: 'Free', category: 'Free', section: 'free', game: 'New York Mets vs Atlanta Braves', pick: 'Atlanta Braves ML', cardTitle: 'Atlanta Braves ML', betType: 'Moneyline', odds: '-126', units: '0.50u', grade: 'B', confidence: '7.5/10', bestNumber: '-126', lineNumber: '-126', noBetCutoff: '-145 or worse', status: 'Active', releaseStatus: 'Free Released', sportsbook: 'Circa', writeup: 'Braves are playable at the reasonable favorite price.' },
+  { date: '2026-07-06', sport: 'MLB', league: 'MLB', access: 'Free', category: 'Free', section: 'free', game: 'Arizona Diamondbacks vs San Diego Padres', pick: 'Arizona Diamondbacks +1.5', cardTitle: 'Arizona Diamondbacks +1.5', betType: 'Run Line', odds: '-195', units: '0.50u', grade: 'B', confidence: '7.0/10', bestNumber: '-195', lineNumber: '+1.5', noBetCutoff: '-210 or worse', status: 'Active', releaseStatus: 'Free Released', sportsbook: 'Circa', writeup: 'Arizona +1.5 is the safer way to play a competitive game.' }
+]
+
+const propRows = [
+  { date: '2026-07-06', sport: 'MLB', league: 'MLB', access: 'Free', category: 'Props', section: 'props', game: 'Props Lab', pick: 'No Official Props Released', cardTitle: 'No Official Props Released', betType: 'Props Notice', odds: 'N/A', units: '0.00u', grade: 'Pass', confidence: 'Pass', bestNumber: 'Need exact player and price', lineNumber: 'Props held', noBetCutoff: 'Do not play without exact number', status: 'Hold', releaseStatus: 'Props Held', sportsbook: 'TBD', writeup: 'Props are not official until exact player, market, odds, and sportsbook are confirmed.' }
+]
+
+const lottoRows = [
+  { date: '2026-07-06', sport: 'Soccer', league: 'FIFA World Cup', access: 'Free', category: 'Lotto Parlay', section: 'lotto', game: 'Spain / USA-Belgium', pick: 'Spain to Advance + USA/Belgium Over 2.5 Goals', cardTitle: 'Spain to Advance + USA/Belgium Over 2.5', betType: 'Lotto Parlay', odds: 'TBD', units: '0.25u', grade: 'B-', confidence: '7.3/10', bestNumber: 'Best available', lineNumber: '2-leg parlay', noBetCutoff: 'Do not chase bad numbers', status: 'Active', releaseStatus: 'Lotto Released', sportsbook: 'Shop best prices', writeup: 'Best soccer parlay build.' },
+  { date: '2026-07-06', sport: 'Multi-Sport', league: 'MLB/FIFA World Cup', access: 'Free', category: 'Lotto Parlay', section: 'lotto', game: 'Dodgers / Braves / Spain', pick: 'Dodgers -1.5 + Braves ML + Spain to Advance', cardTitle: 'Dodgers -1.5 + Braves ML + Spain to Advance', betType: 'Lotto Parlay', odds: 'TBD', units: '0.15u', grade: 'C+', confidence: '6.8/10', bestNumber: 'Best available', lineNumber: '3-leg parlay', noBetCutoff: 'Do not chase bad numbers', status: 'Active', releaseStatus: 'Lotto Released', sportsbook: 'Shop best prices', writeup: 'Small mixed-card lotto.' },
+  { date: '2026-07-06', sport: 'Multi-Sport', league: 'WNBA/MLB/FIFA World Cup', access: 'Free', category: 'Lotto Parlay', section: 'lotto', game: 'Lynx / Braves / Spain', pick: 'Minnesota Lynx ML + Braves ML + Spain to Advance', cardTitle: 'Lynx ML + Braves ML + Spain to Advance', betType: 'Lotto Parlay', odds: 'TBD', units: '0.20u', grade: 'C+', confidence: '6.9/10', bestNumber: 'Best available', lineNumber: '3-leg safer ML parlay', noBetCutoff: 'Do not chase bad pricing', status: 'Active', releaseStatus: 'Lotto Released', sportsbook: 'Shop best prices', writeup: 'Safer lotto build using Lynx ML instead of spread.' }
+]
+
+const mainRows = [...vipRows, ...freeRows]
+const allRows = [...mainRows, ...propRows, ...lottoRows]
 
 export default async function handler(req, res) {
-  res.status(200)
   res.setHeader('Content-Type', 'application/json')
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
-  res.end(JSON.stringify({
-    ok: true,
-    success: true,
-    source: 'vip-vault-cleared-after-july-5-grading',
-    sourceOfTruth: 'Micks Picks VIP Vault',
-    date: '2026-07-06',
-    activePicks: [],
-    rows: [],
-    records: [],
-    picks: [],
-    mainPicks: [],
-    vip: [],
-    vipPicks: [],
-    vipVault: [],
-    free: [],
-    freePicks: [],
-    props: [],
-    propsLab: [],
-    propRows: [],
-    playerProps: [],
-    parlay: [],
-    parlays: [],
-    lotto: [],
-    lottoParlays: [],
-    parlayRows: [],
-    watchlist: [],
-    mondayHolds: [],
-    allRows: [],
-    weeklyResults: [],
-    results: [],
-    resultRows: [],
-    archive: [],
-    resultsArchive: [],
-    record: emptyStats.record,
-    overallRecord: emptyStats.record,
-    units: emptyStats.units,
-    totalUnits: emptyStats.units,
-    winRate: emptyStats.winRate,
-    sectionRecords: emptyStats,
-    metrics: emptyStats,
-    stats: emptyStats
-  }))
+  res.status(200).json({ ok: true, success: true, source: 'vip-vault-july-6-active-card', date: '2026-07-06', activePicks: mainRows, rows: mainRows, records: mainRows, picks: mainRows, mainPicks: mainRows, vip: vipRows, vipPicks: vipRows, vipVault: vipRows, free: freeRows, freePicks: freeRows, props: propRows, propsLab: propRows, propRows, playerProps: propRows, parlay: lottoRows, parlays: lottoRows, lotto: lottoRows, lottoParlays: lottoRows, parlayRows: lottoRows, allRows, record: '0-0', units: '+0.00u' })
 }
