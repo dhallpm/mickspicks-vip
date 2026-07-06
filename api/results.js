@@ -54,7 +54,19 @@ const WEEKLY_RESULTS = [
   r('2026-07-04', 'WNBA', 'WNBA', 'Atlanta Dream vs Golden State Valkyries', 'Angel Reese Over 11.5 Rebounds', 'Player Prop', '-145', 'B-', '0.25u', 'Free', 'Win', '+0.17u', '2026-07-05', 'User box score showed Angel Reese finished with 13 rebounds.', 'Over 11.5 rebounds cashed.'),
   r('2026-07-04', 'MLB', 'MLB', 'Miami Marlins vs Athletics', 'Miami Marlins ML', 'Moneyline', '-130', 'B-', '0.25u', 'Free', 'Win', '+0.19u', '2026-07-05', 'User screenshot showed Marlins beat Athletics 7-2.', 'Miami ML cashed.'),
   r('2026-07-04', 'Multi-Sport', 'FIFA World Cup/MLB/WNBA', 'July 4 Safe Lotto', 'Morocco to Advance / France Team Total Over 1.5 / Phillies-Royals Under 9', 'Lotto Parlay', 'TBD', 'C+', '0.15u', 'Free', 'Loss', '-0.15u', '2026-07-05', 'Morocco and Phillies/Royals Under hit, but France team total Over 1.5 failed.', 'Safe Lotto lost on the France team total leg.'),
-  r('2026-07-04', 'Multi-Sport', 'WNBA/MLB', 'July 4 Dog/Defense Lotto', 'Golden State Valkyries +4.5 / Seattle Storm -3.5 / Phillies-Royals Under 9', 'Lotto Parlay', 'TBD', 'C', '0.10u', 'Free', 'Loss', '-0.10u', '2026-07-05', 'Valkyries +4.5 and Phillies/Royals Under hit, but Seattle Storm -3.5 failed.', 'Dog/Defense Lotto lost on the Storm leg.')
+  r('2026-07-04', 'Multi-Sport', 'WNBA/MLB', 'July 4 Dog/Defense Lotto', 'Golden State Valkyries +4.5 / Seattle Storm -3.5 / Phillies-Royals Under 9', 'Lotto Parlay', 'TBD', 'C', '0.10u', 'Free', 'Loss', '-0.10u', '2026-07-05', 'Valkyries +4.5 and Phillies/Royals Under hit, but Seattle Storm -3.5 failed.', 'Dog/Defense Lotto lost on the Storm leg.'),
+
+  r('2026-07-05', 'WNBA', 'WNBA', 'Dallas Wings vs Toronto Tempo', 'Dallas Wings -5.5', 'Spread', '-110', 'A-', '1.00u', 'VIP', 'Win', '+0.91u', '2026-07-06', 'Dallas beat Toronto 89-76.', 'Dallas covered -5.5 by 13.'),
+  r('2026-07-05', 'WNBA', 'WNBA', 'Indiana Fever vs Las Vegas Aces', 'Las Vegas Aces -3', 'Spread', '-110', 'B+', '0.75u', 'VIP', 'Loss', '-0.75u', '2026-07-06', 'Indiana beat Las Vegas 84-68.', 'Aces lost outright.'),
+  r('2026-07-05', 'MLB', 'MLB', 'Detroit Tigers vs Texas Rangers', 'Detroit Tigers ML', 'Moneyline', '-114', 'B+', '0.75u', 'VIP', 'Win', '+0.66u', '2026-07-06', 'Detroit beat Texas 6-3.', 'Tigers ML cashed.'),
+  r('2026-07-05', 'Soccer', 'FIFA World Cup', 'England vs Mexico', 'First Half Draw', 'First Half Result', '+100', 'B', '0.35u', 'Free', 'Loss', '-0.35u', '2026-07-06', 'England led 2-1 at halftime.', 'First-half draw lost.'),
+  r('2026-07-05', 'MLB', 'MLB', 'Minnesota Twins vs New York Yankees', 'New York Yankees ML', 'Moneyline', '-131', 'B', '0.50u', 'Free', 'Loss', '-0.50u', '2026-07-06', 'Minnesota beat New York 6-1.', 'Yankees ML lost.'),
+  r('2026-07-05', 'MLB', 'MLB', 'San Diego Padres vs Los Angeles Dodgers', 'Los Angeles Dodgers -1.5', 'Run Line', 'EVEN', 'B', '0.50u', 'Free', 'Loss', '-0.50u', '2026-07-06', 'San Diego beat Los Angeles 5-2.', 'Dodgers run line lost.'),
+  r('2026-07-05', 'MLB', 'MLB', 'San Diego Padres vs Los Angeles Dodgers', 'Fernando Tatis Jr. Home Run Yes', 'Player Prop', '+340', 'C+', '0.10u', 'Free', 'Loss', '-0.10u', '2026-07-06', 'Tatis did not homer.', 'HR prop lost.'),
+  r('2026-07-05', 'MLB', 'MLB', 'San Diego Padres vs Los Angeles Dodgers', 'Shohei Ohtani Home Run Yes', 'Player Prop', '+425', 'C+', '0.10u', 'Free', 'Loss', '-0.10u', '2026-07-06', 'Ohtani did not homer.', 'HR prop lost.'),
+  r('2026-07-05', 'MLB', 'MLB', 'Philadelphia Phillies vs Kansas City Royals', 'Aaron Nola Over 4.5 Strikeouts', 'Player Prop', '-155', 'B-', '0.25u', 'Free', 'Win', '+0.16u', '2026-07-06', 'Aaron Nola struck out 7.', 'Over 4.5 strikeouts cashed.'),
+  r('2026-07-05', 'Multi-Sport', 'WNBA/MLB', 'Wings / Aces / Tigers', 'Dallas Wings ML + Las Vegas Aces ML + Detroit Tigers ML', 'Lotto Parlay', '+230 estimated', 'B-', '0.25u', 'Free', 'Loss', '-0.25u', '2026-07-06', 'Aces ML leg failed.', 'Lotto parlay lost.'),
+  r('2026-07-05', 'MLB', 'MLB', 'Yankees / Dodgers / Tigers', 'Yankees ML + Dodgers -1.5 + Tigers ML', 'Lotto Parlay', 'TBD', 'C+', '0.15u', 'Free', 'Loss', '-0.15u', '2026-07-06', 'Yankees ML and Dodgers -1.5 failed.', 'Lotto parlay lost.')
 ]
 
 function summary(rows) {
@@ -101,11 +113,11 @@ export default async function handler(req, res) {
   res.end(JSON.stringify({
     ok: true,
     success: true,
-    source: 'weekly-results-july-4-graded',
+    source: 'weekly-results-july-5-graded',
     sourceOfTruth: 'Micks Picks graded tracker',
     updatedAt: new Date().toISOString(),
-    date: '2026-07-05',
-    week: '2026-07-02-to-2026-07-05',
+    date: '2026-07-06',
+    week: '2026-07-02-to-2026-07-06',
     resetReason: '',
     archivedPath: '',
     ...stats,
