@@ -4,7 +4,7 @@ const results = [
   { date: '2026-07-08', section: 'Free', sport: 'MLB', pick: 'Red Sox ML vs White Sox', result: 'Win', units: '+0.71u', netUnits: 0.71, status: 'Graded' },
   { date: '2026-07-08', section: 'Free', sport: 'MLB', pick: 'Astros/Nationals Over 9', result: 'Win', units: '+0.45u', netUnits: 0.45, status: 'Graded' },
   { date: '2026-07-08', section: 'Free', sport: 'MLB', pick: 'Dodgers -1.5 vs Rockies', result: 'Loss', units: '-0.50u', netUnits: -0.50, status: 'Graded' },
-  { date: '2026-07-08', section: 'Props', sport: 'MLB', pick: 'CJ Abrams O1.5 HRR', result: 'Win', units: '+0.40u', netUnits: 0.40, status: 'Graded' },
+  { date: '2026-07-08', section: 'Props', sport: 'MLB', pick: 'CJ Abrams O1.5 HRR', result: 'Win', units: '+0.50u', netUnits: 0.50, status: 'Graded' },
   { date: '2026-07-08', section: 'Props', sport: 'MLB', pick: 'Jake Bennett O4.5 Ks', result: 'Loss', units: '-0.50u', netUnits: -0.50, status: 'Graded', note: 'Bennett finished with 4 strikeouts.' },
   { date: '2026-07-08', section: 'Lotto', sport: 'MLB', pick: 'Brewers ML + Red Sox ML', result: 'Loss', units: '-0.25u', netUnits: -0.25, status: 'Graded' },
   { date: '2026-07-08', section: 'Lotto', sport: 'WNBA/MLB', pick: 'Fever -6.5 + Brewers ML + Red Sox ML', result: 'Loss', units: '-0.15u', netUnits: -0.15, status: 'Graded' },
@@ -18,10 +18,10 @@ const stats = {
   pushes: 0,
   voids: 0,
   record: '3-8',
-  units: '-1.54u',
-  netUnits: -1.54,
+  units: '-1.44u',
+  netUnits: -1.44,
   winRate: '27.3%',
-  roi: '-31.8%'
+  roi: '-29.7%'
 }
 
 const breakdown = {
@@ -29,7 +29,7 @@ const breakdown = {
   straight: { wins: 2, losses: 3, pushes: 0, voids: 0, record: '2-3', units: '-0.83u', netUnits: -0.83, winRate: '40.0%', roi: '-25.5%' },
   vip: { wins: 0, losses: 2, pushes: 0, voids: 0, record: '0-2', units: '-1.50u', netUnits: -1.50, winRate: '0.0%', roi: '-100.0%' },
   free: { wins: 2, losses: 1, pushes: 0, voids: 0, record: '2-1', units: '+0.66u', netUnits: 0.66, winRate: '66.7%', roi: '+37.7%' },
-  props: { wins: 1, losses: 1, pushes: 0, voids: 0, record: '1-1', units: '-0.10u', netUnits: -0.10, winRate: '50.0%', roi: '-10.0%' },
+  props: { wins: 1, losses: 1, pushes: 0, voids: 0, record: '1-1', units: '+0.00u', netUnits: 0.00, winRate: '50.0%', roi: '0.0%' },
   parlays: { wins: 0, losses: 4, pushes: 0, voids: 0, record: '0-4', units: '-0.60u', netUnits: -0.60, winRate: '0.0%', roi: '-100.0%' },
   lotto: { wins: 0, losses: 4, pushes: 0, voids: 0, record: '0-4', units: '-0.60u', netUnits: -0.60, winRate: '0.0%', roi: '-100.0%' },
   longshots: { wins: 0, losses: 4, pushes: 0, voids: 0, record: '0-4', units: '-0.60u', netUnits: -0.60, winRate: '0.0%', roi: '-100.0%' }
@@ -39,7 +39,7 @@ function payload() {
   return {
     ok: true,
     success: true,
-    source: 'graded-results-july-8-2026',
+    source: 'graded-results-july-8-2026-cj-abrams-corrected',
     sourceOfTruth: 'Micks Picks Final Grading',
     date: '2026-07-08',
     results,
