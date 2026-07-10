@@ -101,6 +101,57 @@
 </main>
 
 <footer class="footer">Micks Picks educational tracker. Entertainment and educational purposes only.</footer>
-<script src="/vip-record-fix.js?v=vip-card-overlap-fix-0702-v1"></script>
+<script>
+(function () {
+  const originalFetch = window.fetch.bind(window);
+  const text = value => String(value == null ? '' : value).trim().toLowerCase();
+  const isVip = row => {
+    const section = text(row && (row.section || row.__section || row.Category || row.Sheet || row.Tab));
+    const access = text(row && (row.Access || row.access || row.Tier || row.tier));
+    return section === 'vip' || access === 'vip' || access === 'premium' || access === 'members only';
+  };
+  const filterVip = rows => Array.isArray(rows) ? rows.filter(isVip) : [];
+  const responseFrom = (payload, response) => new Response(JSON.stringify(payload), {
+    status: response.status,
+    statusText: response.statusText,
+    headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
+  });
+
+  window.fetch = async function (input, init) {
+    const response = await originalFetch(input, init);
+    const url = typeof input === 'string' ? input : (input && input.url) || '';
+    if (!/\/api\/(todays-picks|results)/i.test(url)) return response;
+
+    try {
+      const payload = await response.clone().json();
+      if (/\/api\/todays-picks/i.test(url)) {
+        const vip = filterVip([].concat(payload.vip || [], payload.vipPicks || [], payload.vipVault || []));
+        const clean = Array.from(new Map(vip.map(row => [
+          [row.Date || row.date, row.Game || row.game, row.Pick || row.pick, row.Odds || row.odds].join('|'), row
+        ])).values());
+        payload.vip = clean;
+        payload.vipPicks = clean;
+        payload.vipVault = clean;
+        payload.activePicks = clean;
+        payload.mainPicks = clean;
+        payload.rows = clean;
+        payload.records = clean;
+        payload.picks = clean;
+        payload.allRows = clean;
+      } else {
+        const source = payload.results || payload.rows || payload.records || payload.allRows || [];
+        const vipResults = filterVip(source);
+        ['results','resultRows','weeklyResults','rows','records','archive','resultsArchive','gradedPicks','settledPicks','recentResults','latestResults','allRows'].forEach(key => {
+          payload[key] = vipResults;
+        });
+      }
+      return responseFrom(payload, response);
+    } catch (error) {
+      return response;
+    }
+  };
+})();
+</script>
+<script src="/vip-record-fix.js?v=vip-feed-guard-0710-v1"></script>
 </body>
 </html>
