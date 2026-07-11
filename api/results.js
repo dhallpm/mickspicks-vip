@@ -30,7 +30,14 @@ const july10 = [
   { date:'2026-07-10', section:'Longshots', access:'Free', sport:'Soccer', league:'FIFA World Cup', game:'Spain vs Belgium', pick:'Charles De Ketelaere Anytime Scorer', odds:'+495', grade:'C+', units:'0.20u', result:'Win', profitLoss:'+0.99u', 'Profit/Loss':'+0.99u', status:'Graded', settlementNotes:'De Ketelaere scored Belgium’s goal.' }
 ]
 
-const results = [...july10, ...july8]
+const july11 = [
+  { date:'2026-07-11', section:'Props Lab', access:'Free', sport:'Soccer', league:'FIFA World Cup', game:'England vs Norway', pick:'Both Teams to Score - Yes', odds:'-110', grade:'B', units:'0.50u', result:'Win', profitLoss:'+0.45u', 'Profit/Loss':'+0.45u', status:'Graded', settlementNotes:'Both England and Norway scored.' },
+  { date:'2026-07-11', section:'Free', access:'Free', sport:'WNBA', league:'WNBA', game:'New York Liberty vs Minnesota Lynx', pick:'Minnesota Lynx -5', odds:'-110', grade:'B', units:'0.50u', result:'Push', profitLoss:'+0.00u', 'Profit/Loss':'+0.00u', status:'Graded', settlementNotes:'Minnesota won 90-85, landing exactly on -5.' },
+  { date:'2026-07-11', section:'Props Lab', access:'Free', sport:'WNBA', league:'WNBA', game:'New York Liberty vs Minnesota Lynx', pick:'Breanna Stewart Over 19.5 Points', odds:'-110', grade:'B', units:'0.50u', result:'Loss', profitLoss:'-0.50u', 'Profit/Loss':'-0.50u', status:'Graded', settlementNotes:'Stewart finished with 17 points.' },
+  { date:'2026-07-11', section:'Props Lab', access:'Free', sport:'WNBA', league:'WNBA', game:'New York Liberty vs Minnesota Lynx', pick:'Kayla McBride Over 2.5 Threes', odds:'+105', grade:'B', units:'0.50u', result:'Win', profitLoss:'+0.53u', 'Profit/Loss':'+0.53u', status:'Graded', settlementNotes:'McBride made 5 three-pointers.' }
+]
+
+const results = [...july11, ...july10, ...july8]
 
 function numberFrom(value) {
   if (/profit pending/i.test(String(value || ''))) return 0
@@ -54,12 +61,12 @@ export default async function handler(req, res) {
   res.setHeader('Content-Type','application/json')
   res.setHeader('Cache-Control','no-store, no-cache, must-revalidate, max-age=0')
   res.status(200).json({
-    ok:true, success:true, source:'graded-results-through-july-10-2026', sourceOfTruth:'Micks Picks Final Grading', date:'2026-07-10',
+    ok:true, success:true, source:'graded-results-through-july-11-2026-partial', sourceOfTruth:'Micks Picks Final Grading', date:'2026-07-11',
     results, rows:results, records:results, resultRows:results, weeklyResults:results, archive:results, resultsArchive:results, gradedPicks:results, settledPicks:results, recentResults:results, latestResults:results, allRows:results,
     vip:results.filter(r=>r.access==='VIP'), free:results.filter(r=>r.section==='Free'), props:results.filter(r=>r.section==='Props Lab'), lotto:results.filter(r=>r.section==='Lotto Parlays'), longshots:results.filter(r=>r.section==='Longshots'),
     record:stats.record, overallRecord:stats.record, vipRecord:breakdown.vip.record, freeRecord:breakdown.free.record, propsRecord:breakdown.props.record, parlayRecord:breakdown.parlays.record, lottoRecord:breakdown.lotto.record,
     units:stats.units, totalUnits:stats.units, overallUnits:stats.units, profitLoss:stats.profitLoss, totalProfitLoss:stats.profitLoss, winRate:stats.winRate,
     stats, metrics:stats, breakdown, sectionRecords:breakdown, recordsBySection:breakdown,
-    summary:{record:stats.record,units:stats.units,profitLoss:stats.profitLoss,winRate:stats.winRate,totalPicks:results.length,gradedPicks:results.length,note:'July 10 VIP parlays use posted odds +226 and +135 with calculated profit included.'}
+    summary:{record:stats.record,units:stats.units,profitLoss:stats.profitLoss,winRate:stats.winRate,totalPicks:results.length,gradedPicks:results.length,note:'July 11 partial grading: 2-1-1, +0.48u across four confirmed settlements.'}
   })
 }
