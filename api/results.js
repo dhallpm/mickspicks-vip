@@ -24,8 +24,8 @@ const july10 = [
   { date:'2026-07-10', section:'Props Lab', access:'Free', sport:'Soccer', league:'FIFA World Cup', game:'Spain vs Belgium', pick:'Both Teams to Score - Yes', odds:'-125', grade:'B', units:'0.50u', result:'Win', profitLoss:'+0.40u', 'Profit/Loss':'+0.40u', status:'Graded', settlementNotes:'Both teams scored.' },
   { date:'2026-07-10', section:'Props Lab', access:'Free', sport:'Soccer', league:'FIFA World Cup', game:'Spain vs Belgium', pick:'Lamine Yamal Anytime Scorer', odds:'+170', grade:'B', units:'0.50u', result:'Loss', profitLoss:'-0.50u', 'Profit/Loss':'-0.50u', status:'Graded' },
   { date:'2026-07-10', section:'Props Lab', access:'Free', sport:'WNBA', league:'WNBA', game:'Dallas Wings vs Toronto Tempo', pick:'Paige Bueckers Over 5 Assists', odds:'-120', grade:'B', units:'0.50u', result:'Win', profitLoss:'+0.42u', 'Profit/Loss':'+0.42u', status:'Graded', settlementNotes:'Bueckers finished with 6 assists.' },
-  { date:'2026-07-10', section:'Lotto Parlays', access:'Free', sport:'Multi-Sport', league:'World Cup / WNBA / NBA Summer League', game:'Spain vs Belgium; Sky vs Sparks; Bulls vs Grizzlies', pick:'Spain to Advance + Sparks ML + Grizzlies ML', odds:'+226', grade:'B+', units:'0.50u', result:'Win', profitLoss:'+1.13u', 'Profit/Loss':'+1.13u', status:'Graded', settlementNotes:'All three legs won at posted odds of +226.' },
-  { date:'2026-07-10', section:'Lotto Parlays', access:'Free', sport:'Multi-Sport', league:'World Cup / WNBA', game:'Spain vs Belgium; Sky vs Sparks', pick:'Spain to Advance + Sparks ML', odds:'+135', grade:'A-', units:'0.75u', result:'Win', profitLoss:'+1.01u', 'Profit/Loss':'+1.01u', status:'Graded', settlementNotes:'Both legs won at posted odds of +135.' },
+  { date:'2026-07-10', section:'Lotto Parlays', access:'VIP', sport:'Multi-Sport', league:'World Cup / WNBA / NBA Summer League', game:'Spain vs Belgium; Sky vs Sparks; Bulls vs Grizzlies', pick:'Spain to Advance + Sparks ML + Grizzlies ML', odds:'+226', grade:'B+', units:'0.50u', result:'Win', profitLoss:'+1.13u', 'Profit/Loss':'+1.13u', status:'Graded', settlementNotes:'All three legs won at posted odds of +226.' },
+  { date:'2026-07-10', section:'Lotto Parlays', access:'VIP', sport:'Multi-Sport', league:'World Cup / WNBA', game:'Spain vs Belgium; Sky vs Sparks', pick:'Spain to Advance + Sparks ML', odds:'+135', grade:'A-', units:'0.75u', result:'Win', profitLoss:'+1.01u', 'Profit/Loss':'+1.01u', status:'Graded', settlementNotes:'Both legs won at posted odds of +135.' },
   { date:'2026-07-10', section:'Longshots', access:'Free', sport:'Soccer', league:'FIFA World Cup', game:'Spain vs Belgium', pick:'Kevin De Bruyne Anytime Scorer', odds:'+475', grade:'C+', units:'0.20u', result:'Loss', profitLoss:'-0.20u', 'Profit/Loss':'-0.20u', status:'Graded' },
   { date:'2026-07-10', section:'Longshots', access:'Free', sport:'Soccer', league:'FIFA World Cup', game:'Spain vs Belgium', pick:'Charles De Ketelaere Anytime Scorer', odds:'+495', grade:'C+', units:'0.20u', result:'Win', profitLoss:'+0.99u', 'Profit/Loss':'+0.99u', status:'Graded', settlementNotes:'De Ketelaere scored Belgium’s goal.' }
 ]
@@ -48,7 +48,7 @@ function statsFor(rows) {
 
 const section = name => statsFor(results.filter(r => r.section === name))
 const stats = statsFor(results)
-const breakdown = { overall:stats, vip:section('VIP'), free:section('Free'), props:section('Props Lab'), parlays:section('Lotto Parlays'), lotto:section('Lotto Parlays'), longshots:section('Longshots') }
+const breakdown = { overall:stats, vip:statsFor(results.filter(r=>r.access==='VIP')), free:section('Free'), props:section('Props Lab'), parlays:section('Lotto Parlays'), lotto:section('Lotto Parlays'), longshots:section('Longshots') }
 
 export default async function handler(req, res) {
   res.setHeader('Content-Type','application/json')
@@ -56,10 +56,10 @@ export default async function handler(req, res) {
   res.status(200).json({
     ok:true, success:true, source:'graded-results-through-july-10-2026', sourceOfTruth:'Micks Picks Final Grading', date:'2026-07-10',
     results, rows:results, records:results, resultRows:results, weeklyResults:results, archive:results, resultsArchive:results, gradedPicks:results, settledPicks:results, recentResults:results, latestResults:results, allRows:results,
-    vip:results.filter(r=>r.section==='VIP'), free:results.filter(r=>r.section==='Free'), props:results.filter(r=>r.section==='Props Lab'), lotto:results.filter(r=>r.section==='Lotto Parlays'), longshots:results.filter(r=>r.section==='Longshots'),
+    vip:results.filter(r=>r.access==='VIP'), free:results.filter(r=>r.section==='Free'), props:results.filter(r=>r.section==='Props Lab'), lotto:results.filter(r=>r.section==='Lotto Parlays'), longshots:results.filter(r=>r.section==='Longshots'),
     record:stats.record, overallRecord:stats.record, vipRecord:breakdown.vip.record, freeRecord:breakdown.free.record, propsRecord:breakdown.props.record, parlayRecord:breakdown.parlays.record, lottoRecord:breakdown.lotto.record,
     units:stats.units, totalUnits:stats.units, overallUnits:stats.units, profitLoss:stats.profitLoss, totalProfitLoss:stats.profitLoss, winRate:stats.winRate,
     stats, metrics:stats, breakdown, sectionRecords:breakdown, recordsBySection:breakdown,
-    summary:{record:stats.record,units:stats.units,profitLoss:stats.profitLoss,winRate:stats.winRate,totalPicks:results.length,gradedPicks:results.length,note:'All known July 10 parlay odds are included.'}
+    summary:{record:stats.record,units:stats.units,profitLoss:stats.profitLoss,winRate:stats.winRate,totalPicks:results.length,gradedPicks:results.length,note:'July 10 VIP parlays use posted odds +226 and +135 with calculated profit included.'}
   })
 }
