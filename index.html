@@ -94,7 +94,7 @@
 
   <section class="section shell" id="vip-results">
     <div class="panel data-card">
-      <div class="head"><div><h2>VIP Results</h2><div class="muted">Archived member results.</div></div><button class="btn small" onclick="location.reload()">Refresh</button></div>
+      <div class="head"><div><h2>VIP Results</h2><div class="muted">Straight VIP picks only. Parlays are tracked separately.</div></div><button class="btn small" onclick="location.reload()">Refresh</button></div>
       <div class="table-wrap"><table class="tbl"><thead><tr><th>Date</th><th>League</th><th>Pick</th><th>Grade</th><th>Result</th><th>P/L</th><th>Closing #</th></tr></thead><tbody id="vipArchiveBody"><tr><td colspan="7">Loading weekly results...</td></tr></tbody></table></div>
     </div>
   </section>
@@ -105,17 +105,52 @@
 (function () {
   const originalFetch = window.fetch.bind(window);
   const text = value => String(value == null ? '' : value).trim().toLowerCase();
-  const isVip = row => {
-    const section = text(row && (row.section || row.__section || row.Category || row.Sheet || row.Tab));
-    const access = text(row && (row.Access || row.access || row.Tier || row.tier));
-    return section === 'vip' || access === 'vip' || access === 'premium' || access === 'members only';
-  };
-  const filterVip = rows => Array.isArray(rows) ? rows.filter(isVip) : [];
+  const sectionOf = row => text(row && (row.section || row.__section || row.Section || row.Category || row.Sheet || row.Tab));
+  const isVipPick = row => sectionOf(row) === 'vip';
+  const isVipResult = row => sectionOf(row) === 'vip';
+  const filterVipPicks = rows => Array.isArray(rows) ? rows.filter(isVipPick) : [];
+  const filterVipResults = rows => Array.isArray(rows) ? rows.filter(isVipResult) : [];
   const responseFrom = (payload, response) => new Response(JSON.stringify(payload), {
     status: response.status,
     statusText: response.statusText,
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }
   });
+
+  const normalizedDate = value => {
+    const raw = String(value || '').trim();
+    const iso = raw.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
+    const us = raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+    return us ? `${us[3]}-${String(us[1]).padStart(2, '0')}-${String(us[2]).padStart(2, '0')}` : '';
+  };
+
+  function easternParts(date = new Date()) {
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', hourCycle: 'h23'
+    }).formatToParts(date);
+    return Object.fromEntries(parts.map(part => [part.type, part.value]));
+  }
+
+  function effectiveCardDate() {
+    const now = new Date();
+    const current = easternParts(now);
+    if (Number(current.hour) >= 2) return `${current.year}-${current.month}-${current.day}`;
+    const prior = easternParts(new Date(now.getTime() - 24 * 60 * 60 * 1000));
+    return `${prior.year}-${prior.month}-${prior.day}`;
+  }
+
+  const isSettled = row => /\b(win|won|loss|lost|push|void|voided|graded|settled|final|completed|complete|cancelled|canceled)\b/i.test([
+    row && (row.Status || row.status || row['Release Status']), row && (row.Result || row.result || row.Outcome || row.outcome)
+  ].join(' '));
+
+  function currentVipRows(rows, payloadDate) {
+    const activeDate = effectiveCardDate();
+    return filterVipPicks(rows).filter(row => {
+      if (isSettled(row)) return false;
+      const rowDate = normalizedDate((row && (row.Date || row.date || row.postedDate)) || payloadDate);
+      return rowDate ? rowDate === activeDate : normalizedDate(payloadDate) === activeDate;
+    });
+  }
 
   window.fetch = async function (input, init) {
     const response = await originalFetch(input, init);
@@ -125,7 +160,8 @@
     try {
       const payload = await response.clone().json();
       if (/\/api\/todays-picks/i.test(url)) {
-        const vip = filterVip([].concat(payload.vip || [], payload.vipPicks || [], payload.vipVault || []));
+        const source = [].concat(payload.vip || [], payload.vipPicks || [], payload.vipVault || []);
+        const vip = currentVipRows(source, payload.date || '');
         const clean = Array.from(new Map(vip.map(row => [
           [row.Date || row.date, row.Game || row.game, row.Pick || row.pick, row.Odds || row.odds].join('|'), row
         ])).values());
@@ -138,12 +174,14 @@
         payload.records = clean;
         payload.picks = clean;
         payload.allRows = clean;
+        payload.totalUnits = clean.reduce((sum, row) => sum + Number(row.Units || row.units || 0), 0);
       } else {
         const source = payload.results || payload.rows || payload.records || payload.allRows || [];
-        const vipResults = filterVip(source);
+        const vipResults = filterVipResults(source);
         ['results','resultRows','weeklyResults','rows','records','archive','resultsArchive','gradedPicks','settledPicks','recentResults','latestResults','allRows'].forEach(key => {
           payload[key] = vipResults;
         });
+        payload.vip = vipResults;
       }
       return responseFrom(payload, response);
     } catch (error) {
@@ -152,6 +190,6 @@
   };
 })();
 </script>
-<script src="/vip-record-fix.js?v=vip-feed-guard-0710-v1"></script>
+<script src="/vip-record-fix.js?v=vip-straights-only-expiry-0713-v2"></script>
 </body>
 </html>
