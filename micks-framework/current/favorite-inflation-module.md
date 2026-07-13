@@ -142,6 +142,106 @@ Do not convert an overpriced spread into an overpriced moneyline parlay merely t
 - Parlays must disclose when a leg was converted from spread/run line to moneyline because of cover-pattern risk.
 - Two teams with active Favorite Inflation Alerts cannot be paired together in the same official parlay.
 
+## July 12 Post-Card Trend Rules
+
+These rules were added after the July 12 card exposed repeated market-tax and concentration problems.
+
+### 1. Duplicate Exposure Prohibition
+
+A team with any active Favorite Inflation Alert may appear only once across the official card unless the second market is independently positive and the combined exposure is explicitly approved.
+
+Default rule:
+
+- no spread/run line plus moneyline parlay leg;
+- no spread/run line plus first-to-X derivative;
+- no moneyline parlay leg plus team derivative;
+- no second wager merely because it is a different market on the same team.
+
+When duplicate exposure is approved, the combined risk on that team may not exceed the largest normal straight-bet stake for its final grade.
+
+### 2. Derivative Beats Side Rule
+
+If a team has failed to cover at least three of its last five comparable side markets while a derivative tied to its strongest repeatable edge has performed better, the derivative receives first consideration and the side is downgraded or passed.
+
+Examples:
+
+- strong early offense but weak full-game margin: first inning, first five, first quarter, or first to 10;
+- strong starter but unreliable bullpen: first five instead of full-game run line;
+- strong offense but unstable win margin: team total or scoring derivative instead of spread;
+- elite favorite with late backdoor risk: first half or first quarter instead of full game.
+
+A derivative win does not justify keeping the losing side on the same card. The system must choose the market that best expresses the edge.
+
+### 3. Large-Favorite Margin Gate
+
+No basketball favorite of -6.5 or higher and no MLB run line may grade B+ or higher based only on team quality, record, roster depth, or championship status.
+
+To qualify for B+ or higher, it must also have:
+
+- verified recent margin performance in the same line band;
+- at least a 50% cover rate across a meaningful comparable sample;
+- no active Level 2 or Level 3 alert;
+- a current matchup reason that specifically creates separation;
+- a number no worse than the recent comparable closing range.
+
+Without those conditions, the maximum is B, 0.50u, or Pass.
+
+### 4. Card Concentration Cap
+
+For one team or one game:
+
+- normal maximum official exposure is 1.00u across all markets;
+- with a Level 1 alert, maximum combined exposure is 0.50u;
+- with a Level 2 alert, maximum combined exposure is 0.25u and only through one approved derivative;
+- with a Level 3 alert, no pregame exposure unless explicitly overridden.
+
+Parlay risk counts toward the team-level exposure cap using the full parlay stake, not a fractional leg allocation.
+
+### 5. Summer League Volatility Rule
+
+NBA Summer League sides are development markets and require stricter treatment:
+
+- standard maximum grade is B;
+- standard maximum stake is 0.50u;
+- spreads of -6 or greater require confirmed rotation and availability information;
+- do not post more than two Summer League sides on a normal card;
+- if two Summer League sides are already official, any additional angle must be a Watchlist, live trigger, or small parlay only after exposure review;
+- moneyline parlays do not erase lineup and rotation variance.
+
+### 6. Win-But-No-Cover Classification
+
+When a favorite wins outright but fails to cover, record it as:
+
+- side market: Loss;
+- outright profile: Win;
+- inflation evidence: Non-covering win.
+
+Non-covering wins must increase the progressive pattern count. They may not be treated as evidence that the spread handicap was nearly correct.
+
+### 7. Closing-Line Discipline
+
+If the released line is at least 1.5 basketball points or 20 cents worse than the best verified number used in the original handicap, the play must be regraded before publication.
+
+The system may:
+
+- reduce the stake;
+- reduce the grade;
+- switch markets;
+- move the play to Watchlist; or
+- Pass.
+
+Directionally agreeing with an earlier, better number is not enough.
+
+### 8. Post-Card Learning Requirement
+
+After every card with at least two losses involving favorites:
+
+1. identify whether losses came from matchup error, price error, margin error, duplicated exposure, or late market movement;
+2. update monitored teams and market types;
+3. record whether derivatives outperformed sides;
+4. adjust alert levels before the next card;
+5. prohibit repeating the same market construction without new evidence.
+
 ## Writeup Requirement
 
 Every flagged favorite writeup must include:
@@ -186,6 +286,8 @@ For each, the system must verify current 5-, 10-, and 20-game ATS/run-line perfo
 - moneyline or derivative alternatives require price validation;
 - reputation and championship status cannot substitute for cover evidence.
 
+Following the July 12 results, both teams also carry a duplicate-exposure restriction: neither may appear in both a straight market and a parlay on the same card until its alert is reduced or reset.
+
 This watchlist status is evidence-seeking, not a permanent blacklist.
 
 ## Publishing Validation
@@ -198,10 +300,12 @@ Before publishing any favorite graded B or higher, confirm:
 4. Grade and unit adjustment applied.
 5. Alternate markets evaluated.
 6. Parlay restrictions enforced.
-7. Writeup explains the market tax and failure path.
-8. Current line remains inside the no-bet cutoff.
-9. No unsupported trend statistics are displayed.
-10. The final endpoint preserves the alert fields.
+7. Team-level exposure cap enforced.
+8. Duplicate exposure check completed.
+9. Writeup explains the market tax and failure path.
+10. Current line remains inside the no-bet cutoff.
+11. No unsupported trend statistics are displayed.
+12. The final endpoint preserves the alert fields.
 
 ## Required Data Fields
 
@@ -223,8 +327,13 @@ Future card records should support:
 - `Inflation Grade Adjustment`
 - `Inflation Unit Adjustment`
 - `Alternate Market Reviewed`
+- `Preferred Derivative Market`
+- `Duplicate Team Exposure`
+- `Combined Team Exposure`
+- `Margin Creation Evidence`
+- `Post-Card Error Type`
 - `Pattern Reset Condition`
 
 ## Governing Rule
 
-The progressive pattern system must protect the bankroll from repeatedly paying a premium for elite teams that are winning games but failing to beat the number. Team quality establishes the baseline; market price and cover probability determine whether the wager belongs on the card.
+The progressive pattern system must protect the bankroll from repeatedly paying a premium for elite teams that are winning games but failing to beat the number. Team quality establishes the baseline; market price, margin performance, market selection, and total exposure determine whether the wager belongs on the card.
