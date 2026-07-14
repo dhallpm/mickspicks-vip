@@ -1,0 +1,107 @@
+{
+  "module": "NBA Summer League Verification",
+  "effective_date": "2026-07-14",
+  "status": "permanent",
+  "applies_to": [
+    "NBA Summer League",
+    "NBASL",
+    "straight bets",
+    "props",
+    "parlays",
+    "post-card review"
+  ],
+  "triggering_review": {
+    "date": "2026-07-13",
+    "pick": "Minnesota Timberwolves -5.5",
+    "final_score": "Portland 111, Minnesota 84",
+    "margin": -27,
+    "related_parlay": "Cavaliers ML + Timberwolves ML + Dream ML",
+    "classification": "personnel_and_rotation_verification_failure",
+    "not_classified_as": [
+      "normal backdoor variance",
+      "narrow number miss",
+      "ordinary late-game variance"
+    ]
+  },
+  "core_rule": "Projected roster or projected rotation strength is never sufficient by itself for an official NBA Summer League wager.",
+  "verification_gate": [
+    "Confirm active roster or latest availability report",
+    "Review meaningful minutes from the most recent game",
+    "Identify expected primary ball-handler",
+    "Identify at least one secondary creator",
+    "Check expected rest, shutdowns, late scratches, and role reductions",
+    "Verify rotation advantage using actual usage or recent minutes",
+    "Obtain at least one independent matchup confirmation",
+    "Confirm current number remains inside cutoff after availability information"
+  ],
+  "missing_confirmation_action": [
+    "B- maximum",
+    "Watchlist",
+    "Live Only",
+    "Pass"
+  ],
+  "grade_and_unit_limits": {
+    "maximum_grade": "B",
+    "maximum_units": 0.5,
+    "maximum_official_sides_normal": 2,
+    "maximum_official_sides_after_severe_personnel_miss": 1,
+    "vip_eligible": false,
+    "A_minus_or_higher_eligible": false
+  },
+  "spread_rules": {
+    "large_favorite_threshold": -5.5,
+    "large_favorite_requirements": [
+      "confirmed rotation continuity",
+      "verified margin path",
+      "named primary and secondary creators",
+      "recent-minute evidence"
+    ],
+    "preferred_alternatives_when_margin_unverified": [
+      "moneyline after price validation",
+      "smaller derivative",
+      "Live Only",
+      "Pass"
+    ]
+  },
+  "parlay_rules": [
+    "Unverified Summer League sides may not be parlay legs",
+    "Every parlay leg must pass the same verification gate as a straight wager",
+    "Avoid duplicate straight and parlay exposure without explicit approval",
+    "Count duplicate exposure in the team exposure cap",
+    "Do not add heavily priced favorites that contribute little return"
+  ],
+  "required_writeup_fields": [
+    "active personnel",
+    "recent meaningful-minute players",
+    "primary creation",
+    "secondary creation",
+    "specific rotation or matchup edge",
+    "exact number",
+    "no-bet cutoff",
+    "cashing path",
+    "shutdown or rest failure path",
+    "reason grade remains B or lower"
+  ],
+  "prohibited_unsupported_phrases": [
+    "better projected roster",
+    "deeper rotation",
+    "stronger on paper"
+  ],
+  "post_card_classifications": [
+    "number_variance",
+    "rotation_variance",
+    "availability_failure",
+    "personnel_read_failure",
+    "market_read_failure",
+    "duplicate_exposure_failure"
+  ],
+  "publishing_validation": [
+    "Show number of official Summer League sides",
+    "Show total Summer League units",
+    "Show verification status for each side",
+    "Identify any side duplicated in a parlay",
+    "Disclose missing roster or minutes confirmation",
+    "Explain why each play is not a Pass"
+  ],
+  "supersedes": "Any earlier rule allowing an official Summer League side based primarily on projected rotation quality"
+}
