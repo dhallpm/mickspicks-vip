@@ -1,97 +1,147 @@
-const july8 = [
-  {date:'2026-07-08',section:'VIP',access:'VIP',sport:'WNBA',league:'WNBA',game:'Indiana Fever vs Los Angeles Sparks',pick:'Fever -6.5 vs Sparks',odds:'-110',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded'},
-  {date:'2026-07-08',section:'VIP',access:'VIP',sport:'MLB',league:'MLB',game:'Milwaukee Brewers vs St. Louis Cardinals',pick:'Brewers ML vs Cardinals',odds:'-126',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded'},
-  {date:'2026-07-08',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'Boston Red Sox vs Chicago White Sox',pick:'Red Sox ML vs White Sox',odds:'-105',grade:'B+',units:'0.75u',result:'Win',profitLoss:'+0.71u',status:'Graded'},
-  {date:'2026-07-08',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'Houston Astros vs Washington Nationals',pick:'Astros/Nationals Over 9',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded'},
-  {date:'2026-07-08',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'Colorado Rockies vs Los Angeles Dodgers',pick:'Dodgers -1.5 vs Rockies',odds:'-126',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-08',section:'Props Lab',access:'Free',sport:'MLB',league:'MLB',game:'Houston Astros vs Washington Nationals',pick:'CJ Abrams O1.5 HRR',odds:'-125',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.50u',status:'Graded'},
-  {date:'2026-07-08',section:'Props Lab',access:'Free',sport:'MLB',league:'MLB',game:'Boston Red Sox vs Chicago White Sox',pick:'Jake Bennett O4.5 Ks',odds:'+110',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-08',section:'Lotto Parlays',access:'Free',sport:'MLB',league:'MLB',game:'Brewers/Cardinals + Red Sox/White Sox',pick:'Brewers ML + Red Sox ML',odds:'TBD',grade:'B-',units:'0.25u',result:'Loss',profitLoss:'-0.25u',status:'Graded'},
-  {date:'2026-07-08',section:'Lotto Parlays',access:'Free',sport:'WNBA/MLB',league:'WNBA/MLB',game:'Fever/Sparks + Brewers/Cardinals + Red Sox/White Sox',pick:'Fever -6.5 + Brewers ML + Red Sox ML',odds:'TBD',grade:'C+',units:'0.15u',result:'Loss',profitLoss:'-0.15u',status:'Graded'},
-  {date:'2026-07-08',section:'Lotto Parlays',access:'Free',sport:'MLB',league:'MLB',game:'Dodgers/Rockies + Astros/Nationals',pick:'Dodgers -1.5 + Astros/Nationals Over 9',odds:'TBD',grade:'C',units:'0.10u',result:'Loss',profitLoss:'-0.10u',status:'Graded'},
-  {date:'2026-07-08',section:'Lotto Parlays',access:'Free',sport:'MLB Props',league:'MLB Props',game:'Props Lotto',pick:'CJ Abrams O1.5 HRR + Jake Bennett O4.5 Ks',odds:'TBD',grade:'C',units:'0.10u',result:'Loss',profitLoss:'-0.10u',status:'Graded'}
-]
+const LEGACY_URL = process.env.RESULTS_LEGACY_URL || 'https://mickspicks-vip.vercel.app/api/results-legacy'
+const SHEETS_URL = process.env.GOOGLE_SHEETS_RESULTS_URL || 'https://www.mickspicks.us/api/results-source?days=3650'
 
-const july10 = [
-  {date:'2026-07-10',section:'VIP',access:'VIP',sport:'Soccer',league:'FIFA World Cup',game:'Spain vs Belgium',pick:'Spain to Advance',odds:'-320',grade:'A-',units:'1.00u',result:'Win',profitLoss:'+0.31u',status:'Graded'},
-  {date:'2026-07-10',section:'VIP',access:'VIP',sport:'WNBA',league:'WNBA',game:'Chicago Sky vs Los Angeles Sparks',pick:'Los Angeles Sparks ML',odds:'-115',grade:'A-',units:'1.00u',result:'Win',profitLoss:'+0.87u',status:'Graded'},
-  {date:'2026-07-10',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'Connecticut Sun vs Golden State Valkyries',pick:'Over 153.5',odds:'-110',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded'},
-  {date:'2026-07-10',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Chicago Bulls vs Memphis Grizzlies',pick:'Memphis Grizzlies ML',odds:'-260',grade:'B+',units:'0.75u',result:'Win',profitLoss:'+0.29u',status:'Graded'},
-  {date:'2026-07-10',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Miami Heat vs Milwaukee Bucks',pick:'Milwaukee Bucks ML',odds:'-120',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-10',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Toronto Raptors vs Boston Celtics',pick:'Toronto Raptors -2.5',odds:'-110',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-10',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Indiana Pacers vs Cleveland Cavaliers',pick:'Cleveland Cavaliers -5',odds:'-110',grade:'B-',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-10',section:'Props Lab',access:'Free',sport:'Soccer',league:'FIFA World Cup',game:'Spain vs Belgium',pick:'Over 2.5 Goals',odds:'-125',grade:'B+',units:'0.50u',result:'Win',profitLoss:'+0.40u',status:'Graded'},
-  {date:'2026-07-10',section:'Props Lab',access:'Free',sport:'Soccer',league:'FIFA World Cup',game:'Spain vs Belgium',pick:'Both Teams to Score - Yes',odds:'-125',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.40u',status:'Graded'},
-  {date:'2026-07-10',section:'Props Lab',access:'Free',sport:'Soccer',league:'FIFA World Cup',game:'Spain vs Belgium',pick:'Lamine Yamal Anytime Scorer',odds:'+170',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-10',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'Dallas Wings vs Toronto Tempo',pick:'Paige Bueckers Over 5 Assists',odds:'-120',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.42u',status:'Graded'},
-  {date:'2026-07-10',section:'Lotto Parlays',access:'VIP',sport:'Multi-Sport',league:'World Cup / WNBA / NBA Summer League',game:'Spain vs Belgium; Sky vs Sparks; Bulls vs Grizzlies',pick:'Spain to Advance + Sparks ML + Grizzlies ML',odds:'+226',grade:'B+',units:'0.50u',result:'Win',profitLoss:'+1.13u',status:'Graded'},
-  {date:'2026-07-10',section:'Lotto Parlays',access:'VIP',sport:'Multi-Sport',league:'World Cup / WNBA',game:'Spain vs Belgium; Sky vs Sparks',pick:'Spain to Advance + Sparks ML',odds:'+135',grade:'A-',units:'0.75u',result:'Win',profitLoss:'+1.01u',status:'Graded'},
-  {date:'2026-07-10',section:'Longshots',access:'Free',sport:'Soccer',league:'FIFA World Cup',game:'Spain vs Belgium',pick:'Kevin De Bruyne Anytime Scorer',odds:'+475',grade:'C+',units:'0.20u',result:'Loss',profitLoss:'-0.20u',status:'Graded'},
-  {date:'2026-07-10',section:'Longshots',access:'Free',sport:'Soccer',league:'FIFA World Cup',game:'Spain vs Belgium',pick:'Charles De Ketelaere Anytime Scorer',odds:'+495',grade:'C+',units:'0.20u',result:'Win',profitLoss:'+0.99u',status:'Graded'}
-]
+const text = value => String(value ?? '').trim()
+const numberFrom = value => {
+  const match = text(value).replace(/,/g, '').match(/[+-]?\d+(?:\.\d+)?/)
+  return match ? Number(match[0]) : 0
+}
 
-const july11 = [
-  {date:'2026-07-11',section:'VIP',access:'VIP',sport:'Soccer',league:'FIFA World Cup',game:'England vs Norway',pick:'England to Advance',odds:'-220',grade:'A-',units:'1.00u',result:'Win',profitLoss:'+0.45u',status:'Graded'},
-  {date:'2026-07-11',section:'VIP',access:'VIP',sport:'Soccer',league:'FIFA World Cup',game:'Argentina vs Switzerland',pick:'Argentina to Advance',odds:'-290',grade:'A-',units:'1.00u',result:'Win',profitLoss:'+0.34u',status:'Graded'},
-  {date:'2026-07-11',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'Arizona Diamondbacks vs Los Angeles Dodgers',pick:'Los Angeles Dodgers -1.5',odds:'-125',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded'},
-  {date:'2026-07-11',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'New York Yankees vs Washington Nationals',pick:'New York Yankees -1.5',odds:'-122',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.41u',status:'Graded'},
-  {date:'2026-07-11',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'Portland Fire vs Atlanta Dream',pick:'Atlanta Dream -13.5',odds:'-110',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-11',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'New York Liberty vs Minnesota Lynx',pick:'Minnesota Lynx -5',odds:'-110',grade:'B',units:'0.50u',result:'Push',profitLoss:'+0.00u',status:'Graded'},
-  {date:'2026-07-11',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'Phoenix Mercury vs Las Vegas Aces',pick:'Over 170.5',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded'},
-  {date:'2026-07-11',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Miami Heat vs Orlando Magic',pick:'Orlando Magic -4.5',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded'},
-  {date:'2026-07-11',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Denver Nuggets vs Minnesota Timberwolves',pick:'Minnesota Timberwolves -4.5',odds:'-117',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded'},
-  {date:'2026-07-11',section:'Props Lab',access:'Free',sport:'Soccer',league:'FIFA World Cup',game:'England vs Norway',pick:'Both Teams to Score - Yes',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded'},
-  {date:'2026-07-11',section:'Props Lab',access:'Free',sport:'Soccer',league:'FIFA World Cup',game:'Argentina vs Switzerland',pick:'Argentina Team Total Over 1.5',odds:'-115',grade:'B+',units:'0.50u',result:'Win',profitLoss:'+0.43u',status:'Graded'},
-  {date:'2026-07-11',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'New York Liberty vs Minnesota Lynx',pick:'Breanna Stewart Over 19.5 Points',odds:'-110',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-11',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'New York Liberty vs Minnesota Lynx',pick:'Kayla McBride Over 2.5 Threes',odds:'+105',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.53u',status:'Graded'},
-  {date:'2026-07-11',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'Phoenix Mercury vs Las Vegas Aces',pick:'A’ja Wilson Over 24.5 Points',odds:'-110',grade:'B+',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-11',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'Phoenix Mercury vs Las Vegas Aces',pick:'A’ja Wilson Over 9.5 Rebounds',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded'},
-  {date:'2026-07-11',section:'Lotto Parlays',access:'VIP',sport:'Soccer',league:'FIFA World Cup',game:'England vs Norway; Argentina vs Switzerland',pick:'England to Advance + Argentina to Advance',odds:'-105 derived',grade:'B+',units:'0.50u',result:'Win',profitLoss:'+0.48u',status:'Graded'},
-  {date:'2026-07-11',section:'Lotto Parlays',access:'Free',sport:'WNBA / NBA Summer League',league:'WNBA / NBA Summer League',game:'Mercury vs Aces; Nuggets vs Timberwolves',pick:'Minnesota Timberwolves -4.5 + Mercury/Aces Over 170.5',odds:'TBD',grade:'B',units:'0.25u',result:'Loss',profitLoss:'-0.25u',status:'Graded'}
-]
+async function fetchJson(url) {
+  const response = await fetch(url, { headers: { accept: 'application/json' }, cache: 'no-store' })
+  if (!response.ok) throw new Error(`${url} returned ${response.status}`)
+  return response.json()
+}
 
-const july12 = [
-  {date:'2026-07-12',section:'VIP',access:'VIP',sport:'WNBA',league:'WNBA',game:'Toronto Tempo at New York Liberty',pick:'New York Liberty -6.5',odds:'-110',grade:'A-',units:'1.00u',result:'Loss',profitLoss:'-1.00u',status:'Graded'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'Chicago Sky at Dallas Wings',pick:'Dallas Wings -9.5',odds:'-110',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'Seattle Storm at Washington Mystics',pick:'Washington Mystics -5.5',odds:'-110',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'Indiana Fever at Las Vegas Aces',pick:'Las Vegas Aces -4.5',odds:'-110',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'Arizona Diamondbacks at Los Angeles Dodgers',pick:'Los Angeles Dodgers -1.5',odds:'-110',grade:'B+',units:'0.75u',result:'Loss',profitLoss:'-0.75u',status:'Graded',settlementNotes:'Dodgers lost 5-3.'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'Kansas City Royals at Baltimore Orioles',pick:'Baltimore Orioles -1.5',odds:'+130',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.65u',status:'Graded',settlementNotes:'Baltimore won 8-2.'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'MLB',league:'MLB',game:'Houston Astros at Texas Rangers',pick:'Texas Rangers ML',odds:'-135',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.37u',status:'Graded',settlementNotes:'Texas won 6-5.'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Oklahoma City Thunder vs Golden State Warriors',pick:'Golden State Warriors -6.5',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded',settlementNotes:'Golden State won 104-79.'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'New Orleans Pelicans vs Phoenix Suns',pick:'Phoenix Suns -5.5',odds:'-110',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded',settlementNotes:'Phoenix lost 81-75.'},
-  {date:'2026-07-12',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Portland Trail Blazers vs Orlando Magic',pick:'Orlando Magic -4.5',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded',settlementNotes:'Orlando won 112-105.'},
-  {date:'2026-07-12',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'Toronto Tempo at New York Liberty',pick:'Liberty First to 10 Points',odds:'-150',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-12',section:'Props Lab',access:'Free',sport:'MLB',league:'MLB',game:'Arizona Diamondbacks at Los Angeles Dodgers',pick:'Yes Run First Inning',odds:'-125',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.40u',status:'Graded',settlementNotes:'Dodgers scored in the first inning.'},
-  {date:'2026-07-12',section:'Lotto Parlays',access:'Free',sport:'Cross-Sport',league:'WNBA / MLB',game:'Liberty / Dodgers',pick:'Liberty ML + Dodgers ML',odds:'TBD',grade:'B+',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded'},
-  {date:'2026-07-12',section:'Lotto Parlays',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Warriors / Suns',pick:'Warriors ML + Suns ML',odds:'TBD',grade:'B',units:'0.25u',result:'Loss',profitLoss:'-0.25u',status:'Graded'}
-]
-
-const july13 = [
-  {date:'2026-07-13',section:'Free',access:'Free',sport:'WNBA',league:'WNBA',game:'Los Angeles Sparks at Atlanta Dream',pick:'Atlanta Dream -8.5',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded',settlementNotes:'Atlanta won 101-92 and covered -8.5 by 0.5 points.'},
-  {date:'2026-07-13',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Miami Heat vs Cleveland Cavaliers',pick:'Cleveland Cavaliers -1.5',odds:'-110',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.45u',status:'Graded',settlementNotes:'Cleveland won 90-73.'},
-  {date:'2026-07-13',section:'Free',access:'Free',sport:'Basketball',league:'NBA Summer League',game:'Minnesota Timberwolves vs Portland Trail Blazers',pick:'Minnesota Timberwolves -5.5',odds:'-110',grade:'B',units:'0.50u',result:'Loss',profitLoss:'-0.50u',status:'Graded',settlementNotes:'Portland won 111-84. Minnesota lost outright by 27 points. This is classified as a personnel and rotation-verification failure, not normal backdoor variance.',postCardClassification:'Personnel and rotation verification failure',frameworkAdjustment:'Projected rotation strength alone is no longer sufficient for an official NBA Summer League side.'},
-  {date:'2026-07-13',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'Phoenix Mercury at Minnesota Lynx',pick:'Minnesota Lynx First to 10 Points',odds:'-180',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.28u',status:'Graded',settlementNotes:'Minnesota reached 10 first, leading 10-7 at 6:45 of the first quarter.'},
-  {date:'2026-07-13',section:'Props Lab',access:'Free',sport:'WNBA',league:'WNBA',game:'Los Angeles Sparks at Atlanta Dream',pick:'Atlanta Dream First to 10 Points',odds:'-145',grade:'B',units:'0.50u',result:'Win',profitLoss:'+0.34u',status:'Graded',settlementNotes:'Atlanta reached 10 first, leading 11-8 at 7:08 of the first quarter.'},
-  {date:'2026-07-13',section:'Lotto Parlays',access:'Free',sport:'NBA Summer League / WNBA',league:'NBA Summer League / WNBA',game:'Cavaliers / Timberwolves / Dream',pick:'Cavaliers ML + Timberwolves ML + Dream ML',odds:'+135 minimum',grade:'B-',units:'0.25u',result:'Loss',profitLoss:'-0.25u',status:'Graded',settlementNotes:'Cleveland and Atlanta won, but Minnesota lost 111-84 to Portland. The parlay duplicated an NBA Summer League position that lacked sufficient confirmed rotation evidence.',postCardClassification:'Duplicate exposure amplified an unverified Summer League read'}
-]
-
-const postCardAdjustments = [
-  {
-    date:'2026-07-13',
-    sport:'NBA Summer League',
-    trigger:'Minnesota Timberwolves -5.5 lost 111-84 to Portland and also caused the three-leg moneyline parlay to fail.',
-    classification:'Personnel and rotation verification failure',
-    action:'Do not release or parlay an NBA Summer League side based only on projected rotation strength. Require confirmed active roster, prior-game minutes, primary creators, expected rest or scratches, and at least one independent matchup confirmation.'
+function rowsFrom(payload = {}) {
+  for (const key of ['results','rows','records','resultRows','resultsArchive','gradedPicks','settledPicks','allRows']) {
+    if (Array.isArray(payload[key])) return payload[key]
   }
-]
+  return []
+}
 
-const results = [...july13, ...july12, ...july11, ...july10, ...july8]
-const num = value => Number((String(value || '').match(/[+-]?\d+(?:\.\d+)?/) || [0])[0])
-function statsFor(rows){const wins=rows.filter(r=>r.result==='Win').length;const losses=rows.filter(r=>r.result==='Loss').length;const pushes=rows.filter(r=>r.result==='Push'||r.result==='Void').length;const units=rows.reduce((sum,r)=>sum+num(r.profitLoss),0);return{wins,losses,pushes,record:`${wins}-${losses}${pushes?`-${pushes}`:''}`,units:`${units>=0?'+':''}${units.toFixed(2)}u`,profitLoss:`${units>=0?'+':''}${units.toFixed(2)}u`,netUnits:units,winRate:wins+losses?`${(wins/(wins+losses)*100).toFixed(1)}%`:'--'}}
-const exactSection = name => results.filter(r=>r.section===name)
-const stats=statsFor(results)
-const vipRows=exactSection('VIP')
-const breakdown={overall:stats,vip:statsFor(vipRows),free:statsFor(exactSection('Free')),props:statsFor(exactSection('Props Lab')),parlays:statsFor(exactSection('Lotto Parlays')),lotto:statsFor(exactSection('Lotto Parlays')),longshots:statsFor(exactSection('Longshots'))}
+function strictSection(row = {}) {
+  const raw = text(row.section || row.Section || row.resultSection || row.__section || row.category || row.Category)
+  if (/^vip$/i.test(raw)) return 'VIP'
+  if (/props?/i.test(raw)) return 'Props Lab'
+  if (/lotto|parlay/i.test(raw)) return 'Lotto Parlays'
+  if (/longshot/i.test(raw)) return 'Longshots'
+  return 'Free'
+}
 
-export default function handler(req,res){res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');res.status(200).json({ok:true,success:true,source:'graded-results-through-july-13-2026-summer-league-review',date:'2026-07-13',results,rows:results,records:results,resultRows:results,weeklyResults:results,archive:results,resultsArchive:results,gradedPicks:results,settledPicks:results,recentResults:results,latestResults:results,allRows:results,vip:vipRows,free:exactSection('Free'),props:exactSection('Props Lab'),lotto:exactSection('Lotto Parlays'),longshots:exactSection('Longshots'),record:stats.record,overallRecord:stats.record,vipRecord:breakdown.vip.record,freeRecord:breakdown.free.record,propsRecord:breakdown.props.record,parlayRecord:breakdown.parlays.record,lottoRecord:breakdown.lotto.record,units:stats.units,totalUnits:stats.units,overallUnits:stats.units,profitLoss:stats.profitLoss,totalProfitLoss:stats.profitLoss,winRate:stats.winRate,stats,metrics:stats,breakdown,sectionRecords:breakdown,recordsBySection:breakdown,postCardAdjustments,summary:{record:stats.record,units:stats.units,profitLoss:stats.profitLoss,winRate:stats.winRate,totalPicks:results.length,gradedPicks:results.length,note:'July 13 final grading: 4-2, +0.77u. Minnesota -5.5 and the related parlay were graded losses. VIP results exclude all parlays.'}})}
+function normalize(row = {}) {
+  const section = strictSection(row)
+  const date = text(row.date || row.Date).slice(0,10)
+  const sport = text(row.sport || row.Sport)
+  const league = text(row.league || row.League || sport)
+  const game = text(row.game || row.Game || row.matchup || row.Matchup)
+  const pick = text(row.pick || row.Pick || row.cardTitle)
+  const odds = text(row.odds || row.Odds)
+  const result = text(row.result || row.Result || row.Outcome)
+  const status = text(row.status || row.Status || result || 'Graded')
+  const profitLoss = text(row.profitLoss || row['Profit/Loss'] || row['P/L'] || row.PL)
+  const units = row.units ?? row.Units ?? row.unitsRisked ?? ''
+  const access = section === 'VIP' ? 'VIP' : text(row.access || row.Access || 'Free')
+  return {
+    ...row,
+    date, Date: date,
+    section, Section: section,
+    access, Access: access,
+    sport, Sport: sport,
+    league, League: league,
+    game, Game: game,
+    pick, Pick: pick,
+    odds, Odds: odds,
+    result, Result: result, Outcome: result,
+    status, Status: status,
+    units, Units: units,
+    profitLoss,
+    'Profit/Loss': profitLoss,
+    'P/L': profitLoss,
+    PL: profitLoss
+  }
+}
+
+function keyOf(row = {}) {
+  return [row.date,row.section,row.league,row.game,row.pick,row.betType || row['Bet Type'] || '']
+    .map(value => text(value).toLowerCase()).join('|')
+}
+
+function dedupe(rows = []) {
+  return Array.from(new Map(rows.map(row => [keyOf(row), row])).values())
+}
+
+function statsFor(rows = []) {
+  const wins = rows.filter(row => /^win$/i.test(text(row.result))).length
+  const losses = rows.filter(row => /^loss$/i.test(text(row.result))).length
+  const pushes = rows.filter(row => /^(push|void)$/i.test(text(row.result))).length
+  const netUnits = rows.reduce((sum,row) => sum + numberFrom(row.profitLoss), 0)
+  const risked = rows.reduce((sum,row) => sum + Math.max(0, numberFrom(row.units)), 0)
+  return {
+    wins, losses, pushes,
+    record: `${wins}-${losses}${pushes ? `-${pushes}` : ''}`,
+    units: `${netUnits >= 0 ? '+' : ''}${netUnits.toFixed(2)}u`,
+    profitLoss: `${netUnits >= 0 ? '+' : ''}${netUnits.toFixed(2)}u`,
+    netUnits: Number(netUnits.toFixed(2)),
+    unitsRisked: Number(risked.toFixed(2)),
+    winRate: wins + losses ? `${(wins / (wins + losses) * 100).toFixed(1)}%` : '--'
+  }
+}
+
+export default async function handler(req,res) {
+  res.setHeader('Content-Type','application/json')
+  res.setHeader('Cache-Control','no-store, no-cache, must-revalidate, max-age=0')
+
+  const warnings = []
+  let legacy = {}
+  let sheets = {}
+  try { legacy = await fetchJson(LEGACY_URL) } catch (error) { warnings.push(`Legacy results unavailable: ${error.message}`) }
+  try { sheets = await fetchJson(SHEETS_URL) } catch (error) { warnings.push(`Google Sheets results unavailable: ${error.message}`) }
+
+  const results = dedupe([
+    ...rowsFrom(legacy).map(normalize),
+    ...rowsFrom(sheets).map(normalize)
+  ]).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.settledAt || b.timestamp || '').localeCompare(String(a.settledAt || a.timestamp || '')))
+
+  const exact = name => results.filter(row => row.section === name)
+  const vipRows = exact('VIP')
+  const freeRows = exact('Free')
+  const propsRows = exact('Props Lab')
+  const lottoRows = exact('Lotto Parlays')
+  const longshotRows = exact('Longshots')
+  const stats = statsFor(results)
+  const breakdown = {
+    overall: stats,
+    vip: statsFor(vipRows),
+    free: statsFor(freeRows),
+    props: statsFor(propsRows),
+    parlays: statsFor(lottoRows),
+    lotto: statsFor(lottoRows),
+    longshots: statsFor(longshotRows)
+  }
+  const latestDate = results.reduce((latest,row) => row.date > latest ? row.date : latest, '')
+
+  res.status(200).json({
+    ok:true, success:true,
+    source:'merged-legacy-plus-google-sheets-results',
+    sourceOfTruth:'Google Sheets for reconstructed/current results; legacy static archive retained for older history',
+    date: latestDate,
+    warnings,
+    results, rows:results, records:results, resultRows:results, weeklyResults:results,
+    archive:results, resultsArchive:results, gradedPicks:results, settledPicks:results,
+    recentResults:results, latestResults:results, allRows:results,
+    vip:vipRows, free:freeRows, props:propsRows, lotto:lottoRows, longshots:longshotRows,
+    record:stats.record, overallRecord:stats.record,
+    vipRecord:breakdown.vip.record, freeRecord:breakdown.free.record,
+    propsRecord:breakdown.props.record, parlayRecord:breakdown.parlays.record, lottoRecord:breakdown.lotto.record,
+    units:stats.units, totalUnits:stats.units, overallUnits:stats.units,
+    profitLoss:stats.profitLoss, totalProfitLoss:stats.profitLoss, winRate:stats.winRate,
+    stats, metrics:stats, breakdown, sectionRecords:breakdown, recordsBySection:breakdown,
+    postCardAdjustments:Array.isArray(legacy.postCardAdjustments) ? legacy.postCardAdjustments : [],
+    summary:{
+      record:stats.record, units:stats.units, profitLoss:stats.profitLoss, winRate:stats.winRate,
+      totalPicks:results.length, gradedPicks:results.length,
+      note:'Results combine the preserved historical archive with the Google Sheets results ledger. VIP record uses strict section classification; parlays never count as VIP.'
+    }
+  })
+}
