@@ -1,8 +1,10 @@
+import reconstructedResults from '../data/reconstructed-results-2026-08-13-15.js'
+
 const LEGACY_URL = process.env.RESULTS_LEGACY_URL || 'https://mickspicks-vip.vercel.app/api/results-legacy'
-const SHEETS_URL = process.env.GOOGLE_SHEETS_RESULTS_URL || 'https://www.mickspicks.us/api/results-source?days=3650'
 
 const text = value => String(value ?? '').trim()
 const numberFrom = value => {
+  if (/^unknown$/i.test(text(value))) return 0
   const match = text(value).replace(/,/g, '').match(/[+-]?\d+(?:\.\d+)?/)
   return match ? Number(match[0]) : 0
 }
@@ -44,21 +46,21 @@ function normalize(row = {}) {
   const access = section === 'VIP' ? 'VIP' : text(row.access || row.Access || 'Free')
   return {
     ...row,
-    date, Date: date,
-    section, Section: section,
-    access, Access: access,
-    sport, Sport: sport,
-    league, League: league,
-    game, Game: game,
-    pick, Pick: pick,
-    odds, Odds: odds,
-    result, Result: result, Outcome: result,
-    status, Status: status,
-    units, Units: units,
+    date, Date:date,
+    section, Section:section,
+    access, Access:access,
+    sport, Sport:sport,
+    league, League:league,
+    game, Game:game,
+    pick, Pick:pick,
+    odds, Odds:odds,
+    result, Result:result, Outcome:result,
+    status, Status:status,
+    units, Units:units,
     profitLoss,
-    'Profit/Loss': profitLoss,
-    'P/L': profitLoss,
-    PL: profitLoss
+    'Profit/Loss':profitLoss,
+    'P/L':profitLoss,
+    PL:profitLoss
   }
 }
 
@@ -75,7 +77,8 @@ function statsFor(rows = []) {
   const wins = rows.filter(row => /^win$/i.test(text(row.result))).length
   const losses = rows.filter(row => /^loss$/i.test(text(row.result))).length
   const pushes = rows.filter(row => /^(push|void)$/i.test(text(row.result))).length
-  const netUnits = rows.reduce((sum,row) => sum + numberFrom(row.profitLoss), 0)
+  const known = rows.filter(row => !/^unknown$/i.test(text(row.profitLoss)))
+  const netUnits = known.reduce((sum,row) => sum + numberFrom(row.profitLoss), 0)
   const risked = rows.reduce((sum,row) => sum + Math.max(0, numberFrom(row.units)), 0)
   return {
     wins, losses, pushes,
@@ -84,7 +87,8 @@ function statsFor(rows = []) {
     profitLoss: `${netUnits >= 0 ? '+' : ''}${netUnits.toFixed(2)}u`,
     netUnits: Number(netUnits.toFixed(2)),
     unitsRisked: Number(risked.toFixed(2)),
-    winRate: wins + losses ? `${(wins / (wins + losses) * 100).toFixed(1)}%` : '--'
+    winRate: wins + losses ? `${(wins / (wins + losses) * 100).toFixed(1)}%` : '--',
+    incompleteUnitRows: rows.length - known.length
   }
 }
 
@@ -94,13 +98,11 @@ export default async function handler(req,res) {
 
   const warnings = []
   let legacy = {}
-  let sheets = {}
   try { legacy = await fetchJson(LEGACY_URL) } catch (error) { warnings.push(`Legacy results unavailable: ${error.message}`) }
-  try { sheets = await fetchJson(SHEETS_URL) } catch (error) { warnings.push(`Google Sheets results unavailable: ${error.message}`) }
 
   const results = dedupe([
     ...rowsFrom(legacy).map(normalize),
-    ...rowsFrom(sheets).map(normalize)
+    ...reconstructedResults.map(normalize)
   ]).sort((a,b) => String(b.date).localeCompare(String(a.date)) || String(b.settledAt || b.timestamp || '').localeCompare(String(a.settledAt || a.timestamp || '')))
 
   const exact = name => results.filter(row => row.section === name)
@@ -123,9 +125,9 @@ export default async function handler(req,res) {
 
   res.status(200).json({
     ok:true, success:true,
-    source:'merged-legacy-plus-google-sheets-results',
-    sourceOfTruth:'Google Sheets for reconstructed/current results; legacy static archive retained for older history',
-    date: latestDate,
+    source:'legacy-results-plus-aug-13-15-reconstruction',
+    sourceOfTruth:'Archived Micks Picks results plus verified Aug 13-15 reconstruction',
+    date:latestDate,
     warnings,
     results, rows:results, records:results, resultRows:results, weeklyResults:results,
     archive:results, resultsArchive:results, gradedPicks:results, settledPicks:results,
@@ -138,10 +140,18 @@ export default async function handler(req,res) {
     profitLoss:stats.profitLoss, totalProfitLoss:stats.profitLoss, winRate:stats.winRate,
     stats, metrics:stats, breakdown, sectionRecords:breakdown, recordsBySection:breakdown,
     postCardAdjustments:Array.isArray(legacy.postCardAdjustments) ? legacy.postCardAdjustments : [],
+    reconstruction:{
+      dates:['2026-08-13','2026-08-14','2026-08-15'],
+      rows:reconstructedResults.length,
+      record:statsFor(reconstructedResults).record,
+      knownUnits:statsFor(reconstructedResults).units,
+      incompleteUnitRows:statsFor(reconstructedResults).incompleteUnitRows,
+      note:'Kecmanovic is graded as a loss, but the original stake/units were not recoverable; known unit totals exclude that unresolved stake.'
+    },
     summary:{
       record:stats.record, units:stats.units, profitLoss:stats.profitLoss, winRate:stats.winRate,
-      totalPicks:results.length, gradedPicks:results.length,
-      note:'Results combine the preserved historical archive with the Google Sheets results ledger. VIP record uses strict section classification; parlays never count as VIP.'
+      totalPicks:results.length, gradedPicks:results.length, incompleteUnitRows:stats.incompleteUnitRows,
+      note:'VIP record uses strict section classification. Parlays remain Lotto Parlays and never count as VIP.'
     }
   })
 }
