@@ -8,6 +8,16 @@ This folder stores the active Micks Picks operating framework used for daily all
 
 Micks Picks is **Micks-first**. Outside handicappers, VSiN, Greg Peterson, T Shoe, Action Network, Covers, ESPN, NY Post, Opta, Perplexity, and any other source are supporting confirmation only. They do not create the grade by themselves.
 
+## Master source registry — controlling
+
+`source-registry.md` is the canonical checklist for every full Micks Picks research scan and rerun.
+
+A full scan is not complete until every applicable source category in that registry has been checked and classified as CURRENT, STALE, INACCESSIBLE, NOT APPLICABLE, or SUPPORTING ONLY.
+
+The registry is cumulative across all files and modules in `micks-framework/current/` and historical framework requirements. If another framework file names a provider/tool that is missing from `source-registry.md`, the registry must be updated before the next full scan rather than silently omitting the source.
+
+For MLB, this explicitly includes the expanded primary stack and market-specific checks in the registry, including Baseball Savant/Statcast, FanGraphs, Baseball Reference, Umpire Scorecards for umpire-sensitive markets, MLB official lineup/pitcher data, weather/park context, bullpen availability, VSiN/Circa tools, TeamRankings, StatMuse, Action Network/Covers market context, and the exact Doc's Sports URLs.
+
 ## Every run must include
 
 1. Master Picks
@@ -66,6 +76,7 @@ After settlement, completed rows move from active tables to Results Archive. Act
 
 ## Files in this folder
 
+- `source-registry.md` — canonical full-scan source checklist and sport-specific research stack
 - `framework.md` — human-readable rules
 - `framework.json` — machine-readable rules/config
 - `perplexity-master-prompt.txt` — prompt for Perplexity research runs
