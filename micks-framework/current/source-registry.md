@@ -120,6 +120,38 @@ Use for:
 
 Do not use a raw StatMuse average without distribution/threshold context when grading props.
 
+## Sports Reference network — mandatory when sport is supported
+
+- Main: https://www.sports-reference.com/
+- Baseball Reference: https://www.baseball-reference.com/
+- Basketball Reference: https://www.basketball-reference.com/
+- Pro Football Reference: https://www.pro-football-reference.com/
+- Hockey Reference: https://www.hockey-reference.com/
+- FBref: https://fbref.com/
+- College Football Reference: https://www.sports-reference.com/cfb/
+- College Basketball Reference: https://www.sports-reference.com/cbb/
+- Stathead: https://www.sports-reference.com/stathead/
+
+Use for:
+- current and historical player/team game logs
+- season and career statistics
+- home/away and situational splits
+- schedule/result and box-score verification
+- historical matchup and threshold context
+- advanced statistics where available
+- WNBA/NBA player and team history through Basketball Reference
+- NFL player/team history through Pro Football Reference
+- NHL player/team history through Hockey Reference
+- soccer player/team/competition statistics through FBref
+- college football/basketball historical validation
+
+Rules:
+- Treat Sports Reference as statistical/historical verification, not a betting-market or line-movement source.
+- Prefer current official league/team sources for same-day injury, lineup, starter, rotation, game-status, and transaction confirmation.
+- Do not let historical head-to-head records override current personnel, role, market, or matchup evidence.
+- Use threshold distributions/game logs rather than raw averages when evaluating player props whenever possible.
+- Stathead may be used for deeper historical queries when accessible.
+
 ## ESPN
 
 - https://www.espn.com/
@@ -212,6 +244,8 @@ Use for:
 - batting/pitching summaries
 - park and team context
 - schedule/result verification
+
+Baseball Reference is also part of the mandatory cross-sport Sports Reference network above; this MLB section defines its baseball-specific use.
 
 ## Umpire Scorecards — mandatory for umpire-sensitive MLB markets
 
@@ -361,6 +395,7 @@ Mandatory source categories:
 - VSiN current matchup/model pages
 - TeamRankings
 - StatMuse
+- Basketball Reference / Sports Reference network
 - official league/team injury reports
 - current beat reporting
 - confirmed starters / projected rotations
@@ -401,6 +436,12 @@ WNBA expansion-team and roster-volatility context must be explicitly checked.
 
 - https://www.teamrankings.com/nhl/
 
+## Hockey Reference / Sports Reference
+
+- https://www.hockey-reference.com/
+
+Use for historical game logs, player/team splits, schedules/results, and statistical verification.
+
 Mandatory NHL checks:
 - confirmed goalie
 - injuries
@@ -416,6 +457,7 @@ Mandatory NHL checks:
 
 Use where applicable:
 - Opta / The Analyst: https://theanalyst.com/
+- FBref / Sports Reference: https://fbref.com/
 - ESPN: https://www.espn.com/
 - current league/team injury and lineup sources
 - current odds / VSiN when available
@@ -505,17 +547,18 @@ Before a full Micks Picks run can be labeled COMPLETE:
 3. Check all three user-supplied Doc's URLs.
 4. Check TeamRankings for every supported active sport.
 5. Check StatMuse where recent-form/player-distribution questions apply.
-6. Check sport-specific primary sources from this registry.
-7. Check injuries, lineups, pitchers, goalies, rotations and role changes.
-8. Check weather/park/field conditions where relevant.
-9. Check bullpen availability for MLB.
-10. Check Umpire Scorecards for umpire-sensitive MLB markets when assignments are confirmed.
-11. Check market splits, opening/current movement and exact executable price.
-12. Include props and NRFI/YRFI in the candidate pool before final ranking.
-13. Apply the current Micks scoring framework, Recovery Mode, market-family penalties and failure-case score.
-14. Record conflicts; do not average conflicting sources away.
-15. Show the scored candidate chart/table on every full run/rerun.
-16. If a required source is stale/inaccessible, state that explicitly and reduce confidence when material.
+6. Check the applicable Sports Reference site for every supported active sport.
+7. Check sport-specific primary sources from this registry.
+8. Check injuries, lineups, pitchers, goalies, rotations and role changes.
+9. Check weather/park/field conditions where relevant.
+10. Check bullpen availability for MLB.
+11. Check Umpire Scorecards for umpire-sensitive MLB markets when assignments are confirmed.
+12. Check market splits, opening/current movement and exact executable price.
+13. Include props and NRFI/YRFI in the candidate pool before final ranking.
+14. Apply the current Micks scoring framework, Recovery Mode, market-family penalties and failure-case score.
+15. Record conflicts; do not average conflicting sources away.
+16. Show the scored candidate chart/table on every full run/rerun.
+17. If a required source is stale/inaccessible, state that explicitly and reduce confidence when material.
 
 ## Completion Standard
 
