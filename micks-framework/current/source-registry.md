@@ -1,7 +1,7 @@
 # Micks Picks Master Source Registry
 
 Status: Permanent controlling source registry
-Effective date: 2026-08-20
+Effective date: 2026-08-23
 Applies to: Every full all-sports Micks Picks scan, rerun, candidate build, props scan, NRFI/YRFI scan, market refresh, and pre-publication validation.
 
 ## Governing Rule
@@ -86,6 +86,30 @@ Use for:
 ## Sportsbook / user screenshots
 
 User-provided current book screenshots are primary execution evidence for the actual bettable number. Compare them against market-reference sources before release.
+
+## Micks 2.0 Market Intelligence — mandatory for serious official candidates
+
+Use `market-intelligence-layer.md` as the controlling module.
+
+For every serious candidate, record when available:
+- opening line / price
+- current line / price
+- best executable line / price
+- ticket percentage
+- handle / money percentage
+- Circa or another high-limit reference
+- market family and liquidity class
+- timing of material line moves
+- known injury, lineup, weather, starter, goalie, or role news that explains movement
+- whether the market confirms or contradicts the independent Micks handicap
+
+The Market Intelligence Score is 20 points maximum:
+- sharp / respected movement: 0–6
+- ticket / handle divergence: 0–5
+- liquidity / market quality: 0–4
+- movement timing / reversal quality: 0–5
+
+Unavailable or unverified data scores zero. Ticket percentage alone is not sharp-money evidence. A line move alone is not proof of respected action. Do not double-count one market event through multiple sources.
 
 ---
 
@@ -191,11 +215,15 @@ Official team/league reporting outranks rumor aggregation.
 - Main / Free Picks: https://www.docsports.com/#freepicks
 - Match statistics: https://www.docsports.com/statistics/matches.html
 - Free-pick videos: https://www.docsports.com/video/free-picks/
+- AI-v3 dynamic handicapper page: https://www.docsports.com/cappers.html?cap_id=88
 
 Rules:
-- Check all three on every full scan.
+- Check all four on every full scan.
+- Treat the AI-v3 page as dynamic current-state content; never assume yesterday's selection remains current.
 - If an individual page is stale, mark it STALE and award zero confirmation points.
 - A Doc's opinion is supporting confirmation only.
+- AI-v3 marketing claims, historical-profit claims, or model descriptions do not earn score points.
+- When AI-v3 has a current relevant selection, record agreement/disagreement with Micks and use it only as supporting confirmation.
 - Do not infer a pick from a video title when the actual selection is not visible.
 
 ---
@@ -523,6 +551,7 @@ These may be checked when current and applicable, but never replace independent 
 - T Shoe
 - VSiN editorial handicappers
 - Doc's Sports handicappers
+- Doc's Sports AI-v3
 - Action Network analysts
 - Covers analysts
 
@@ -538,27 +567,43 @@ Research-agent output must be reconciled against primary sources before it earns
 
 ---
 
-# 14. Full Daily Scan Enforcement
+# 14. CLV Tracking — mandatory post-release diagnostic
+
+For every official play when a reliable close can be obtained, record:
+- release line / price
+- closing line / price
+- Beat Close / Neutral / Lost Close
+- CLV magnitude when calculable
+- closing-market source
+
+CLV is not used to rewrite a settled result or retroactively change the grade. Review rolling CLV over 20, 50 and 100 official plays by sport, market family, grade and release timing.
+
+---
+
+# 15. Full Daily Scan Enforcement
 
 Before a full Micks Picks run can be labeled COMPLETE:
 
 1. Inventory every active sport on the current board.
-2. Check VSiN main page and Vegas Betting Sheets/Circa.
-3. Check all three user-supplied Doc's URLs.
-4. Check TeamRankings for every supported active sport.
-5. Check StatMuse where recent-form/player-distribution questions apply.
-6. Check the applicable Sports Reference site for every supported active sport.
-7. Check sport-specific primary sources from this registry.
-8. Check injuries, lineups, pitchers, goalies, rotations and role changes.
-9. Check weather/park/field conditions where relevant.
-10. Check bullpen availability for MLB.
-11. Check Umpire Scorecards for umpire-sensitive MLB markets when assignments are confirmed.
-12. Check market splits, opening/current movement and exact executable price.
-13. Include props and NRFI/YRFI in the candidate pool before final ranking.
-14. Apply the current Micks scoring framework, Recovery Mode, market-family penalties and failure-case score.
-15. Record conflicts; do not average conflicting sources away.
-16. Show the scored candidate chart/table on every full run/rerun.
-17. If a required source is stale/inaccessible, state that explicitly and reduce confidence when material.
+2. Build the independent Micks handicap before consulting outside picks or market narratives.
+3. Check VSiN main page and Vegas Betting Sheets/Circa.
+4. Check all four required Doc's URLs, including the dynamic AI-v3 page.
+5. Check TeamRankings for every supported active sport.
+6. Check StatMuse where recent-form/player-distribution questions apply.
+7. Check the applicable Sports Reference site for every supported active sport.
+8. Check sport-specific primary sources from this registry.
+9. Check injuries, lineups, pitchers, goalies, rotations and role changes.
+10. Check weather/park/field conditions where relevant.
+11. Check bullpen availability for MLB.
+12. Check Umpire Scorecards for umpire-sensitive MLB markets when assignments are confirmed.
+13. Check market splits, opening/current movement, liquidity, movement timing and exact executable price.
+14. Score the Market Intelligence Layer out of 20 without double-counting signals.
+15. Include props and NRFI/YRFI in the candidate pool before final ranking.
+16. Apply the current Micks 110-point scoring framework, Recovery Mode, market-family penalties and failure-case score.
+17. Record conflicts; do not average conflicting sources away.
+18. Show the scored candidate chart/table on every full run/rerun.
+19. If a required source is stale/inaccessible, state that explicitly and reduce confidence when material.
+20. After settlement, capture CLV when a reliable close is available.
 
 ## Completion Standard
 
