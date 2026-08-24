@@ -1,12 +1,21 @@
 # Micks Picks Framework — Current Setup
 
-Backup date: 2026-06-07
+Effective date: 2026-08-23
 
-This folder stores the active Micks Picks operating framework used for daily all-sports runs, Airtable import files, Pick of the Day routing, results archiving, Perplexity research, and Codex repair prompts.
+This folder stores the active Micks Picks operating framework used for daily all-sports runs, candidate scoring, Pick of the Day selection, results archiving, research-agent work and site publishing.
 
 ## Core principle
 
-Micks Picks is **Micks-first**. Outside handicappers, VSiN, Greg Peterson, T Shoe, Action Network, Covers, ESPN, NY Post, Opta, Perplexity, and any other source are supporting confirmation only. They do not create the grade by themselves.
+Micks Picks is **Micks-first**. Outside handicappers, VSiN, Doc’s Sports, AI-v3, Action Network, Covers, ESPN, TeamRankings, StatMuse, Sports Reference, Perplexity and any other source are supporting confirmation only. They do not create the handicap or grade by themselves.
+
+The required decision order is:
+
+1. Independent Micks handicap and fair-price estimate
+2. Matchup / role / injury / lineup verification
+3. Market Intelligence Layer
+4. External-model and handicapper confirmation
+5. Failure-case analysis
+6. Final 110-point score, grade, units, Best Number and No-Bet Cutoff
 
 ## Master source registry — controlling
 
@@ -16,70 +25,69 @@ A full scan is not complete until every applicable source category in that regis
 
 The registry is cumulative across all files and modules in `micks-framework/current/` and historical framework requirements. If another framework file names a provider/tool that is missing from `source-registry.md`, the registry must be updated before the next full scan rather than silently omitting the source.
 
-For MLB, this explicitly includes the expanded primary stack and market-specific checks in the registry, including Baseball Savant/Statcast, FanGraphs, Baseball Reference, Umpire Scorecards for umpire-sensitive markets, MLB official lineup/pitcher data, weather/park context, bullpen availability, VSiN/Circa tools, TeamRankings, StatMuse, Action Network/Covers market context, and the exact Doc's Sports URLs.
+## Micks 2.0 Market Intelligence Layer
+
+`market-intelligence-layer.md` is now a permanent active module.
+
+It adds a 20-point market-intelligence component to the existing 110-point scoring framework:
+
+- Sharp / respected movement: 0–6
+- Ticket / handle divergence: 0–5
+- Liquidity / market quality: 0–4
+- Movement timing / reversal quality: 0–5
+
+The market layer is read only **after** the independent handicap is formed. It may confirm, challenge or downgrade Micks; it may never create a play by itself.
+
+Doc’s Sports AI-v3 (`https://www.docsports.com/cappers.html?cap_id=88`) is a dedicated comparison source for this layer when it has a current relevant selection. Model descriptions or marketing claims do not earn score points.
+
+## CLV tracking
+
+Closing Line Value is a mandatory post-release diagnostic whenever a reliable closing number is available.
+
+Store release line/price, closing line/price, Beat Close / Neutral / Lost Close, CLV magnitude when calculable and closing-market source.
+
+Review rolling CLV over 20, 50 and 100 official plays by sport, market family, grade and release timing. CLV never changes the result of a settled bet or retroactively changes its grade.
 
 ## Every run must include
 
 1. Master Picks
 2. Props Lab
-3. Lotto Parlays
-4. Longshots
-5. Watchlist / Live-only angles
-6. Passes
-7. Pick of the Day
-8. Separate import JSON files
-9. One complete all-sections Airtable import JSON
+3. NRFI/YRFI and derivative-market candidates where applicable
+4. Lotto Parlays
+5. Longshots
+6. Watchlist / Live-only angles
+7. Passes
+8. Pick of the Day
+9. Scored candidate chart before final release
 
 ## Official limits
 
-- Max official straight bets: 4
-- Max official props: 3
-- Max main parlay: 1
-- Max longshots: 3
-- Longshot total exposure: 0.15u max unless user requests lotto card
-- Target official card exposure: 1.25u to 2.25u
-- Do not force every sport to produce a bet
+Normal card limits remain governed by the current framework and any active Recovery Mode rules. Do not force every sport to produce a bet, and do not exceed the active exposure cap merely because more candidates clear a raw score threshold.
+
+## Recovery Mode+
+
+When active:
+
+- Minimum release score: 82/110
+- Minimum Failure Score: 7/10
+- Current play cap applies
+- No release based mainly on one model, one handicapper or one market signal
+- Exact price must remain inside the No-Bet Cutoff
 
 ## Pick of the Day rules
 
-Pick of the Day must be real, actionable, odds available, Grade A+/A/B, and Units > 0.
-
-Never eligible:
-
-- Watchlist
-- Pass
-- Live only
-- Generic framework rules
-- Units = 0
-- Odds = Watchlist, Live only, Pass, or N/A
-
-## Airtable import shape
-
-```json
-{
-  "batches": [
-    { "table": "picks", "records": [] },
-    { "table": "propsLab", "records": [] },
-    { "table": "lottoParlays", "records": [] },
-    { "table": "longshots", "records": [] }
-  ]
-}
-```
-
-Valid aliases: `picks`, `propsLab`, `lottoParlays`, `longshots`.
-
-Do not include `Result`, `Outcome`, or `Profit/Loss` fields in new imports.
+Pick of the Day must be a real, actionable official release with a live price, positive units and a qualifying grade. Watchlists, passes, live-only placeholders and generic framework rules are never eligible.
 
 ## Results archive
 
-After settlement, completed rows move from active tables to Results Archive. Active pages exclude completed picks. Results page reads Results Archive as source of truth.
+After settlement, completed rows move to Results Archive and are removed from the active card. Results tracking should include Profit/Loss and CLV fields when reliable closing data is available.
 
-## Files in this folder
+## Key files
 
 - `source-registry.md` — canonical full-scan source checklist and sport-specific research stack
-- `framework.md` — human-readable rules
-- `framework.json` — machine-readable rules/config
-- `perplexity-master-prompt.txt` — prompt for Perplexity research runs
-- `codex-maintenance-prompt.md` — prompt for Codex/site repair
-
-A dated copy is also stored under `micks-framework/backups/2026-06-07/`.
+- `candidate-scoring-and-writeup-standard.md` — controlling 110-point candidate score and grade rules
+- `market-intelligence-layer.md` — market movement, splits, liquidity, timing and CLV rules
+- `framework.md` — human-readable operating rules
+- `framework.json` — machine-readable framework/config
+- `perplexity-master-prompt.txt` — research-agent prompt
+- `codex-maintenance-prompt.md` — site/framework maintenance prompt
