@@ -23,8 +23,6 @@ The required daily-card decision order is:
 
 A full scan is not complete until every applicable source category in that registry has been checked and classified as CURRENT, STALE, INACCESSIBLE, NOT APPLICABLE, or SUPPORTING ONLY.
 
-The registry is cumulative across all files and modules in `micks-framework/current/` and historical framework requirements. If another framework file names a provider/tool that is missing from `source-registry.md`, the registry must be updated before the next full scan rather than silently omitting the source.
-
 ## Micks 2.0 Market Intelligence Layer
 
 `market-intelligence-layer.md` is a permanent active module.
@@ -40,24 +38,34 @@ The market layer is read only **after** the independent handicap is formed. It m
 
 Doc’s Sports AI-v3 (`https://www.docsports.com/cappers.html?cap_id=88`) is a dynamic comparison source for this layer when it has a current relevant selection. Model descriptions or marketing claims do not earn score points.
 
+## Market AI Replica — experimental shadow module
+
+`market-ai-replica.md` and `market-ai-replica.json` define a permanent experimental shadow engine built from observable market behavior rather than proprietary Doc's internals.
+
+Every serious candidate on a full Micks scan now receives a shadow Market AI Replica evaluation after the normal Micks handicap has been built. The replica measures:
+
+- independent fair-line strength
+- market dislocation / EV
+- fundamental confirmation
+- market microstructure
+- independent calculated-model agreement
+- best market expression
+- market regime quality
+- failure-case robustness
+
+The replica can return a shadow candidate or PASS, but it does not override the official 110-point Micks release framework. Results and CLV are reviewed after 20, 50 and 100 shadow candidates before replica-derived weighting can be promoted into the official score.
+
+`ai-v3-audit-ledger.csv` is the controlling historical benchmark schema. Historical Doc's AI-v3 rows must be independently verified before their result, line, P/L arithmetic, CLV or trigger tags are used as training evidence. Unknown historical market fields stay UNKNOWN rather than being inferred.
+
 ## Futures Lab
 
 `futures-lab.md` and `futures-lab.json` control all long-horizon markets. `futures-source-registry.md` is the futures-specific model/source checklist.
 
-Futures are evaluated separately from the daily card. They use:
-
-- independent Micks probability estimates
-- multi-book implied probabilities and de-vigged market consensus
-- independent projection/model inputs
-- scenario or Monte Carlo simulation where appropriate
-- roster, role, health, schedule and structural path analysis
-- the Market Intelligence Layer
-- price/EV, correlation and opportunity-cost controls
+Futures are evaluated separately from the daily card. They use independent Micks probability estimates, multi-book de-vigged market consensus, independent projection/model inputs, scenario or Monte Carlo simulation where appropriate, roster/role/health/schedule analysis, Market Intelligence, EV and correlation controls.
 
 Futures use a separate 100-point score and separate bankroll ledger. They do **not** consume Recovery Mode+ daily official-play slots.
 
 Default Futures Lab release gates:
-
 - score >= 78/100
 - Failure Score >= 7/10
 - estimated EV >= 5%
@@ -65,19 +73,13 @@ Default Futures Lab release gates:
 - 10%+ preferred for thin, high-variance outrights
 - at least two independent support paths beyond the sportsbook price
 
-Default open futures exposure is capped at 2.00u, with 0.50u maximum per future and 0.75u maximum per correlated outcome cluster unless explicitly overridden.
-
-Every full all-sports scan must check for material futures value, but futures are never forced.
-
 ## CLV tracking
 
-Closing Line Value is a mandatory post-release diagnostic whenever a reliable closing number is available.
+Closing Line Value is a mandatory post-release diagnostic whenever a reliable comparable closing number is available.
 
 Store release line/price, closing line/price, Beat Close / Neutral / Lost Close, CLV magnitude when calculable and closing-market source.
 
-For futures, also track current-price / mark-to-market movement over the life of the position. CLV is only calculated against a genuinely comparable closing market or threshold.
-
-Review rolling CLV over 20, 50 and 100 official plays by sport, market family, grade and release timing. CLV never changes the result of a settled bet or retroactively changes its grade.
+For futures, also track current-price / mark-to-market movement over the life of the position. Review rolling CLV over 20, 50 and 100 official plays by sport, market family, grade and release timing.
 
 ## Every run must include
 
@@ -91,17 +93,17 @@ Review rolling CLV over 20, 50 and 100 official plays by sport, market family, g
 8. Passes
 9. Pick of the Day
 10. Scored candidate chart before final release
+11. Market AI Replica shadow score for serious candidates
 
 ## Official limits
 
-Normal daily-card limits remain governed by the current framework and any active Recovery Mode rules. Do not force every sport to produce a bet, and do not exceed the active exposure cap merely because more candidates clear a raw score threshold.
+Normal daily-card limits remain governed by the current framework and any active Recovery Mode rules. Do not force every sport to produce a bet. A PASS or zero-play card is a valid model output.
 
 Futures exposure is tracked separately under `futures-lab.md`.
 
 ## Recovery Mode+
 
 When active:
-
 - Minimum daily-card release score: 82/110
 - Minimum Failure Score: 7/10
 - Current daily play cap applies
@@ -124,6 +126,9 @@ Futures remain active until the market is closed/graded and use their own lifecy
 - `source-registry.md` — canonical full-scan source checklist and sport-specific research stack
 - `candidate-scoring-and-writeup-standard.md` — controlling 110-point daily-card score and grade rules
 - `market-intelligence-layer.md` — market movement, splits, liquidity, timing and CLV rules
+- `market-ai-replica.md` — experimental market-aware shadow decision engine
+- `market-ai-replica.json` — machine-readable replica configuration
+- `ai-v3-audit-ledger.csv` — historical benchmark feature ledger
 - `futures-lab.md` — Futures Lab probability, EV, scoring, exposure and tracking rules
 - `futures-lab.json` — machine-readable Futures Lab configuration
 - `futures-source-registry.md` — futures-specific model/source checklist
