@@ -368,19 +368,46 @@ Mandatory source categories:
 
 # 5. NFL / Football Sources
 
-## VSiN NFL Betting Guide
+Load `nfl-2026-reference-module.md` plus `nfl-post-week1-reconciliation.md` before scoring an NFL market.
+
+## Stored VSiN NFL Betting Guide
 
 Use as a preseason/season baseline only. Current injuries, depth charts, usage and efficiency override guide assumptions.
 
-## Fantasy Life
+Record the applicable power-rating, scheme, schedule, regression or market-strategy prior and mark it `CONFIRMED`, `PARTIALLY CURRENT`, `STALE` or `OVERRIDDEN`.
+
+## Current VSiN NFL layer — mandatory
+
+Check when accessible and applicable:
+
+- NFL game projections and matchup ratings
+- Makinen power ratings
+- NFL injury report
+- NFL prop projections / prop analyzer
+- WR/CB matchup tool
+- Week 2+ betting systems and current betting splits
+- Vegas Betting Sheets / Circa numbers
+
+The guide, current VSiN models, systems and articles are one source family. They do not count as multiple independent confirmations.
+
+## Stored Fantasy Life Fantasy Football 2026 magazine
+
+Use as the preseason baseline for projected plays, dropback rate, scoring environment, offensive-line grade, depth chart, player projection, routes/targets/carries and high-value role.
+
+## Current Fantasy Life weekly layer — mandatory
 
 - https://www.fantasylife.com/
 
-Use for:
-- player projections
-- depth-chart and usage baseline
-- routes/targets/carries role context
-- fantasy-football role information
+Check and timestamp when accessible and applicable:
+
+- weekly projections and rankings
+- Utilization Report
+- snap counts and air-yards data
+- game-by-game analysis
+- role upgrades/downgrades
+- betting game model and player-prop tools
+
+For every material change, record the magazine projection, current projection, delta and reason. The magazine and all current Fantasy Life pages are one source family.
 
 ## NFL official
 
@@ -396,6 +423,8 @@ Use for:
 ## Required NFL data categories
 
 For sides/totals/props, obtain current data for:
+- neutral-script pass rate / pass rate over expectation
+- pace, plays, drives and seconds per snap
 - EPA
 - success rate
 - yards per play
@@ -406,14 +435,34 @@ For sides/totals/props, obtain current data for:
 - red-zone efficiency
 - neutral-script pass rate / pace
 - offensive-line health
+- offensive-line combinations and defensive rotations
 - snap share
 - route share
 - carries/targets
+- target share, first-read share and air-yard share
+- two-minute, third-down, short-yardage and goal-line role
 - red-zone role
 - current weather
 - ticket/handle splits and line movement
 
 DraftKings-style ticket data may be used as a public-position indicator when verifiable. Circa handle/ticket gaps are preferred high-limit context when available.
+
+## Mandatory NFL cross-reference before scoring
+
+Every serious candidate must show:
+
+1. VSiN guide prior.
+2. Fantasy Life magazine prior.
+3. Verified Week 1/current-season role and efficiency.
+4. Current Fantasy Life projection/ranking/utilization update.
+5. Current VSiN model/system position.
+6. Updated independent Micks fair line/projection.
+7. Exact executable market price, Best Number and No-Bet Cutoff.
+8. Strongest agreement, strongest contradiction and guide-status label.
+
+Do not score from fantasy points, final score or one explosive play. Early-season opportunity metrics receive more weight than one-game touchdowns or efficiency. Use the blending matrix and sample-quality exceptions in `nfl-post-week1-reconciliation.md`.
+
+An unresolved material contradiction caps the candidate at 81/110. If the stored guide, current weekly projection or required current data is unavailable, disclose it and reduce confidence; the scan may not be labeled complete as though the lane had been checked.
 
 ---
 
@@ -604,6 +653,7 @@ Before a full Micks Picks run can be labeled COMPLETE:
 18. Show the scored candidate chart/table on every full run/rerun.
 19. If a required source is stale/inaccessible, state that explicitly and reduce confidence when material.
 20. After settlement, capture CLV when a reliable close is available.
+21. For every active NFL market, complete the Guide/System Reconciliation Table and Fantasy Projection Delta Board before scoring.
 
 ## Completion Standard
 

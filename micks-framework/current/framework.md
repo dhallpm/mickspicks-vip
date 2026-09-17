@@ -6,6 +6,14 @@ Backup date: 2026-07-11
 
 Micks Picks is **Micks-first**. Outside handicappers and models are supporting confirmation only, not the engine.
 
+## NFL Week 2+ reconciliation
+
+Before scoring any NFL side, total, prop, derivative or parlay leg, load `nfl-2026-reference-module` and `nfl-post-week1-reconciliation`.
+
+Cross-reference the stored VSiN and Fantasy Life guide priors with verified current-season role/efficiency, the newest Fantasy Life weekly projection/utilization layer, the newest VSiN model/system layer and the current executable price. Show the Guide/System Reconciliation Table and Fantasy Projection Delta Board on every full NFL scan.
+
+The Fantasy Life magazine and current Fantasy Life pages are one source family. The VSiN guide, models and systems are one source family. An unresolved material contradiction caps the candidate at 81/110 and blocks a Recovery Mode+ release.
+
 ## Required sections every run
 
 - Master Picks

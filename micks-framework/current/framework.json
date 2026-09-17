@@ -1,5 +1,5 @@
 {
-  "backup_version": "2026-07-11-permanent-writeup-standard",
+  "backup_version": "2026-09-17-nfl-post-week1-reconciliation",
   "brand": "Micks Picks",
   "principle": "Micks-first. Outside handicappers and models are supporting confirmation only, not the engine.",
   "run_every_time": [
@@ -72,6 +72,27 @@
     "outside_sources_are_confirmation_only": true,
     "conflict_rule": "Downgrade to B-, C, Watchlist, or Pass unless Micks has a clear independent reason.",
     "writeup_requirement": "Distinguish verified facts, model projections, external opinions, and Micks conclusions."
+  },
+  "nfl_post_week1": {
+    "active_from_week": 2,
+    "module_files": [
+      "nfl-2026-reference-module.md",
+      "nfl-2026-reference-module.json",
+      "nfl-post-week1-reconciliation.md",
+      "nfl-post-week1-reconciliation.json"
+    ],
+    "required_before_scoring": true,
+    "required_outputs": [
+      "Guide/System Reconciliation Table",
+      "Fantasy Projection Delta Board",
+      "updated Micks power-rating and total changes",
+      "added and removed candidates"
+    ],
+    "source_family_rule": "Fantasy Life outputs are one family and VSiN outputs are one family.",
+    "unresolved_material_contradiction_maximum_score": 81,
+    "recovery_mode_plus_minimum_score": 82,
+    "minimum_failure_score": 7,
+    "maximum_official_plays": 2
   },
   "writeup_style": {
     "permanent": true,

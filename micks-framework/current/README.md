@@ -1,6 +1,6 @@
 # Micks Picks Framework — Current Setup
 
-Effective date: 2026-08-24
+Effective date: 2026-09-17
 
 This folder stores the active Micks Picks operating framework used for daily all-sports runs, candidate scoring, Pick of the Day selection, Futures Lab evaluation, results archiving, research-agent work and site publishing.
 
@@ -12,16 +12,25 @@ The required daily-card decision order is:
 
 1. Independent Micks handicap and fair-price estimate
 2. Matchup / role / injury / lineup verification
-3. Market Intelligence Layer
-4. External-model and handicapper confirmation
-5. Failure-case analysis
-6. Final 110-point score, grade, units, Best Number and No-Bet Cutoff
+3. NFL guide/current-projection reconciliation when NFL is active
+4. Market Intelligence Layer
+5. External-model and handicapper confirmation
+6. Failure-case analysis
+7. Final 110-point score, grade, units, Best Number and No-Bet Cutoff
 
 ## Master source registry — controlling
 
 `source-registry.md` is the canonical checklist for every full Micks Picks research scan and rerun.
 
 A full scan is not complete until every applicable source category in that registry has been checked and classified as CURRENT, STALE, INACCESSIBLE, NOT APPLICABLE, or SUPPORTING ONLY.
+
+## NFL post-Week 1 reconciliation — mandatory
+
+`nfl-post-week1-reconciliation.md` and `.json` control every NFL scan from Week 2 forward.
+
+Before any NFL candidate is scored, cross-reference the stored VSiN and Fantasy Life guide priors with verified current-season usage/efficiency, current Fantasy Life weekly projections/utilization, current VSiN models/systems and the executable market. Every scan must show a Guide/System Reconciliation Table and Fantasy Projection Delta Board.
+
+Fantasy Life pages are one source family; VSiN pages are one source family. An unresolved material contradiction caps the candidate at 81/110 and blocks a Recovery Mode+ release.
 
 ## Micks 2.0 Market Intelligence Layer
 
@@ -94,6 +103,7 @@ For futures, also track current-price / mark-to-market movement over the life of
 9. Pick of the Day
 10. Scored candidate chart before final release
 11. Market AI Replica shadow score for serious candidates
+12. NFL Guide/System Reconciliation Table and Fantasy Projection Delta Board when NFL is active
 
 ## Official limits
 
@@ -124,6 +134,8 @@ Futures remain active until the market is closed/graded and use their own lifecy
 ## Key files
 
 - `source-registry.md` — canonical full-scan source checklist and sport-specific research stack
+- `nfl-2026-reference-module.md/.json` — stored 2026 VSiN and Fantasy Life guide priors
+- `nfl-post-week1-reconciliation.md/.json` — mandatory Week 2+ guide, usage, projection and system reconciliation
 - `candidate-scoring-and-writeup-standard.md` — controlling 110-point daily-card score and grade rules
 - `market-intelligence-layer.md` — market movement, splits, liquidity, timing and CLV rules
 - `market-ai-replica.md` — experimental market-aware shadow decision engine

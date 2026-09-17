@@ -1,7 +1,7 @@
 # Micks Picks Reference Guide Inventory
 
 Status: Controlling inventory
-Effective date: 2026-08-24
+Effective date: 2026-09-17
 
 ## Repository inventory audit
 
@@ -23,7 +23,7 @@ No PDF betting-guide files are currently stored in either repository.
    - Sport: NFL / player roles and props
    - Storage form: extracted baseline knowledge in `micks-framework/current/nfl-2026-reference-module.md` and `.json`
    - Uses: player projections, depth-chart assumptions, expected roles, routes/targets/carries, fantasy-derived usage baselines.
-   - Freshness: preseason baseline only. Current role and health always override.
+   - Freshness: preseason baseline only. Current role and health always override. Beginning with Week 2, compare every applicable magazine projection with Fantasy Life's current weekly projection, rankings and utilization evidence.
 
 ## Mandatory guide usage policy
 
@@ -35,13 +35,19 @@ For each applicable candidate, record internally:
 - Current-data confirmation or contradiction
 - Whether the guide assumption is still CURRENT, PARTIALLY CURRENT, STALE, or OVERRIDDEN
 - Influence on the independent handicap
+- Current weekly projection and delta from the stored guide
+- Reason for any material projection change
+- Strongest agreement and strongest contradiction across guide, current data and market
 
 A guide cannot earn outside-handicapper confirmation merely because it agrees with a pick. Its role is to establish priors/baselines that are then tested against current information.
+
+The Fantasy Life magazine, weekly Fantasy Life projections, rankings and Utilization Report are one source family. The VSiN guide, current VSiN models and VSiN systems are one source family. Multiple pages from one family cannot satisfy the independent-confirmation requirement.
 
 ## NFL phase weighting
 
 - Preseason / Week 1: guide baselines can carry substantial prior weight after roster/injury verification.
-- Weeks 2-4: blend guide priors with current snap/route/carry/target and efficiency data.
+- Week 2: verified player opportunity can move faster than team efficiency; use the explicit data-class weights in `nfl-post-week1-reconciliation.md`.
+- Weeks 3-4: continue the module's staged blend, increasing current-season weight while regressing efficiency more than role.
 - Week 5 onward: current-season evidence normally dominates; guide information remains useful mainly for structural context such as scheme, coaching, schedule and original market expectations.
 
 ## Current-data override hierarchy
@@ -64,6 +70,14 @@ Whenever a betting guide, preview book, projection package, PDF or season magazi
 5. Add it to the applicable daily candidate workflow.
 6. Never let stale guide information silently override current evidence.
 
-## Audit conclusion — 2026-08-24
+## Post-Week 1 scan requirement — 2026
+
+Every full NFL scan must produce a Guide/System Reconciliation Table and Fantasy Projection Delta Board before the candidate scorecard. The output must identify added and removed candidates, player-level usage changes, updated game scripts, current prices and no-bet cutoffs.
+
+An unresolved material contradiction between the stored guide, verified role/health evidence and current weekly projection caps the candidate at 81/110 and blocks a Recovery Mode+ release.
+
+## Audit conclusion — updated 2026-09-17
 
 At audit time, the only identifiable stored guide-derived knowledge in the repositories is the NFL 2026 reference module based on the VSiN 2026 NFL Betting Guide and Fantasy Life Fantasy Football 2026. No separate MLB, WNBA/NBA, NHL, soccer, UFC/boxing, tennis, NASCAR, college football or college basketball guide files/modules were found in the repository trees.
+
+The stored guides are now wired to the active post-Week 1 reconciliation module. Current Fantasy Life and VSiN weekly forecasts must be checked as live layers rather than treated as interchangeable with the preseason publications.

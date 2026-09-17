@@ -1,6 +1,6 @@
 {
   "module": "Micks Picks NFL 2026 Reference Module",
-  "version": "2026-07-24",
+  "version": "2026-09-17",
   "status": "permanent_reference",
   "scope": ["NFL sides", "NFL totals", "NFL props", "NFL futures", "NFL awards", "NFL derivatives"],
   "baselineSources": [
@@ -17,6 +17,28 @@
       "persistentLibraryPath": "/Micks Picks/Reference Guides/2026-Fantasy-Life-Magazine.pdf"
     }
   ],
+  "postWeek1Reconciliation": {
+    "requiredFromWeek": 2,
+    "humanReadableModule": "nfl-post-week1-reconciliation.md",
+    "machineReadableModule": "nfl-post-week1-reconciliation.json",
+    "mustCompleteBeforeScoring": true,
+    "requiredLanes": [
+      "VSiN guide prior",
+      "Fantasy Life magazine prior",
+      "verified current-season usage and efficiency",
+      "current Fantasy Life weekly projection and utilization layer",
+      "current VSiN model system and market layer",
+      "updated Micks projection and executable price"
+    ],
+    "samePublisherPagesAreIndependentConfirmations": false,
+    "guideStatuses": [
+      "CONFIRMED",
+      "PARTIALLY_CURRENT",
+      "STALE",
+      "OVERRIDDEN"
+    ],
+    "unresolvedMaterialContradictionMaximumScore": 81
+  },
   "sourceHierarchy": [
     "current odds and line movement",
     "confirmed quarterback, injury, inactive, offensive-line and weather information",
@@ -143,7 +165,8 @@
   ],
   "guideWeightingBySeasonPhase": {
     "preseason_through_week_1": "substantial baseline weight after roster and injury confirmation",
-    "weeks_2_to_4": "blend baseline with current usage and efficiency",
+    "week_2": "use explicit data-class weights in nfl-post-week1-reconciliation; player opportunity can move faster than team efficiency",
+    "weeks_3_to_4": "use explicit data-class weights in nfl-post-week1-reconciliation and increase current-season weight",
     "week_5_onward": "current role health and performance normally take priority"
   },
   "annualGuideSourcePolicyAllSports": {

@@ -64,16 +64,21 @@ Use this order every time:
 
 1. Independent Micks handicap and fair-price estimate
 2. Matchup / role / availability verification
-3. Market Intelligence Layer
-4. VSiN, Doc’s Sports, AI-v3 and other outside confirmation
-5. Failure-case analysis
-6. Final 110-point score
-7. Grade and units
-8. Best Number and No-Bet Cutoff
-9. Correlation / card-exposure check
-10. Release or pass
+3. When NFL is active, complete the Post-Week 1 Guide/System Reconciliation Table and Fantasy Projection Delta Board
+4. Market Intelligence Layer
+5. VSiN, Doc’s Sports, AI-v3 and other outside confirmation
+6. Failure-case analysis
+7. Final 110-point score
+8. Grade and units
+9. Best Number and No-Bet Cutoff
+10. Correlation / card-exposure check
+11. Release or pass
 
 Do not read a respected pick first and then build a rationale around it.
+
+For NFL candidates, the guide/current-projection reconciliation is a verification gate, not an extra point category. Fantasy Life magazine, weekly projections, rankings and utilization pages are one source family. VSiN guide, models and systems are one source family. Do not double-count agreement inside either family.
+
+An unresolved material NFL contradiction caps the candidate at 81/110 and blocks a Recovery Mode+ release even if the raw factor sum would otherwise exceed 82.
 
 ## CLV tracking
 

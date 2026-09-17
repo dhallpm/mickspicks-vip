@@ -28,6 +28,23 @@ For an NFL daily card, use this order:
 
 A preseason guide may create or strengthen a candidate. It may not override current quarterback news, current role evidence, a confirmed inactive, meaningful line movement or an updated Micks projection.
 
+## Post-Week 1 mandatory reconciliation
+
+Beginning with Week 2, load `nfl-post-week1-reconciliation.md` and `.json` before scoring any NFL candidate.
+
+Every side, total, prop, derivative and parlay leg must cross-reference:
+
+1. the applicable VSiN guide prior;
+2. the applicable Fantasy Life magazine prior;
+3. verified Week 1/current-season usage and efficiency;
+4. the newest Fantasy Life weekly projection, ranking and utilization evidence;
+5. the newest VSiN model, power rating, system and market evidence;
+6. the updated independent Micks projection and executable sportsbook number.
+
+Fantasy Life magazine projections and current Fantasy Life pages are one source family. VSiN guide, model, system and editorial pages are one source family. Agreement inside one family cannot be counted as multiple independent confirmations.
+
+The reconciliation must identify what changed, why the projection changed and whether the guide assumption is `CONFIRMED`, `PARTIALLY CURRENT`, `STALE` or `OVERRIDDEN`. An unresolved material contradiction caps the candidate at 81/110 and blocks a Recovery Mode+ release.
+
 ## NFL side framework
 
 Every spread or moneyline candidate must address:
@@ -239,8 +256,11 @@ The VSiN preseason power ratings and Fantasy Life team/player projections are re
 Recommended phase weighting:
 
 - Preseason and Week 1: guide baseline may carry substantial weight, subject to confirmed rosters and injuries.
-- Weeks 2-4: blend preseason expectation with current usage and efficiency.
+- Week 2: current player opportunity may outweigh the guide when a representative full-game role is verified, while one-game team efficiency remains heavily regressed.
+- Weeks 2-4: use the explicit role, team-tendency, efficiency and trench weights in `nfl-post-week1-reconciliation.md`; do not use a single blanket blend.
 - Week 5 onward: current-season role, health and performance normally take priority.
+
+The current Fantasy Life weekly forecast is a comparison output, not an additional independent weighting bucket. Record its delta from the magazine baseline and the information that caused the change.
 
 ## Post-card review additions
 
