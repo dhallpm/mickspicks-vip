@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-21",
-  "cards": [
+  "asOf": "2026-09-21T12:53:43.893011+00:00",
+  "gradedCards": [
     {
       "id": "nfl-daytime-super-2026-09-20",
       "date": "2026-09-20",
@@ -785,6 +785,100 @@
       "settledAt": "2026-09-21T12:53:43.893011+00:00"
     },
     {
+      "id": "placed-parlay-2026-09-18-tor-cease-ttu",
+      "date": "2026-09-18",
+      "eventDate": "2026-09-18",
+      "section": "Lotto Parlays",
+      "access": "free",
+      "sport": "MLB / NCAAF",
+      "league": "MLB / NCAAF",
+      "game": "Toronto Blue Jays at Texas Rangers / Houston at Texas Tech",
+      "pick": "Toronto ML / Dylan Cease 7+ strikeouts / Texas Tech -7.5",
+      "cardTitle": "Placed 3-Leg Parlay \u2014 Toronto ML / Cease 7+ Ks / Texas Tech -7.5",
+      "type": "Lotto Parlay \u2014 Personal Ticket",
+      "market": "3-leg parlay with Toronto same-game pair",
+      "lineNumber": "Toronto ML / Cease 7+ Ks / Texas Tech -7.5",
+      "legs": "Toronto Blue Jays moneyline; Dylan Cease 7+ strikeouts; Texas Tech -7.5",
+      "odds": "+303",
+      "sportsbook": "BetRivers",
+      "grade": "Not rated",
+      "units": "",
+      "status": "Graded",
+      "officialBet": "No",
+      "betPlaced": true,
+      "frameworkApproved": false,
+      "featured": "No",
+      "pickOfTheDay": "No",
+      "placedAt": "2026-09-18T19:18:00-04:00",
+      "eventStart": "2026-09-18T20:00:00-04:00",
+      "bestNumber": "Accepted ticket +303",
+      "playableTo": "Placed ticket \u2014 no new entry recommendation",
+      "noBetCutoff": "No additional wager recommended from this record",
+      "writeup": "LOSS. Leg record: 0-3. Losing legs: Toronto moneyline, Dylan Cease 7+ strikeouts, Texas Tech -7.5.\n\nToronto moneyline \u2014 Loss: Toronto 1, Texas 7\nDylan Cease 7+ strikeouts \u2014 Loss: 3 strikeouts in 2.2 innings\nTexas Tech -7.5 \u2014 Loss: Texas Tech 28, Houston 26",
+      "fullAnalysis": "LOSS. Leg record: 0-3. Losing legs: Toronto moneyline, Dylan Cease 7+ strikeouts, Texas Tech -7.5.\n\nToronto moneyline \u2014 Loss: Toronto 1, Texas 7\nDylan Cease 7+ strikeouts \u2014 Loss: 3 strikeouts in 2.2 innings\nTexas Tech -7.5 \u2014 Loss: Texas Tech 28, Houston 26\n\nPosted pregame analysis:\nTicket details and settlement:\nThree-leg BetRivers parlay, accepted September 18, 2026 at 7:18 p.m. ET. Combined displayed odds +303. Status on receipt: Open. Units are TBD. No result is assigned.\n\nToronto moneyline \u2014 player and game script:\nThe earlier September 18 scan confirmed Dylan Cease against Kumar Rocker. Toronto's preferred path is Cease limiting early damage while Vladimir Guerrero Jr., George Springer and the lineup capitalize on Rocker's traffic. Toronto's September 17 off-day supports its bullpen-rest position. The failure path is insufficient run support or late relief damage even if Cease pitches well. This leg needs Toronto to win; no run margin is required.\n\nDylan Cease 7+ strikeouts:\nThis leg needs at least seven strikeouts, equivalent to over 6.5. Cease's strikeout record supplied the matchup rationale in the pregame scan, but walks, contact outs and an early removal can prevent the seventh strikeout. The receipt's player-start condition applies. Toronto can win without this prop winning, and Cease can reach seven in a Toronto loss. The +112 shown belongs to the Toronto/Cease same-game pair, not a standalone Toronto moneyline or standalone strikeout quote.\n\nTexas Tech -7.5:\nTexas Tech must win by eight or more. The intended script is Hammond receiving enough protection to sustain drives while Tech's defense creates separation against Houston. The earlier analysis flagged Tech's protection and run-efficiency concerns and Weigman's ability to keep Houston competitive. A close Tech victory fails this spread. The ticket shows -112 for this component and an 8:00 p.m. ET kickoff; Toronto\u2013Texas is listed at 8:05 p.m. ET.\n\nConstruction and recordkeeping:\nAll three legs must win for the displayed full payout, subject to BetRivers' applicable void and settlement rules. The two baseball legs share game exposure; Texas Tech adds a separate game risk. This post records the wager the user placed and requested published. It does not retroactively change the prior scan's grades or represent a framework-approved release. No standalone bets are implied. Track this ticket once in Lotto Parlays, with settlement tracked separately from official framework performance. No new playable range or additional stake is recommended.\n\nRecord classification: Personal placed ticket; separate from official framework record. No wager amounts published; unit profit/loss is not inferred.",
+      "showFullAnalysis": true,
+      "sourceVerification": "User-supplied BetRivers placed-ticket screenshot IMG_3840.jpeg, September 18, 2026, 7:18 p.m. ET. Matchup discussion carried forward from the same-day evening scan.",
+      "accountingCategory": "Personal placed wager \u2014 separate from framework official record",
+      "originalPublication": {
+        "date": "2026-09-18",
+        "status": "Open \u2014 placed ticket",
+        "grade": "Not rated",
+        "officialBet": "No",
+        "betPlaced": true,
+        "writeup": "Placed September 18 at 7:18 p.m. ET: Toronto Blue Jays moneyline, Dylan Cease 7+ strikeouts and Texas Tech -7.5. BetRivers accepted the three-leg parlay at +303. Toronto ML and Cease 7+ form the same-game pair shown at +112; Texas Tech -7.5 is shown at -112. The baseball script needs Cease to miss bats while Toronto generates enough offense to win. Texas Tech must beat Houston by at least eight points. A strong Cease outing can support both baseball legs, so they are correlated and should not be treated as independent chances. A low-strikeout Toronto win, a high-strikeout Toronto loss or a Texas Tech victory by seven or fewer can still break the ticket. This is the user's confirmed placed wager, tracked separately from framework-approved releases. Units remain TBD.",
+        "fullAnalysis": "Ticket details and settlement:\nThree-leg BetRivers parlay, accepted September 18, 2026 at 7:18 p.m. ET. Combined displayed odds +303. Status on receipt: Open. Units are TBD. No result is assigned.\n\nToronto moneyline \u2014 player and game script:\nThe earlier September 18 scan confirmed Dylan Cease against Kumar Rocker. Toronto's preferred path is Cease limiting early damage while Vladimir Guerrero Jr., George Springer and the lineup capitalize on Rocker's traffic. Toronto's September 17 off-day supports its bullpen-rest position. The failure path is insufficient run support or late relief damage even if Cease pitches well. This leg needs Toronto to win; no run margin is required.\n\nDylan Cease 7+ strikeouts:\nThis leg needs at least seven strikeouts, equivalent to over 6.5. Cease's strikeout record supplied the matchup rationale in the pregame scan, but walks, contact outs and an early removal can prevent the seventh strikeout. The receipt's player-start condition applies. Toronto can win without this prop winning, and Cease can reach seven in a Toronto loss. The +112 shown belongs to the Toronto/Cease same-game pair, not a standalone Toronto moneyline or standalone strikeout quote.\n\nTexas Tech -7.5:\nTexas Tech must win by eight or more. The intended script is Hammond receiving enough protection to sustain drives while Tech's defense creates separation against Houston. The earlier analysis flagged Tech's protection and run-efficiency concerns and Weigman's ability to keep Houston competitive. A close Tech victory fails this spread. The ticket shows -112 for this component and an 8:00 p.m. ET kickoff; Toronto\u2013Texas is listed at 8:05 p.m. ET.\n\nConstruction and recordkeeping:\nAll three legs must win for the displayed full payout, subject to BetRivers' applicable void and settlement rules. The two baseball legs share game exposure; Texas Tech adds a separate game risk. This post records the wager the user placed and requested published. It does not retroactively change the prior scan's grades or represent a framework-approved release. No standalone bets are implied. Track this ticket once in Lotto Parlays, with settlement tracked separately from official framework performance. No new playable range or additional stake is recommended."
+      },
+      "postedDate": "2026-09-18",
+      "Date": "2026-09-18",
+      "result": "Loss",
+      "Result": "Loss",
+      "Outcome": "Loss",
+      "Status": "Graded",
+      "legGrades": [
+        {
+          "pick": "Toronto moneyline",
+          "result": "Loss",
+          "final": "Toronto 1, Texas 7",
+          "sourceUrl": "https://www.mlb.com/gameday/822847/final/box"
+        },
+        {
+          "pick": "Dylan Cease 7+ strikeouts",
+          "result": "Loss",
+          "final": "3 strikeouts in 2.2 innings",
+          "sourceUrl": "https://statsapi.mlb.com/api/v1/game/822847/boxscore"
+        },
+        {
+          "pick": "Texas Tech -7.5",
+          "result": "Loss",
+          "final": "Texas Tech 28, Houston 26",
+          "sourceUrl": "https://www.espn.com/college-football/game/_/gameId/401856811"
+        }
+      ],
+      "legRecord": "0-3",
+      "hideWagerAmounts": true,
+      "excludeFromRecord": true,
+      "Official Bet": "No",
+      "profitLoss": "Unknown",
+      "Profit/Loss": "Unknown",
+      "P/L": "Unknown",
+      "PL": "Unknown",
+      "Units": "",
+      "settlementCheckedAt": "2026-09-21T12:53:43.893011+00:00",
+      "recordScope": "Personal placed ticket; separate from official framework record",
+      "legResults": "Toronto moneyline \u2014 Loss: Toronto 1, Texas 7\nDylan Cease 7+ strikeouts \u2014 Loss: 3 strikeouts in 2.2 innings\nTexas Tech -7.5 \u2014 Loss: Texas Tech 28, Houston 26",
+      "settlementNotes": "LOSS. Leg record: 0-3. Losing legs: Toronto moneyline, Dylan Cease 7+ strikeouts, Texas Tech -7.5.",
+      "finalScore": "Toronto moneyline \u2014 Loss: Toronto 1, Texas 7\nDylan Cease 7+ strikeouts \u2014 Loss: 3 strikeouts in 2.2 innings\nTexas Tech -7.5 \u2014 Loss: Texas Tech 28, Houston 26",
+      "settlementSource": "MLB final box score and ESPN final scoreboard/box scores, checked September 21, 2026.",
+      "settlementSources": [
+        "https://www.mlb.com/gameday/822847/final/box",
+        "https://statsapi.mlb.com/api/v1/game/822847/boxscore",
+        "https://www.espn.com/college-football/game/_/gameId/401856811"
+      ],
+      "Writeup": "LOSS. Leg record: 0-3. Losing legs: Toronto moneyline, Dylan Cease 7+ strikeouts, Texas Tech -7.5.\n\nToronto moneyline \u2014 Loss: Toronto 1, Texas 7\nDylan Cease 7+ strikeouts \u2014 Loss: 3 strikeouts in 2.2 innings\nTexas Tech -7.5 \u2014 Loss: Texas Tech 28, Houston 26",
+      "Full Analysis": "LOSS. Leg record: 0-3. Losing legs: Toronto moneyline, Dylan Cease 7+ strikeouts, Texas Tech -7.5.\n\nToronto moneyline \u2014 Loss: Toronto 1, Texas 7\nDylan Cease 7+ strikeouts \u2014 Loss: 3 strikeouts in 2.2 innings\nTexas Tech -7.5 \u2014 Loss: Texas Tech 28, Houston 26\n\nPosted pregame analysis:\nTicket details and settlement:\nThree-leg BetRivers parlay, accepted September 18, 2026 at 7:18 p.m. ET. Combined displayed odds +303. Status on receipt: Open. Units are TBD. No result is assigned.\n\nToronto moneyline \u2014 player and game script:\nThe earlier September 18 scan confirmed Dylan Cease against Kumar Rocker. Toronto's preferred path is Cease limiting early damage while Vladimir Guerrero Jr., George Springer and the lineup capitalize on Rocker's traffic. Toronto's September 17 off-day supports its bullpen-rest position. The failure path is insufficient run support or late relief damage even if Cease pitches well. This leg needs Toronto to win; no run margin is required.\n\nDylan Cease 7+ strikeouts:\nThis leg needs at least seven strikeouts, equivalent to over 6.5. Cease's strikeout record supplied the matchup rationale in the pregame scan, but walks, contact outs and an early removal can prevent the seventh strikeout. The receipt's player-start condition applies. Toronto can win without this prop winning, and Cease can reach seven in a Toronto loss. The +112 shown belongs to the Toronto/Cease same-game pair, not a standalone Toronto moneyline or standalone strikeout quote.\n\nTexas Tech -7.5:\nTexas Tech must win by eight or more. The intended script is Hammond receiving enough protection to sustain drives while Tech's defense creates separation against Houston. The earlier analysis flagged Tech's protection and run-efficiency concerns and Weigman's ability to keep Houston competitive. A close Tech victory fails this spread. The ticket shows -112 for this component and an 8:00 p.m. ET kickoff; Toronto\u2013Texas is listed at 8:05 p.m. ET.\n\nConstruction and recordkeeping:\nAll three legs must win for the displayed full payout, subject to BetRivers' applicable void and settlement rules. The two baseball legs share game exposure; Texas Tech adds a separate game risk. This post records the wager the user placed and requested published. It does not retroactively change the prior scan's grades or represent a framework-approved release. No standalone bets are implied. Track this ticket once in Lotto Parlays, with settlement tracked separately from official framework performance. No new playable range or additional stake is recommended.\n\nRecord classification: Personal placed ticket; separate from official framework record. No wager amounts published; unit profit/loss is not inferred.",
+      "settledAt": "2026-09-21T12:53:43.893011+00:00"
+    },
+    {
       "id": "nfl-delaware-teaser-2026-09-20",
       "date": "2026-09-17",
       "eventDate": "2026-09-20",
@@ -927,7 +1021,9 @@
       "Writeup": "WIN. Leg record: 4-0. Thursday September 17 publication corrected to WIN at the user\u2019s request; all four Sunday legs independently verified.\n\nJets +8.5 \u2014 Win: NYJ 17; GB 20\nTitans +12.5 \u2014 Win: TEN 20; PHI 24\nColts +12.5 \u2014 Win: KC 33; IND 30\nRaiders +12.5 \u2014 Win: LAC 14; LV 26",
       "Full Analysis": "WIN. Leg record: 4-0. Thursday September 17 publication corrected to WIN at the user\u2019s request; all four Sunday legs independently verified.\n\nJets +8.5 \u2014 Win: NYJ 17; GB 20\nTitans +12.5 \u2014 Win: TEN 20; PHI 24\nColts +12.5 \u2014 Win: KC 33; IND 30\nRaiders +12.5 \u2014 Win: LAC 14; LV 26\n\nPosted pregame analysis:\nTicket and settlement:\nNFL Week 2 \u2014 Sunday, September 20, 2026. Delaware TEASER card dated September 17. Selection 114: New York Jets +8.5 vs Green Bay; 126: Tennessee Titans +12.5 vs Philadelphia; 154: Indianapolis Colts +12.5 at Kansas City; 138: Las Vegas Raiders +12.5 at Los Angeles Chargers. All four must cover. These are the printed teaser spreads, not assumed six-point adjustments. Verify the accepted ticket. Four correct pays 5-to-2 profit (+250).\n\nJets +8.5 \u2014 players and game script:\nGeno Smith, Breece Hall and Garrett Wilson offer a route to sustained possessions and a competitive home game. The +8.5 line protects against a seven- or eight-point defeat. Doc\u2019s Sports selects Jets +3.5 at the standard spread. Green Bay\u2019s offensive production was stronger than its opening loss suggests, so Jordan Love and explosive passing remain the failure scenario. Monitor both offensive lines and the Jets secondary; Green Bay\u2019s Wednesday report includes several limited linemen and defenders. This is the strongest structural teaser leg of the shortlist, not a quantified cover-probability claim.\n\nTitans +12.5 \u2014 players and game script:\nThe preferred script is fewer possessions and limited explosive scores, with Cam Ward protecting the ball. The standard card total is 39.5, making the 12.5-point cushion worth investigating. Doc\u2019s Sports selects Titans +7. Philadelphia can still break this leg through Jalen Hurts and Saquon Barkley if Tennessee cannot sustain drives. Jalen Carter and Cooper DeJean missed Wednesday practice; that is not confirmation either will miss the game. Recheck final availability and Tennessee\u2019s offensive outlook.\n\nColts +12.5 \u2014 players and game script:\nJonathan Taylor sustaining drives would limit Patrick Mahomes\u2019 possessions and support a result inside two scores. Doc\u2019s Sports selects Colts +7. The major concern is Indianapolis\u2019 run defense against Kenneth Walker after its difficult Baltimore matchup. Kansas City controlling the ground game or short-field turnovers could create a runaway result. The Wednesday report lists Mahomes as a full participant, Chris Jones limited and Josh Simmons absent. Reassess Indianapolis\u2019 defensive front and Kansas City\u2019s protection before release.\n\nRaiders +12.5 \u2014 players and game script:\nAshton Jeanty\u2019s rushing and receiving role provides a route to keeping Las Vegas competitive. Doc\u2019s Sports selects Raiders +7, but this is the least settled leg. Brock Bowers missed Wednesday practice with a knee injury; Jeanty practiced fully. Chargers receiver Ladd McConkey missed practice with a rib injury. Final availability matters on both sides. VSiN\u2019s Chargers rebound system conflicts with the Raiders direction, so Justin Herbert producing a decisive home response remains a material risk. Do not assume Bowers or McConkey will play.\n\nFramework and payout check:\nNFL uses the standard framework with Recovery Mode off. Doc\u2019s previews and VSiN systems are supporting evidence, not independent cover probabilities. Some Week 2 systems support Tennessee and Indianapolis; the Chargers rebound signal is a contradiction. Numerical preseason-guide projections and a complete current projection reconciliation were unavailable in the September 17 review, so no numerical Micks score or letter grade is assigned. At +250, the ticket needs a joint cover probability above 28.57% to break even; this review has not established that edge. Adding a fifth leg is not approved.\n\nPending information and release conditions:\nGrade: TBD pending info. Units: TBD pending info. Status: WATCH \u2014 not an official bet. Required before release: final injury designations and game-day availability, current team and player projections reconciled with the guides, weather, current market comparison, and confirmation of all four printed ticket lines and payout. Preserve Jets +8.5, Titans +12.5, Colts +12.5 and Raiders +12.5 at 5-to-2 profit or better for any rescore. Those numbers are review targets, not automatic betting triggers. Any reduced cushion, worse payout, material player/line change or unresolved edge means no bet pending rescore. No automatic replacement and no fifth leg.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred.",
       "settledAt": "2026-09-21T12:53:43.893011+00:00"
-    },
+    }
+  ],
+  "pendingCards": [
     {
       "id": "nfl-delaware-half-point-2026-09-19",
       "date": "2026-09-21",
@@ -1030,6 +1126,661 @@
       ],
       "Writeup": "PENDING. Leg record: 2-0; 1 pending. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Giants +7.5 is the only remaining leg.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
       "Full Analysis": "PENDING. Leg record: 2-0; 1 pending. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Giants +7.5 is the only remaining leg.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\n\nPosted pregame analysis:\n#120: Vikings\u2013Bears Under 48.5\n#136: Jaguars\u2013Broncos Under 45.5\n#158: Giants +7.5\n\nThis is the more aggressive alternative: two ordinary totals and Giants +7.5 without the teaser allowance. Chicago\u2013Minnesota must finish with no more than forty-eight points. Jacksonville\u2013Denver must finish at forty-five or fewer. The Giants can win or lose by seven or fewer. Current totals commentary supports both under directions, but Chicago defensive weakness and Jacksonville scoring efficiency are real counterarguments. The Giants still require a workable protection plan against the Rams. These three selections overlap the larger cards. This is a WATCH construction with no official Micks release or premium grade.\n\nKeep the Giants injury condition. If that leg cannot be supported, pass this three-pick construction rather than silently inserting a different selection.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred."
+    }
+  ],
+  "sources": [
+    {
+      "key": "nfl20",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20260920",
+      "data": [
+        {
+          "id": "401872933",
+          "name": "Carolina Panthers at Atlanta Falcons",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "ATL",
+              "3"
+            ],
+            [
+              "CAR",
+              "34"
+            ]
+          ]
+        },
+        {
+          "id": "401872937",
+          "name": "Minnesota Vikings at Chicago Bears",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "CHI",
+              "3"
+            ],
+            [
+              "MIN",
+              "9"
+            ]
+          ]
+        },
+        {
+          "id": "401872939",
+          "name": "Philadelphia Eagles at Tennessee Titans",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "TEN",
+              "20"
+            ],
+            [
+              "PHI",
+              "24"
+            ]
+          ]
+        },
+        {
+          "id": "401872946",
+          "name": "Pittsburgh Steelers at New England Patriots",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "NE",
+              "20"
+            ],
+            [
+              "PIT",
+              "3"
+            ]
+          ]
+        },
+        {
+          "id": "401872936",
+          "name": "Green Bay Packers at New York Jets",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "NYJ",
+              "17"
+            ],
+            [
+              "GB",
+              "20"
+            ]
+          ]
+        },
+        {
+          "id": "401872935",
+          "name": "Cleveland Browns at Tampa Bay Buccaneers",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "TB",
+              "19"
+            ],
+            [
+              "CLE",
+              "23"
+            ]
+          ]
+        },
+        {
+          "id": "401872938",
+          "name": "New Orleans Saints at Baltimore Ravens",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "BAL",
+              "17"
+            ],
+            [
+              "NO",
+              "24"
+            ]
+          ]
+        },
+        {
+          "id": "401872934",
+          "name": "Cincinnati Bengals at Houston Texans",
+          "date": "2026-09-20T17:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "HOU",
+              "6"
+            ],
+            [
+              "CIN",
+              "20"
+            ]
+          ]
+        },
+        {
+          "id": "401872940",
+          "name": "Jacksonville Jaguars at Denver Broncos",
+          "date": "2026-09-20T20:05Z",
+          "status": "Final",
+          "score": [
+            [
+              "DEN",
+              "20"
+            ],
+            [
+              "JAX",
+              "13"
+            ]
+          ]
+        },
+        {
+          "id": "401872941",
+          "name": "Las Vegas Raiders at Los Angeles Chargers",
+          "date": "2026-09-20T20:05Z",
+          "status": "Final",
+          "score": [
+            [
+              "LAC",
+              "14"
+            ],
+            [
+              "LV",
+              "26"
+            ]
+          ]
+        },
+        {
+          "id": "401872944",
+          "name": "Washington Commanders at Dallas Cowboys",
+          "date": "2026-09-20T20:25Z",
+          "status": "Final",
+          "score": [
+            [
+              "DAL",
+              "37"
+            ],
+            [
+              "WSH",
+              "20"
+            ]
+          ]
+        },
+        {
+          "id": "401872943",
+          "name": "Seattle Seahawks at Arizona Cardinals",
+          "date": "2026-09-20T20:25Z",
+          "status": "Final",
+          "score": [
+            [
+              "ARI",
+              "7"
+            ],
+            [
+              "SEA",
+              "31"
+            ]
+          ]
+        },
+        {
+          "id": "401872942",
+          "name": "Miami Dolphins at San Francisco 49ers",
+          "date": "2026-09-20T20:25Z",
+          "status": "Final",
+          "score": [
+            [
+              "SF",
+              "35"
+            ],
+            [
+              "MIA",
+              "13"
+            ]
+          ]
+        },
+        {
+          "id": "401872945",
+          "name": "Indianapolis Colts at Kansas City Chiefs",
+          "date": "2026-09-21T00:20Z",
+          "status": "Final",
+          "score": [
+            [
+              "KC",
+              "33"
+            ],
+            [
+              "IND",
+              "30"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "key": "nfl21",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20260921",
+      "data": [
+        {
+          "id": "401872947",
+          "name": "New York Giants at Los Angeles Rams",
+          "date": "2026-09-22T00:15Z",
+          "status": "Scheduled",
+          "score": [
+            [
+              "LAR",
+              "0"
+            ],
+            [
+              "NYG",
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "key": "cfb18",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard?dates=20260918&groups=80&limit=100",
+      "data": [
+        {
+          "id": "401858226",
+          "name": "Miami Hurricanes at Wake Forest Demon Deacons",
+          "date": "2026-09-18T23:30Z",
+          "status": "Final",
+          "score": [
+            [
+              "WAKE",
+              "20"
+            ],
+            [
+              "MIA",
+              "33"
+            ]
+          ]
+        },
+        {
+          "id": "401856811",
+          "name": "Houston Cougars at Texas Tech Red Raiders",
+          "date": "2026-09-19T00:00Z",
+          "status": "Final",
+          "score": [
+            [
+              "TTU",
+              "28"
+            ],
+            [
+              "HOU",
+              "26"
+            ]
+          ]
+        },
+        {
+          "id": "401858455",
+          "name": "Portland State Vikings at Oregon Ducks",
+          "date": "2026-09-19T02:30Z",
+          "status": "Final",
+          "score": [
+            [
+              "ORE",
+              "84"
+            ],
+            [
+              "PRST",
+              "0"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "key": "mlb18",
+      "url": "https://statsapi.mlb.com/api/v1/schedule?sportId=1&date=2026-09-18",
+      "data": [
+        {
+          "id": 822847,
+          "status": "Final",
+          "teams": [
+            [
+              "Toronto Blue Jays",
+              1
+            ],
+            [
+              "Texas Rangers",
+              7
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "key": "cease",
+      "url": "https://statsapi.mlb.com/api/v1/game/822847/boxscore",
+      "data": [
+        {
+          "person": {
+            "id": 656302,
+            "fullName": "Dylan Cease",
+            "link": "/api/v1/people/656302",
+            "boxscoreName": "Cease"
+          },
+          "jerseyNumber": "84",
+          "position": {
+            "code": "1",
+            "name": "Pitcher",
+            "type": "Pitcher",
+            "abbreviation": "P"
+          },
+          "status": {
+            "code": "A",
+            "description": "Active"
+          },
+          "parentTeamId": 141,
+          "stats": {
+            "batting": {},
+            "pitching": {
+              "note": "(L, 11-6)",
+              "summary": "2.2 IP, ER, 3 K, 6 BB",
+              "gamesPlayed": 1,
+              "gamesStarted": 1,
+              "flyOuts": 2,
+              "groundOuts": 2,
+              "airOuts": 3,
+              "runs": 4,
+              "doubles": 1,
+              "triples": 0,
+              "homeRuns": 0,
+              "strikeOuts": 3,
+              "baseOnBalls": 6,
+              "intentionalWalks": 0,
+              "hits": 3,
+              "hitByPitch": 0,
+              "atBats": 10,
+              "caughtStealing": 0,
+              "stolenBases": 2,
+              "stolenBasePercentage": "1.000",
+              "numberOfPitches": 74,
+              "inningsPitched": "2.2",
+              "wins": 0,
+              "losses": 1,
+              "saves": 0,
+              "saveOpportunities": 0,
+              "holds": 0,
+              "blownSaves": 0,
+              "earnedRuns": 1,
+              "battersFaced": 17,
+              "outs": 8,
+              "gamesPitched": 1,
+              "completeGames": 0,
+              "shutouts": 0,
+              "pitchesThrown": 74,
+              "balls": 38,
+              "strikes": 36,
+              "strikePercentage": ".490",
+              "hitBatsmen": 0,
+              "balks": 0,
+              "wildPitches": 0,
+              "pickoffs": 0,
+              "rbi": 3,
+              "gamesFinished": 0,
+              "runsScoredPer9": "13.50",
+              "homeRunsPer9": "0.00",
+              "inheritedRunners": 0,
+              "inheritedRunnersScored": 0,
+              "catchersInterference": 0,
+              "sacBunts": 0,
+              "sacFlies": 1,
+              "passedBall": 0,
+              "popOuts": 1,
+              "lineOuts": 0
+            },
+            "fielding": {
+              "gamesStarted": 1,
+              "caughtStealing": 0,
+              "stolenBases": 0,
+              "stolenBasePercentage": ".---",
+              "caughtStealingPercentage": ".---",
+              "assists": 0,
+              "putOuts": 0,
+              "errors": 0,
+              "chances": 0,
+              "fielding": ".000",
+              "passedBall": 0,
+              "pickoffs": 0
+            }
+          },
+          "seasonStats": {
+            "batting": {
+              "gamesPlayed": 0,
+              "flyOuts": 0,
+              "groundOuts": 0,
+              "airOuts": 0,
+              "runs": 0,
+              "doubles": 0,
+              "triples": 0,
+              "homeRuns": 0,
+              "strikeOuts": 0,
+              "baseOnBalls": 0,
+              "intentionalWalks": 0,
+              "hits": 0,
+              "hitByPitch": 0,
+              "avg": ".000",
+              "atBats": 0,
+              "obp": ".000",
+              "slg": ".000",
+              "ops": ".000",
+              "caughtStealing": 0,
+              "stolenBases": 0,
+              "stolenBasePercentage": ".---",
+              "caughtStealingPercentage": ".---",
+              "groundIntoDoublePlay": 0,
+              "groundIntoTriplePlay": 0,
+              "plateAppearances": 0,
+              "totalBases": 0,
+              "rbi": 0,
+              "leftOnBase": 0,
+              "sacBunts": 0,
+              "sacFlies": 0,
+              "babip": ".---",
+              "groundOutsToAirouts": "-.--",
+              "catchersInterference": 0,
+              "pickoffs": 0,
+              "atBatsPerHomeRun": "-.--",
+              "popOuts": 0,
+              "lineOuts": 0
+            },
+            "pitching": {
+              "gamesPlayed": 29,
+              "gamesStarted": 29,
+              "flyOuts": 62,
+              "groundOuts": 125,
+              "airOuts": 132,
+              "runs": 54,
+              "doubles": 21,
+              "triples": 0,
+              "homeRuns": 11,
+              "strikeOuts": 239,
+              "baseOnBalls": 78,
+              "intentionalWalks": 0,
+              "hits": 108,
+              "hitByPitch": 3,
+              "atBats": 599,
+              "obp": ".276",
+              "caughtStealing": 6,
+              "stolenBases": 33,
+              "stolenBasePercentage": ".846",
+              "caughtStealingPercentage": ".154",
+              "numberOfPitches": 2895,
+              "era": "2.40",
+              "inningsPitched": "169.0",
+              "wins": 11,
+              "losses": 6,
+              "saves": 0,
+              "saveOpportunities": 0,
+              "holds": 0,
+              "blownSaves": 0,
+              "earnedRuns": 45,
+              "whip": "1.10",
+              "battersFaced": 685,
+              "outs": 507,
+              "gamesPitched": 29,
+              "completeGames": 1,
+              "shutouts": 1,
+              "pitchesThrown": 2895,
+              "balls": 1107,
+              "strikes": 1788,
+              "strikePercentage": ".620",
+              "hitBatsmen": 3,
+              "balks": 1,
+              "wildPitches": 5,
+              "pickoffs": 0,
+              "groundOutsToAirouts": "0.95",
+              "rbi": 3,
+              "winPercentage": ".647",
+              "pitchesPerInning": "17.13",
+              "gamesFinished": 0,
+              "strikeoutWalkRatio": "3.06",
+              "strikeoutsPer9Inn": "12.73",
+              "walksPer9Inn": "4.15",
+              "hitsPer9Inn": "5.75",
+              "runsScoredPer9": "2.88",
+              "homeRunsPer9": "0.59",
+              "inheritedRunners": 0,
+              "inheritedRunnersScored": 0,
+              "catchersInterference": 0,
+              "sacBunts": 1,
+              "sacFlies": 4,
+              "passedBall": 0,
+              "popOuts": 39,
+              "lineOuts": 31
+            },
+            "fielding": {
+              "gamesStarted": 1,
+              "caughtStealing": 0,
+              "stolenBases": 0,
+              "stolenBasePercentage": ".---",
+              "caughtStealingPercentage": ".---",
+              "assists": 13,
+              "putOuts": 9,
+              "errors": 3,
+              "chances": 25,
+              "fielding": ".880",
+              "passedBall": 0,
+              "pickoffs": 0
+            }
+          },
+          "gameStatus": {
+            "isCurrentBatter": false,
+            "isCurrentPitcher": false,
+            "isOnBench": false,
+            "isSubstitute": false
+          },
+          "allPositions": [
+            {
+              "code": "1",
+              "name": "Pitcher",
+              "type": "Pitcher",
+              "abbreviation": "P"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "401872933",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872933",
+      "players": [
+        {
+          "name": "Bijan Robinson",
+          "group": "rushing",
+          "labels": [
+            "CAR",
+            "YDS",
+            "AVG",
+            "TD",
+            "LONG"
+          ],
+          "stats": [
+            "16",
+            "72",
+            "4.5",
+            "0",
+            "11"
+          ]
+        },
+        {
+          "name": "Bijan Robinson",
+          "group": "receiving",
+          "labels": [
+            "REC",
+            "YDS",
+            "AVG",
+            "TD",
+            "LONG",
+            "TGTS"
+          ],
+          "stats": [
+            "3",
+            "9",
+            "3.0",
+            "0",
+            "4",
+            "4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "401872939",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401872939",
+      "players": [
+        {
+          "name": "DeVonta Smith",
+          "group": "receiving",
+          "labels": [
+            "REC",
+            "YDS",
+            "AVG",
+            "TD",
+            "LONG",
+            "TGTS"
+          ],
+          "stats": [
+            "10",
+            "117",
+            "11.7",
+            "1",
+            "22",
+            "13"
+          ]
+        },
+        {
+          "name": "DeVonta Smith",
+          "group": "defensive",
+          "labels": [
+            "TOT",
+            "SOLO",
+            "SACKS",
+            "TFL",
+            "PD",
+            "QB HTS",
+            "TD"
+          ],
+          "stats": [
+            "1",
+            "1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        }
+      ]
     }
   ]
 }
