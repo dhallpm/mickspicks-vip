@@ -1,116 +1,14 @@
-export const pendingCards = [
-  {
-    "id": "nfl-delaware-half-point-2026-09-19",
-    "date": "2026-09-21",
-    "eventDate": "2026-09-20",
-    "eventEndDate": "2026-09-21",
-    "section": "Lotto Parlays",
-    "access": "free",
-    "sport": "NFL",
-    "league": "NFL",
-    "game": "NFL Week 2 \u2014 September 20\u201321, 2026",
-    "pick": "Vikings\u2013Bears Under 48.5 / Jaguars\u2013Broncos Under 45.5 / Giants +7.5",
-    "cardTitle": "3-Pick Half-Point Parlay",
-    "type": "3-Pick Half-Point Parlay",
-    "market": "NFL parlay card",
-    "lineNumber": "Vikings\u2013Bears Under 48.5 / Jaguars\u2013Broncos Under 45.5 / Giants +7.5",
-    "legs": "#120: Vikings\u2013Bears Under 48.5\n#136: Jaguars\u2013Broncos Under 45.5\n#158: Giants +7.5",
-    "legCount": 3,
-    "odds": "+550",
-    "payoutOdds": "11 to 2",
-    "sportsbook": "Delaware Lottery",
-    "grade": "WATCH",
-    "status": "Watch \u2014 Giants +7.5 pending",
-    "officialBet": "No",
-    "frameworkApproved": false,
-    "betPlaced": false,
-    "featured": "No",
-    "pickOfTheDay": "No",
-    "hideWagerAmounts": true,
-    "showFullAnalysis": true,
-    "bestNumber": "Exact printed selections listed above",
-    "playableTo": "Listed card lines only",
-    "noBetCutoff": "Any worse line or unresolved material availability \u2014 pass/reassess",
-    "writeup": "PENDING. Leg record: 2-0; 1 pending. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Giants +7.5 is the only remaining leg.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "fullAnalysis": "PENDING. Leg record: 2-0; 1 pending. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Giants +7.5 is the only remaining leg.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\n\nPosted pregame analysis:\n#120: Vikings\u2013Bears Under 48.5\n#136: Jaguars\u2013Broncos Under 45.5\n#158: Giants +7.5\n\nThis is the more aggressive alternative: two ordinary totals and Giants +7.5 without the teaser allowance. Chicago\u2013Minnesota must finish with no more than forty-eight points. Jacksonville\u2013Denver must finish at forty-five or fewer. The Giants can win or lose by seven or fewer. Current totals commentary supports both under directions, but Chicago defensive weakness and Jacksonville scoring efficiency are real counterarguments. The Giants still require a workable protection plan against the Rams. These three selections overlap the larger cards. This is a WATCH construction with no official Micks release or premium grade.\n\nKeep the Giants injury condition. If that leg cannot be supported, pass this three-pick construction rather than silently inserting a different selection.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred.",
-    "injuryNotes": "Keep the Giants injury condition. If that leg cannot be supported, pass this three-pick construction rather than silently inserting a different selection.",
-    "sourceVerification": "September 19 research using September 17 Delaware cards, original VSiN and Fantasy Life guides, current matchup analysis and official injury reports. Availability conditions remain pending.",
-    "sourceLinks": [
-      {
-        "title": "Delaware half-point card, September 17",
-        "url": "https://delotterywebcontent.blob.core.windows.net/delottery-site-assets/assets/sports/928a9b02-2362-4404-b6f7-25b9d1068fa3_Delaware%20-%20Half%20Pt%209.17.2026.pdf"
-      }
-    ],
-    "originalPublication": {
-      "date": "2026-09-19",
-      "status": "Watch \u2014 conditional construction",
-      "grade": "WATCH",
-      "officialBet": "No",
-      "betPlaced": false,
-      "writeup": "This is the more aggressive alternative: two ordinary totals and Giants +7.5 without the teaser allowance. Chicago\u2013Minnesota must finish with no more than forty-eight points. Jacksonville\u2013Denver must finish at forty-five or fewer. The Giants can win or lose by seven or fewer. Current totals commentary supports both under directions, but Chicago defensive weakness and Jacksonville scoring efficiency are real counterarguments. The Giants still require a workable protection plan against the Rams. These three selections overlap the larger cards. This is a WATCH construction with no official Micks release or premium grade.",
-      "fullAnalysis": "#120: Vikings\u2013Bears Under 48.5\n#136: Jaguars\u2013Broncos Under 45.5\n#158: Giants +7.5\n\nThis is the more aggressive alternative: two ordinary totals and Giants +7.5 without the teaser allowance. Chicago\u2013Minnesota must finish with no more than forty-eight points. Jacksonville\u2013Denver must finish at forty-five or fewer. The Giants can win or lose by seven or fewer. Current totals commentary supports both under directions, but Chicago defensive weakness and Jacksonville scoring efficiency are real counterarguments. The Giants still require a workable protection plan against the Rams. These three selections overlap the larger cards. This is a WATCH construction with no official Micks release or premium grade.\n\nKeep the Giants injury condition. If that leg cannot be supported, pass this three-pick construction rather than silently inserting a different selection.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions."
-    },
-    "postedDate": "2026-09-19",
-    "Date": "2026-09-21",
-    "result": "Pending",
-    "Result": "Pending",
-    "Outcome": "Pending",
-    "Status": "Watch \u2014 Giants +7.5 pending",
-    "legGrades": [
-      {
-        "pick": "Vikings\u2013Bears Under 48.5",
-        "result": "Win",
-        "final": "CHI 3; MIN 9",
-        "gradingMargin": 36.5,
-        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872937"
-      },
-      {
-        "pick": "Jaguars\u2013Broncos Under 45.5",
-        "result": "Win",
-        "final": "DEN 20; JAX 13",
-        "gradingMargin": 12.5,
-        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872940"
-      },
-      {
-        "pick": "Giants +7.5",
-        "result": "Pending",
-        "final": "Scheduled September 21, 8:15 p.m. ET",
-        "gradingMargin": null,
-        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872947"
-      }
-    ],
-    "legRecord": "2-0; 1 pending",
-    "excludeFromRecord": true,
-    "Official Bet": "No",
-    "profitLoss": "Unknown",
-    "Profit/Loss": "Unknown",
-    "P/L": "Unknown",
-    "PL": "Unknown",
-    "units": "",
-    "Units": "",
-    "settlementCheckedAt": "2026-09-21T12:53:43.893011+00:00",
-    "recordScope": "Posted construction; execution unconfirmed; excluded from official betting record",
-    "legResults": "Vikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "settlementNotes": "PENDING. Leg record: 2-0; 1 pending. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Giants +7.5 is the only remaining leg.",
-    "finalScore": "Vikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "settlementSource": "MLB final box score and ESPN final scoreboard/box scores, checked September 21, 2026.",
-    "settlementSources": [
-      "https://www.espn.com/nfl/game/_/gameId/401872937",
-      "https://www.espn.com/nfl/game/_/gameId/401872940",
-      "https://www.espn.com/nfl/game/_/gameId/401872947"
-    ],
-    "Writeup": "PENDING. Leg record: 2-0; 1 pending. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Giants +7.5 is the only remaining leg.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "Full Analysis": "PENDING. Leg record: 2-0; 1 pending. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Giants +7.5 is the only remaining leg.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\n\nPosted pregame analysis:\n#120: Vikings\u2013Bears Under 48.5\n#136: Jaguars\u2013Broncos Under 45.5\n#158: Giants +7.5\n\nThis is the more aggressive alternative: two ordinary totals and Giants +7.5 without the teaser allowance. Chicago\u2013Minnesota must finish with no more than forty-eight points. Jacksonville\u2013Denver must finish at forty-five or fewer. The Giants can win or lose by seven or fewer. Current totals commentary supports both under directions, but Chicago defensive weakness and Jacksonville scoring efficiency are real counterarguments. The Giants still require a workable protection plan against the Rams. These three selections overlap the larger cards. This is a WATCH construction with no official Micks release or premium grade.\n\nKeep the Giants injury condition. If that leg cannot be supported, pass this three-pick construction rather than silently inserting a different selection.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred."
-  }
-];
+export const pendingCards = []
+
 export const cardReview = {
-  "asOf": "2026-09-21T12:53:43.893011+00:00",
+  "asOf": "2026-09-22T08:39:43.446738+00:00",
   "wins": 1,
-  "losses": 6,
-  "pending": 1,
-  "scope": "Eight posted September 17\u201320 tickets; separate from official betting performance",
-  "note": "Thursday\u2019s four-leg teaser won. Half-Point card remains open for Giants +7.5."
-};
+  "losses": 8,
+  "pending": 0,
+  "scope": "Eight originally posted September 17\u201320 cards plus one user-confirmed placed teaser; separate from official betting performance",
+  "note": "All nine tracked cards are final. Thursday\u2019s teaser won. The placed Eagles four-leg teaser finished 3\u20131 and the Half-Point card 2\u20131; both lost on Giants. The original Steelers construction is separate."
+}
+
 export default [
   {
     "id": "nfl-daytime-super-2026-09-20",
@@ -655,8 +553,8 @@ export default [
     "bestNumber": "Exact printed selections listed above",
     "playableTo": "Listed card lines only",
     "noBetCutoff": "Any worse line or unresolved material availability \u2014 pass/reassess",
-    "writeup": "LOSS. Leg record: 7-2; 1 pending. Losing legs: Steelers +13.5, Chargers +1.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
-    "fullAnalysis": "LOSS. Leg record: 7-2; 1 pending. Losing legs: Steelers +13.5, Chargers +1.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24\n\nPosted pregame analysis:\n#106: Bengals +9.5\n#130: Steelers +13.5\n#120: Vikings\u2013Bears Under 55.5\n#158: Giants +15.5\n#113: Packers +4.5\n#136: Jaguars\u2013Broncos Under 51.5\n#137: Chargers +1.5\n#149: Cowboys +4.5\n#145: Seahawks +3.5\n#125: Eagles +1.5\n\nThe preferred Big/Super construction uses eight sides and two unders, with one selection per game. Pittsburgh receives a substantial cushion, Green Bay can lose by a field goal, and the two unders have room above the ordinary card totals. Cincinnati requires Joe Burrow to start without a material limitation. The Giants leg also depends on usable tackle availability. Seattle is a weaker confidence leg with Drew Lock starting for Sam Darnold. Dallas defensive absences and short-field scoring against either under are additional failure paths. All ten selections must win under the card rules. This is a WATCH construction, not an official Micks release; no premium grade or validated ticket hit probability is claimed.\n\nIf Burrow does not start or is materially limited, replace #106 with Buccaneers -0.5 (#109), provided no new Mayfield issue emerges. If Giants protection cannot be verified, or for an all-Sunday version, replace #158 with Chiefs +1.5 (#153), provided Mahomes remains unrestricted. Both substitutions may be used together.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred.",
+    "writeup": "LOSS. Final leg record: 7-3. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Loss: LAR 28; NYG 6\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
+    "fullAnalysis": "LOSS. Final leg record: 7-3. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Loss: LAR 28; NYG 6\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24\n\nPosted construction; execution unconfirmed; excluded from official betting record",
     "injuryNotes": "If Burrow does not start or is materially limited, replace #106 with Buccaneers -0.5 (#109), provided no new Mayfield issue emerges. If Giants protection cannot be verified, or for an all-Sunday version, replace #158 with Chiefs +1.5 (#153), provided Mahomes remains unrestricted. Both substitutions may be used together.",
     "sourceVerification": "September 19 research using September 17 Delaware cards, original VSiN and Fantasy Life guides, current matchup analysis and official injury reports. Availability conditions remain pending.",
     "sourceLinks": [
@@ -704,9 +602,9 @@ export default [
       },
       {
         "pick": "Giants +15.5",
-        "result": "Pending",
-        "final": "Scheduled September 21, 8:15 p.m. ET",
-        "gradingMargin": null,
+        "result": "Loss",
+        "final": "LAR 28; NYG 6",
+        "gradingMargin": -6.5,
         "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872947"
       },
       {
@@ -752,7 +650,7 @@ export default [
         "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872939"
       }
     ],
-    "legRecord": "7-2; 1 pending",
+    "legRecord": "7-3",
     "excludeFromRecord": true,
     "Official Bet": "No",
     "profitLoss": "Unknown",
@@ -761,12 +659,12 @@ export default [
     "PL": "Unknown",
     "units": "",
     "Units": "",
-    "settlementCheckedAt": "2026-09-21T12:53:43.893011+00:00",
+    "settlementCheckedAt": "2026-09-22T08:39:43.446738+00:00",
     "recordScope": "Posted construction; execution unconfirmed; excluded from official betting record",
-    "legResults": "Bengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
-    "settlementNotes": "LOSS. Leg record: 7-2; 1 pending. Losing legs: Steelers +13.5, Chargers +1.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.",
-    "finalScore": "Bengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
-    "settlementSource": "MLB final box score and ESPN final scoreboard/box scores, checked September 21, 2026.",
+    "legResults": "Bengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Loss: LAR 28; NYG 6\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
+    "settlementNotes": "LOSS. Final leg record: 7-3. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.",
+    "finalScore": "Bengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Loss: LAR 28; NYG 6\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
+    "settlementSource": "ESPN final scoreboard and NFL final: Giants 6, Rams 28; checked September 22, 2026.",
     "settlementSources": [
       "https://www.espn.com/nfl/game/_/gameId/401872934",
       "https://www.espn.com/nfl/game/_/gameId/401872946",
@@ -779,9 +677,10 @@ export default [
       "https://www.espn.com/nfl/game/_/gameId/401872943",
       "https://www.espn.com/nfl/game/_/gameId/401872939"
     ],
-    "Writeup": "LOSS. Leg record: 7-2; 1 pending. Losing legs: Steelers +13.5, Chargers +1.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
-    "Full Analysis": "LOSS. Leg record: 7-2; 1 pending. Losing legs: Steelers +13.5, Chargers +1.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24\n\nPosted pregame analysis:\n#106: Bengals +9.5\n#130: Steelers +13.5\n#120: Vikings\u2013Bears Under 55.5\n#158: Giants +15.5\n#113: Packers +4.5\n#136: Jaguars\u2013Broncos Under 51.5\n#137: Chargers +1.5\n#149: Cowboys +4.5\n#145: Seahawks +3.5\n#125: Eagles +1.5\n\nThe preferred Big/Super construction uses eight sides and two unders, with one selection per game. Pittsburgh receives a substantial cushion, Green Bay can lose by a field goal, and the two unders have room above the ordinary card totals. Cincinnati requires Joe Burrow to start without a material limitation. The Giants leg also depends on usable tackle availability. Seattle is a weaker confidence leg with Drew Lock starting for Sam Darnold. Dallas defensive absences and short-field scoring against either under are additional failure paths. All ten selections must win under the card rules. This is a WATCH construction, not an official Micks release; no premium grade or validated ticket hit probability is claimed.\n\nIf Burrow does not start or is materially limited, replace #106 with Buccaneers -0.5 (#109), provided no new Mayfield issue emerges. If Giants protection cannot be verified, or for an all-Sunday version, replace #158 with Chiefs +1.5 (#153), provided Mahomes remains unrestricted. Both substitutions may be used together.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred.",
-    "settledAt": "2026-09-21T12:53:43.893011+00:00"
+    "Writeup": "LOSS. Final leg record: 7-3. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Loss: LAR 28; NYG 6\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24",
+    "Full Analysis": "LOSS. Final leg record: 7-3. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nBengals +9.5 \u2014 Win: HOU 6; CIN 20\nSteelers +13.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 55.5 \u2014 Win: CHI 3; MIN 9\nGiants +15.5 \u2014 Loss: LAR 28; NYG 6\nPackers +4.5 \u2014 Win: NYJ 17; GB 20\nJaguars\u2013Broncos Under 51.5 \u2014 Win: DEN 20; JAX 13\nChargers +1.5 \u2014 Loss: LAC 14; LV 26\nCowboys +4.5 \u2014 Win: DAL 37; WSH 20\nSeahawks +3.5 \u2014 Win: ARI 7; SEA 31\nEagles +1.5 \u2014 Win: TEN 20; PHI 24\n\nPosted construction; execution unconfirmed; excluded from official betting record",
+    "settledAt": "2026-09-22T08:39:43.446738+00:00",
+    "notes": "LOSS. Final leg record: 7-3. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final."
   },
   {
     "id": "nfl-delaware-regular-2026-09-19",
@@ -794,7 +693,7 @@ export default [
     "league": "NFL",
     "game": "NFL Week 2 \u2014 September 20\u201321, 2026",
     "pick": "Steelers +10.5 / Vikings\u2013Bears Under 53.5 / Jaguars\u2013Broncos Under 49.5 / Giants +13.5",
-    "cardTitle": "4-Pick Regular Teaser",
+    "cardTitle": "Original 4-Pick Regular Teaser \u2014 Steelers Version",
     "type": "4-Pick Regular Teaser",
     "market": "NFL parlay card",
     "lineNumber": "Steelers +10.5 / Vikings\u2013Bears Under 53.5 / Jaguars\u2013Broncos Under 49.5 / Giants +13.5",
@@ -815,8 +714,8 @@ export default [
     "bestNumber": "Exact printed selections listed above",
     "playableTo": "Listed card lines only",
     "noBetCutoff": "Any worse line or unresolved material availability \u2014 pass/reassess",
-    "writeup": "LOSS. Leg record: 2-1; 1 pending. Losing legs: Steelers +10.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "fullAnalysis": "LOSS. Leg record: 2-1; 1 pending. Losing legs: Steelers +10.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\n\nPosted pregame analysis:\n#130: Steelers +10.5\n#120: Vikings\u2013Bears Under 53.5\n#136: Jaguars\u2013Broncos Under 49.5\n#158: Giants +13.5\n\nThis shorter regular teaser keeps the Pittsburgh cushion, the two under directions and a Giants back-door cover path across four separate games. The tradeoff is less protection than the Big card: a Giants loss by fourteen defeats this leg, and the totals have less room for late scoring. Overtime, turnovers that create short fields, and defensive touchdowns can undermine either under. A recovered Rams offense against an injured Giants defense is the main matchup concern. Giants tackle availability must be checked before entry. This remains a WATCH alternative, not an official Micks release. It shares four outcomes with the larger construction and should not be treated as independent exposure.\n\nIf Giants availability remains unresolved, omit that leg and use the first three selections on the regular teaser card. The three-pick regular teaser pays 7 to 5. Do not use Big/Super lines on this card.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred.",
+    "writeup": "LOSS. Final leg record: 2-2. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final. This is the original posted Steelers +10.5 version (2\u20132). The user-confirmed placed ticket instead had Eagles -1.5 and finished 3\u20131; its only losing leg was Giants +13.5. Both versions are tracked separately.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6",
+    "fullAnalysis": "LOSS. Final leg record: 2-2. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final. This is the original posted Steelers +10.5 version (2\u20132). The user-confirmed placed ticket instead had Eagles -1.5 and finished 3\u20131; its only losing leg was Giants +13.5. Both versions are tracked separately.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6\n\nPosted construction; execution unconfirmed; excluded from official betting record",
     "injuryNotes": "If Giants availability remains unresolved, omit that leg and use the first three selections on the regular teaser card. The three-pick regular teaser pays 7 to 5. Do not use Big/Super lines on this card.",
     "sourceVerification": "September 19 research using September 17 Delaware cards, original VSiN and Fantasy Life guides, current matchup analysis and official injury reports. Availability conditions remain pending.",
     "sourceLinks": [
@@ -864,13 +763,13 @@ export default [
       },
       {
         "pick": "Giants +13.5",
-        "result": "Pending",
-        "final": "Scheduled September 21, 8:15 p.m. ET",
-        "gradingMargin": null,
+        "result": "Loss",
+        "final": "LAR 28; NYG 6",
+        "gradingMargin": -8.5,
         "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872947"
       }
     ],
-    "legRecord": "2-1; 1 pending",
+    "legRecord": "2-2",
     "excludeFromRecord": true,
     "Official Bet": "No",
     "profitLoss": "Unknown",
@@ -879,21 +778,24 @@ export default [
     "PL": "Unknown",
     "units": "",
     "Units": "",
-    "settlementCheckedAt": "2026-09-21T12:53:43.893011+00:00",
+    "settlementCheckedAt": "2026-09-22T08:39:43.446738+00:00",
     "recordScope": "Posted construction; execution unconfirmed; excluded from official betting record",
-    "legResults": "Steelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "settlementNotes": "LOSS. Leg record: 2-1; 1 pending. Losing legs: Steelers +10.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.",
-    "finalScore": "Steelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "settlementSource": "MLB final box score and ESPN final scoreboard/box scores, checked September 21, 2026.",
+    "legResults": "Steelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6",
+    "settlementNotes": "LOSS. Final leg record: 2-2. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final. This is the original posted Steelers +10.5 version (2\u20132). The user-confirmed placed ticket instead had Eagles -1.5 and finished 3\u20131; its only losing leg was Giants +13.5. Both versions are tracked separately.",
+    "finalScore": "Steelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6",
+    "settlementSource": "ESPN final scoreboard and NFL final: Giants 6, Rams 28; checked September 22, 2026.",
     "settlementSources": [
       "https://www.espn.com/nfl/game/_/gameId/401872946",
       "https://www.espn.com/nfl/game/_/gameId/401872937",
       "https://www.espn.com/nfl/game/_/gameId/401872940",
       "https://www.espn.com/nfl/game/_/gameId/401872947"
     ],
-    "Writeup": "LOSS. Leg record: 2-1; 1 pending. Losing legs: Steelers +10.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET",
-    "Full Analysis": "LOSS. Leg record: 2-1; 1 pending. Losing legs: Steelers +10.5. Giants\u2013Rams is scheduled Monday, September 21 at 8:15 p.m. ET. Existing losing legs already determine the ticket loss.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Pending: Scheduled September 21, 8:15 p.m. ET\n\nPosted pregame analysis:\n#130: Steelers +10.5\n#120: Vikings\u2013Bears Under 53.5\n#136: Jaguars\u2013Broncos Under 49.5\n#158: Giants +13.5\n\nThis shorter regular teaser keeps the Pittsburgh cushion, the two under directions and a Giants back-door cover path across four separate games. The tradeoff is less protection than the Big card: a Giants loss by fourteen defeats this leg, and the totals have less room for late scoring. Overtime, turnovers that create short fields, and defensive touchdowns can undermine either under. A recovered Rams offense against an injured Giants defense is the main matchup concern. Giants tackle availability must be checked before entry. This remains a WATCH alternative, not an official Micks release. It shares four outcomes with the larger construction and should not be treated as independent exposure.\n\nIf Giants availability remains unresolved, omit that leg and use the first three selections on the regular teaser card. The three-pick regular teaser pays 7 to 5. Do not use Big/Super lines on this card.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred.",
-    "settledAt": "2026-09-21T12:53:43.893011+00:00"
+    "Writeup": "LOSS. Final leg record: 2-2. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final. This is the original posted Steelers +10.5 version (2\u20132). The user-confirmed placed ticket instead had Eagles -1.5 and finished 3\u20131; its only losing leg was Giants +13.5. Both versions are tracked separately.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6",
+    "Full Analysis": "LOSS. Final leg record: 2-2. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final. This is the original posted Steelers +10.5 version (2\u20132). The user-confirmed placed ticket instead had Eagles -1.5 and finished 3\u20131; its only losing leg was Giants +13.5. Both versions are tracked separately.\n\nSteelers +10.5 \u2014 Loss: NE 20; PIT 3\nVikings\u2013Bears Under 53.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6\n\nPosted construction; execution unconfirmed; excluded from official betting record",
+    "settledAt": "2026-09-22T08:39:43.446738+00:00",
+    "ticketDistinction": "This is the original posted Steelers +10.5 version (2\u20132). The user-confirmed placed ticket instead had Eagles -1.5 and finished 3\u20131; its only losing leg was Giants +13.5. Both versions are tracked separately.",
+    "relatedPlacedTicketId": "placed-teaser-2026-09-20-min-phi-jax-nyg",
+    "notes": "LOSS. Final leg record: 2-2. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final. This is the original posted Steelers +10.5 version (2\u20132). The user-confirmed placed ticket instead had Eagles -1.5 and finished 3\u20131; its only losing leg was Giants +13.5. Both versions are tracked separately."
   },
   {
     "id": "placed-parlay-2026-09-18-tor-cease-ttu",
@@ -1006,11 +908,10 @@ export default [
     "legs": "Jets +8.5 / Titans +12.5 / Colts +12.5 / Raiders +12.5",
     "odds": "+250 (5-to-2 profit)",
     "sportsbook": "Delaware Sports Lottery \u2014 Teaser card",
-    "grade": "WATCH",
-    "units": "0.10u",
+    "grade": "TBD",
+    "units": "",
     "status": "Graded",
-    "officialBet": "Yes",
-    "betPlaced": true,
+    "officialBet": "No",
     "featured": "No",
     "pickOfTheDay": "No",
     "bestNumber": "Jets +8.5 / Titans +12.5 / Colts +12.5 / Raiders +12.5; +250",
@@ -1065,7 +966,7 @@ export default [
     "originalPublication": {
       "date": "2026-09-17",
       "status": "Archived \u2014 superseded by September 19 card review",
-      "grade": "WATCH",
+      "grade": "TBD",
       "officialBet": "No",
       "writeup": "This four-leg NFL teaser is a WATCH candidate for Sunday, September 20, not an official bet. Units are TBD pending info. Use Delaware Teaser selections 114 Jets +8.5, 126 Titans +12.5, 154 Colts +12.5 and 138 Raiders +12.5. The printed payout is 5-to-2 profit (+250). Doc\u2019s Sports supports all four underdogs at their standard spreads, but that agreement alone does not establish a profitable teaser. The intended scripts are sustained Jets possessions, a lower-scoring Titans game, Jonathan Taylor controlling possessions for Indianapolis, and Ashton Jeanty keeping Las Vegas competitive. The Raiders are the least settled leg because Brock Bowers\u2019 availability and a conflicting Chargers rebound signal remain unresolved. Final injury designations, updated guide and model projections, weather and accepted ticket lines must be checked before release. Do not add a fifth leg or substitute a different card type. If one leg fails review, withdraw this combination rather than force a replacement.",
       "fullAnalysis": "Ticket and settlement:\nNFL Week 2 \u2014 Sunday, September 20, 2026. Delaware TEASER card dated September 17. Selection 114: New York Jets +8.5 vs Green Bay; 126: Tennessee Titans +12.5 vs Philadelphia; 154: Indianapolis Colts +12.5 at Kansas City; 138: Las Vegas Raiders +12.5 at Los Angeles Chargers. All four must cover. These are the printed teaser spreads, not assumed six-point adjustments. Verify the accepted ticket. Four correct pays 5-to-2 profit (+250).\n\nJets +8.5 \u2014 players and game script:\nGeno Smith, Breece Hall and Garrett Wilson offer a route to sustained possessions and a competitive home game. The +8.5 line protects against a seven- or eight-point defeat. Doc\u2019s Sports selects Jets +3.5 at the standard spread. Green Bay\u2019s offensive production was stronger than its opening loss suggests, so Jordan Love and explosive passing remain the failure scenario. Monitor both offensive lines and the Jets secondary; Green Bay\u2019s Wednesday report includes several limited linemen and defenders. This is the strongest structural teaser leg of the shortlist, not a quantified cover-probability claim.\n\nTitans +12.5 \u2014 players and game script:\nThe preferred script is fewer possessions and limited explosive scores, with Cam Ward protecting the ball. The standard card total is 39.5, making the 12.5-point cushion worth investigating. Doc\u2019s Sports selects Titans +7. Philadelphia can still break this leg through Jalen Hurts and Saquon Barkley if Tennessee cannot sustain drives. Jalen Carter and Cooper DeJean missed Wednesday practice; that is not confirmation either will miss the game. Recheck final availability and Tennessee\u2019s offensive outlook.\n\nColts +12.5 \u2014 players and game script:\nJonathan Taylor sustaining drives would limit Patrick Mahomes\u2019 possessions and support a result inside two scores. Doc\u2019s Sports selects Colts +7. The major concern is Indianapolis\u2019 run defense against Kenneth Walker after its difficult Baltimore matchup. Kansas City controlling the ground game or short-field turnovers could create a runaway result. The Wednesday report lists Mahomes as a full participant, Chris Jones limited and Josh Simmons absent. Reassess Indianapolis\u2019 defensive front and Kansas City\u2019s protection before release.\n\nRaiders +12.5 \u2014 players and game script:\nAshton Jeanty\u2019s rushing and receiving role provides a route to keeping Las Vegas competitive. Doc\u2019s Sports selects Raiders +7, but this is the least settled leg. Brock Bowers missed Wednesday practice with a knee injury; Jeanty practiced fully. Chargers receiver Ladd McConkey missed practice with a rib injury. Final availability matters on both sides. VSiN\u2019s Chargers rebound system conflicts with the Raiders direction, so Justin Herbert producing a decisive home response remains a material risk. Do not assume Bowers or McConkey will play.\n\nFramework and payout check:\nNFL uses the standard framework with Recovery Mode off. Doc\u2019s previews and VSiN systems are supporting evidence, not independent cover probabilities. Some Week 2 systems support Tennessee and Indianapolis; the Chargers rebound signal is a contradiction. Numerical preseason-guide projections and a complete current projection reconciliation were unavailable in the September 17 review, so no numerical Micks score or letter grade is assigned. At +250, the ticket needs a joint cover probability above 28.57% to break even; this review has not established that edge. Adding a fifth leg is not approved.\n\nPending information and release conditions:\nGrade: TBD pending info. Units: TBD pending info. Status: WATCH \u2014 not an official bet. Required before release: final injury designations and game-day availability, current team and player projections reconciled with the guides, weather, current market comparison, and confirmation of all four printed ticket lines and payout. Preserve Jets +8.5, Titans +12.5, Colts +12.5 and Raiders +12.5 at 5-to-2 profit or better for any rescore. Those numbers are review targets, not automatic betting triggers. Any reduced cushion, worse payout, material player/line change or unresolved edge means no bet pending rescore. No automatic replacement and no fifth leg."
@@ -1108,21 +1009,20 @@ export default [
     ],
     "legRecord": "4-0",
     "hideWagerAmounts": true,
-    "excludeFromRecord": false,
-    "Official Bet": "Yes",
+    "excludeFromRecord": true,
+    "Official Bet": "No",
     "frameworkApproved": false,
-    "unitProfitLossKnown": true,
-    "profitLoss": "+0.25u",
-    "Profit/Loss": "+0.25u",
-    "P/L": "+0.25u",
-    "PL": "+0.25u",
-    "Units": "0.10u",
+    "profitLoss": "Unknown",
+    "Profit/Loss": "Unknown",
+    "P/L": "Unknown",
+    "PL": "Unknown",
+    "Units": "",
     "settlementCheckedAt": "2026-09-21T12:53:43.893011+00:00",
-    "recordScope": "User-confirmed placed ticket; included in Lotto Parlays win/loss record. Historical stake corrected by user to 0.10u; at +250 the win returns +0.25u profit. Grade remains WATCH because no letter grade was recoverable.",
+    "recordScope": "Posted construction; execution unconfirmed; excluded from official betting record",
     "legResults": "Jets +8.5 \u2014 Win: NYJ 17; GB 20\nTitans +12.5 \u2014 Win: TEN 20; PHI 24\nColts +12.5 \u2014 Win: KC 33; IND 30\nRaiders +12.5 \u2014 Win: LAC 14; LV 26",
     "userConfirmedOutcome": "Win",
     "previousArchiveStatus": "Archived \u2014 superseded by September 19 card review",
-    "settlementNotes": "WIN. Leg record: 4-0. Thursday September 17 ticket confirmed as a winner; all four Sunday legs independently verified. Payout is 5-to-2 profit (+250). Historical stake corrected by user to 0.10u, producing +0.25u profit. Grade remains WATCH because no letter grade was recoverable.",
+    "settlementNotes": "WIN. Leg record: 4-0. Thursday September 17 publication corrected to WIN at the user\u2019s request; all four Sunday legs independently verified.",
     "finalScore": "Jets +8.5 \u2014 Win: NYJ 17; GB 20\nTitans +12.5 \u2014 Win: TEN 20; PHI 24\nColts +12.5 \u2014 Win: KC 33; IND 30\nRaiders +12.5 \u2014 Win: LAC 14; LV 26",
     "settlementSource": "MLB final box score and ESPN final scoreboard/box scores, checked September 21, 2026.",
     "settlementSources": [
@@ -1134,5 +1034,240 @@ export default [
     "Writeup": "WIN. Leg record: 4-0. Thursday September 17 publication corrected to WIN at the user\u2019s request; all four Sunday legs independently verified.\n\nJets +8.5 \u2014 Win: NYJ 17; GB 20\nTitans +12.5 \u2014 Win: TEN 20; PHI 24\nColts +12.5 \u2014 Win: KC 33; IND 30\nRaiders +12.5 \u2014 Win: LAC 14; LV 26",
     "Full Analysis": "WIN. Leg record: 4-0. Thursday September 17 publication corrected to WIN at the user\u2019s request; all four Sunday legs independently verified.\n\nJets +8.5 \u2014 Win: NYJ 17; GB 20\nTitans +12.5 \u2014 Win: TEN 20; PHI 24\nColts +12.5 \u2014 Win: KC 33; IND 30\nRaiders +12.5 \u2014 Win: LAC 14; LV 26\n\nPosted pregame analysis:\nTicket and settlement:\nNFL Week 2 \u2014 Sunday, September 20, 2026. Delaware TEASER card dated September 17. Selection 114: New York Jets +8.5 vs Green Bay; 126: Tennessee Titans +12.5 vs Philadelphia; 154: Indianapolis Colts +12.5 at Kansas City; 138: Las Vegas Raiders +12.5 at Los Angeles Chargers. All four must cover. These are the printed teaser spreads, not assumed six-point adjustments. Verify the accepted ticket. Four correct pays 5-to-2 profit (+250).\n\nJets +8.5 \u2014 players and game script:\nGeno Smith, Breece Hall and Garrett Wilson offer a route to sustained possessions and a competitive home game. The +8.5 line protects against a seven- or eight-point defeat. Doc\u2019s Sports selects Jets +3.5 at the standard spread. Green Bay\u2019s offensive production was stronger than its opening loss suggests, so Jordan Love and explosive passing remain the failure scenario. Monitor both offensive lines and the Jets secondary; Green Bay\u2019s Wednesday report includes several limited linemen and defenders. This is the strongest structural teaser leg of the shortlist, not a quantified cover-probability claim.\n\nTitans +12.5 \u2014 players and game script:\nThe preferred script is fewer possessions and limited explosive scores, with Cam Ward protecting the ball. The standard card total is 39.5, making the 12.5-point cushion worth investigating. Doc\u2019s Sports selects Titans +7. Philadelphia can still break this leg through Jalen Hurts and Saquon Barkley if Tennessee cannot sustain drives. Jalen Carter and Cooper DeJean missed Wednesday practice; that is not confirmation either will miss the game. Recheck final availability and Tennessee\u2019s offensive outlook.\n\nColts +12.5 \u2014 players and game script:\nJonathan Taylor sustaining drives would limit Patrick Mahomes\u2019 possessions and support a result inside two scores. Doc\u2019s Sports selects Colts +7. The major concern is Indianapolis\u2019 run defense against Kenneth Walker after its difficult Baltimore matchup. Kansas City controlling the ground game or short-field turnovers could create a runaway result. The Wednesday report lists Mahomes as a full participant, Chris Jones limited and Josh Simmons absent. Reassess Indianapolis\u2019 defensive front and Kansas City\u2019s protection before release.\n\nRaiders +12.5 \u2014 players and game script:\nAshton Jeanty\u2019s rushing and receiving role provides a route to keeping Las Vegas competitive. Doc\u2019s Sports selects Raiders +7, but this is the least settled leg. Brock Bowers missed Wednesday practice with a knee injury; Jeanty practiced fully. Chargers receiver Ladd McConkey missed practice with a rib injury. Final availability matters on both sides. VSiN\u2019s Chargers rebound system conflicts with the Raiders direction, so Justin Herbert producing a decisive home response remains a material risk. Do not assume Bowers or McConkey will play.\n\nFramework and payout check:\nNFL uses the standard framework with Recovery Mode off. Doc\u2019s previews and VSiN systems are supporting evidence, not independent cover probabilities. Some Week 2 systems support Tennessee and Indianapolis; the Chargers rebound signal is a contradiction. Numerical preseason-guide projections and a complete current projection reconciliation were unavailable in the September 17 review, so no numerical Micks score or letter grade is assigned. At +250, the ticket needs a joint cover probability above 28.57% to break even; this review has not established that edge. Adding a fifth leg is not approved.\n\nPending information and release conditions:\nGrade: TBD pending info. Units: TBD pending info. Status: WATCH \u2014 not an official bet. Required before release: final injury designations and game-day availability, current team and player projections reconciled with the guides, weather, current market comparison, and confirmation of all four printed ticket lines and payout. Preserve Jets +8.5, Titans +12.5, Colts +12.5 and Raiders +12.5 at 5-to-2 profit or better for any rescore. Those numbers are review targets, not automatic betting triggers. Any reduced cushion, worse payout, material player/line change or unresolved edge means no bet pending rescore. No automatic replacement and no fifth leg.\n\nRecord classification: Posted construction; execution unconfirmed; excluded from official betting record. No wager amounts published; unit profit/loss is not inferred.",
     "settledAt": "2026-09-21T12:53:43.893011+00:00"
+  },
+  {
+    "id": "placed-teaser-2026-09-20-min-phi-jax-nyg",
+    "date": "2026-09-21",
+    "Date": "2026-09-21",
+    "postedDate": "2026-09-21",
+    "betPlacedAt": "2026-09-20T12:47:00-04:00",
+    "eventDate": "2026-09-20",
+    "eventEndDate": "2026-09-21",
+    "section": "Lotto Parlays",
+    "Section": "Lotto Parlays",
+    "access": "free",
+    "Access": "Free",
+    "sport": "NFL",
+    "Sport": "NFL",
+    "league": "NFL",
+    "League": "NFL",
+    "game": "NFL Week 2 \u2014 September 20\u201321, 2026",
+    "Matchup": "NFL Week 2 \u2014 September 20\u201321, 2026",
+    "pick": "Vikings\u2013Bears Under 53.5 / Eagles -1.5 / Jaguars\u2013Broncos Under 49.5 / Giants +13.5",
+    "Pick": "Vikings\u2013Bears Under 53.5 / Eagles -1.5 / Jaguars\u2013Broncos Under 49.5 / Giants +13.5",
+    "cardTitle": "Placed 4-Pick Regular Teaser \u2014 Loss (3\u20131)",
+    "type": "4-Pick Regular Teaser",
+    "market": "NFL parlay card",
+    "lineNumber": "Vikings\u2013Bears Under 53.5 / Eagles -1.5 / Jaguars\u2013Broncos Under 49.5 / Giants +13.5",
+    "Line": "Vikings\u2013Bears Under 53.5 / Eagles -1.5 / Jaguars\u2013Broncos Under 49.5 / Giants +13.5",
+    "legs": "Vikings\u2013Bears Under 53.5\nEagles -1.5\nJaguars\u2013Broncos Under 49.5\nGiants +13.5",
+    "legCount": 4,
+    "odds": "+250",
+    "Odds": "+250",
+    "payoutOdds": "5 to 2",
+    "sportsbook": "Delaware Lottery",
+    "grade": "Not scored",
+    "Grade": "Not scored",
+    "status": "Graded",
+    "Status": "Graded",
+    "result": "Loss",
+    "Result": "Loss",
+    "Outcome": "Loss",
+    "officialBet": "No",
+    "Official Bet": "No",
+    "frameworkApproved": false,
+    "betPlaced": true,
+    "userConfirmedTicket": true,
+    "featured": "No",
+    "pickOfTheDay": "No",
+    "hideWagerAmounts": true,
+    "showFullAnalysis": true,
+    "units": "",
+    "Units": "",
+    "profitLoss": "Unknown",
+    "Profit/Loss": "Unknown",
+    "P/L": "Unknown",
+    "PL": "Unknown",
+    "excludeFromRecord": true,
+    "recordScope": "User-confirmed placed teaser; tracked separately from framework-approved releases and the original posted Steelers construction.",
+    "bestNumber": "Placed ticket: Giants +13.5 remaining",
+    "Best Number": "Placed ticket: Giants +13.5 remaining",
+    "playableTo": "Existing ticket \u2014 tracking only",
+    "Playable To": "Existing ticket \u2014 tracking only",
+    "noBetCutoff": "Existing ticket \u2014 no new betting recommendation",
+    "No-Bet Cutoff": "Existing ticket \u2014 no new betting recommendation",
+    "writeup": "LOSS. Final leg record: 3-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 53.5 \u2014 Win: MIN 9; CHI 3\nEagles -1.5 \u2014 Win: PHI 24; TEN 20\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6",
+    "Writeup": "LOSS. Final leg record: 3-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 53.5 \u2014 Win: MIN 9; CHI 3\nEagles -1.5 \u2014 Win: PHI 24; TEN 20\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6",
+    "fullAnalysis": "LOSS. Final leg record: 3-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 53.5 \u2014 Win: MIN 9; CHI 3\nEagles -1.5 \u2014 Win: PHI 24; TEN 20\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6\n\nUser-confirmed placed teaser; tracked separately from framework-approved releases and the original posted Steelers construction.",
+    "Full Analysis": "LOSS. Final leg record: 3-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 53.5 \u2014 Win: MIN 9; CHI 3\nEagles -1.5 \u2014 Win: PHI 24; TEN 20\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6\n\nUser-confirmed placed teaser; tracked separately from framework-approved releases and the original posted Steelers construction.",
+    "legGrades": [
+      {
+        "pick": "Vikings\u2013Bears Under 53.5",
+        "result": "Win",
+        "final": "MIN 9; CHI 3",
+        "gradingMargin": 41.5,
+        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872937"
+      },
+      {
+        "pick": "Eagles -1.5",
+        "result": "Win",
+        "final": "PHI 24; TEN 20",
+        "gradingMargin": 2.5,
+        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872939"
+      },
+      {
+        "pick": "Jaguars\u2013Broncos Under 49.5",
+        "result": "Win",
+        "final": "DEN 20; JAX 13",
+        "gradingMargin": 16.5,
+        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872940"
+      },
+      {
+        "pick": "Giants +13.5",
+        "result": "Loss",
+        "final": "LAR 28; NYG 6",
+        "gradingMargin": -8.5,
+        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872947"
+      }
+    ],
+    "legRecord": "3-1",
+    "legResults": "Vikings\u2013Bears Under 53.5 \u2014 Win: MIN 9; CHI 3\nEagles -1.5 \u2014 Win: PHI 24; TEN 20\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6",
+    "settlementNotes": "LOSS. Final leg record: 3-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.",
+    "notes": "LOSS. Final leg record: 3-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.",
+    "settlementCheckedAt": "2026-09-22T08:39:43.446738+00:00",
+    "settlementSource": "ESPN final scoreboard and NFL final: Giants 6, Rams 28; checked September 22, 2026.",
+    "settlementSources": [
+      "https://www.espn.com/nfl/game/_/gameId/401872937",
+      "https://www.espn.com/nfl/game/_/gameId/401872939",
+      "https://www.espn.com/nfl/game/_/gameId/401872940",
+      "https://www.espn.com/nfl/game/_/gameId/401872947"
+    ],
+    "sourceVerification": "Ticket selections and three winning leg indicators verified from user-provided IMG_1652.png on September 21, 2026.",
+    "sourceLinks": [
+      {
+        "title": "Vikings\u2013Bears Under 53.5 game record",
+        "url": "https://www.espn.com/nfl/game/_/gameId/401872937"
+      },
+      {
+        "title": "Eagles -1.5 game record",
+        "url": "https://www.espn.com/nfl/game/_/gameId/401872939"
+      },
+      {
+        "title": "Jaguars\u2013Broncos Under 49.5 game record",
+        "url": "https://www.espn.com/nfl/game/_/gameId/401872940"
+      },
+      {
+        "title": "Giants +13.5 game record",
+        "url": "https://www.espn.com/nfl/game/_/gameId/401872947"
+      }
+    ],
+    "receiptEvidence": "IMG_1652.png; financial fields and ticket identifier omitted",
+    "settledAt": "2026-09-22T08:39:43.446738+00:00",
+    "finalScore": "Vikings\u2013Bears Under 53.5 \u2014 Win: MIN 9; CHI 3\nEagles -1.5 \u2014 Win: PHI 24; TEN 20\nJaguars\u2013Broncos Under 49.5 \u2014 Win: DEN 20; JAX 13\nGiants +13.5 \u2014 Loss: LAR 28; NYG 6"
+  },
+  {
+    "id": "nfl-delaware-half-point-2026-09-19",
+    "date": "2026-09-21",
+    "eventDate": "2026-09-20",
+    "eventEndDate": "2026-09-21",
+    "section": "Lotto Parlays",
+    "access": "free",
+    "sport": "NFL",
+    "league": "NFL",
+    "game": "NFL Week 2 \u2014 September 20\u201321, 2026",
+    "pick": "Vikings\u2013Bears Under 48.5 / Jaguars\u2013Broncos Under 45.5 / Giants +7.5",
+    "cardTitle": "3-Pick Half-Point Parlay",
+    "type": "3-Pick Half-Point Parlay",
+    "market": "NFL parlay card",
+    "lineNumber": "Vikings\u2013Bears Under 48.5 / Jaguars\u2013Broncos Under 45.5 / Giants +7.5",
+    "legs": "#120: Vikings\u2013Bears Under 48.5\n#136: Jaguars\u2013Broncos Under 45.5\n#158: Giants +7.5",
+    "legCount": 3,
+    "odds": "+550",
+    "payoutOdds": "11 to 2",
+    "sportsbook": "Delaware Lottery",
+    "grade": "WATCH",
+    "status": "Graded",
+    "officialBet": "No",
+    "frameworkApproved": false,
+    "betPlaced": false,
+    "featured": "No",
+    "pickOfTheDay": "No",
+    "hideWagerAmounts": true,
+    "showFullAnalysis": true,
+    "bestNumber": "Exact printed selections listed above",
+    "playableTo": "Listed card lines only",
+    "noBetCutoff": "Any worse line or unresolved material availability \u2014 pass/reassess",
+    "writeup": "LOSS. Final leg record: 2-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Loss: LAR 28; NYG 6",
+    "fullAnalysis": "LOSS. Final leg record: 2-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Loss: LAR 28; NYG 6\n\nPosted construction; execution unconfirmed; excluded from official betting record",
+    "injuryNotes": "Keep the Giants injury condition. If that leg cannot be supported, pass this three-pick construction rather than silently inserting a different selection.",
+    "sourceVerification": "September 19 research using September 17 Delaware cards, original VSiN and Fantasy Life guides, current matchup analysis and official injury reports. Availability conditions remain pending.",
+    "sourceLinks": [
+      {
+        "title": "Delaware half-point card, September 17",
+        "url": "https://delotterywebcontent.blob.core.windows.net/delottery-site-assets/assets/sports/928a9b02-2362-4404-b6f7-25b9d1068fa3_Delaware%20-%20Half%20Pt%209.17.2026.pdf"
+      }
+    ],
+    "originalPublication": {
+      "date": "2026-09-19",
+      "status": "Watch \u2014 conditional construction",
+      "grade": "WATCH",
+      "officialBet": "No",
+      "betPlaced": false,
+      "writeup": "This is the more aggressive alternative: two ordinary totals and Giants +7.5 without the teaser allowance. Chicago\u2013Minnesota must finish with no more than forty-eight points. Jacksonville\u2013Denver must finish at forty-five or fewer. The Giants can win or lose by seven or fewer. Current totals commentary supports both under directions, but Chicago defensive weakness and Jacksonville scoring efficiency are real counterarguments. The Giants still require a workable protection plan against the Rams. These three selections overlap the larger cards. This is a WATCH construction with no official Micks release or premium grade.",
+      "fullAnalysis": "#120: Vikings\u2013Bears Under 48.5\n#136: Jaguars\u2013Broncos Under 45.5\n#158: Giants +7.5\n\nThis is the more aggressive alternative: two ordinary totals and Giants +7.5 without the teaser allowance. Chicago\u2013Minnesota must finish with no more than forty-eight points. Jacksonville\u2013Denver must finish at forty-five or fewer. The Giants can win or lose by seven or fewer. Current totals commentary supports both under directions, but Chicago defensive weakness and Jacksonville scoring efficiency are real counterarguments. The Giants still require a workable protection plan against the Rams. These three selections overlap the larger cards. This is a WATCH construction with no official Micks release or premium grade.\n\nKeep the Giants injury condition. If that leg cannot be supported, pass this three-pick construction rather than silently inserting a different selection.\n\nGiants: check the Monday tackle availability before entry. All listed numbers must match the printed Delaware ticket. These are alternative constructions with overlapping games, not three independent positions."
+    },
+    "postedDate": "2026-09-19",
+    "Date": "2026-09-21",
+    "result": "Loss",
+    "Result": "Loss",
+    "Outcome": "Loss",
+    "Status": "Graded",
+    "legGrades": [
+      {
+        "pick": "Vikings\u2013Bears Under 48.5",
+        "result": "Win",
+        "final": "CHI 3; MIN 9",
+        "gradingMargin": 36.5,
+        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872937"
+      },
+      {
+        "pick": "Jaguars\u2013Broncos Under 45.5",
+        "result": "Win",
+        "final": "DEN 20; JAX 13",
+        "gradingMargin": 12.5,
+        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872940"
+      },
+      {
+        "pick": "Giants +7.5",
+        "result": "Loss",
+        "final": "LAR 28; NYG 6",
+        "gradingMargin": -14.5,
+        "sourceUrl": "https://www.espn.com/nfl/game/_/gameId/401872947"
+      }
+    ],
+    "legRecord": "2-1",
+    "excludeFromRecord": true,
+    "Official Bet": "No",
+    "profitLoss": "Unknown",
+    "Profit/Loss": "Unknown",
+    "P/L": "Unknown",
+    "PL": "Unknown",
+    "units": "",
+    "Units": "",
+    "settlementCheckedAt": "2026-09-22T08:39:43.446738+00:00",
+    "recordScope": "Posted construction; execution unconfirmed; excluded from official betting record",
+    "legResults": "Vikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Loss: LAR 28; NYG 6",
+    "settlementNotes": "LOSS. Final leg record: 2-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.",
+    "finalScore": "Vikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Loss: LAR 28; NYG 6",
+    "settlementSource": "ESPN final scoreboard and NFL final: Giants 6, Rams 28; checked September 22, 2026.",
+    "settlementSources": [
+      "https://www.espn.com/nfl/game/_/gameId/401872937",
+      "https://www.espn.com/nfl/game/_/gameId/401872940",
+      "https://www.espn.com/nfl/game/_/gameId/401872947"
+    ],
+    "Writeup": "LOSS. Final leg record: 2-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Loss: LAR 28; NYG 6",
+    "Full Analysis": "LOSS. Final leg record: 2-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final.\n\nVikings\u2013Bears Under 48.5 \u2014 Win: CHI 3; MIN 9\nJaguars\u2013Broncos Under 45.5 \u2014 Win: DEN 20; JAX 13\nGiants +7.5 \u2014 Loss: LAR 28; NYG 6\n\nPosted construction; execution unconfirmed; excluded from official betting record",
+    "settledAt": "2026-09-22T08:39:43.446738+00:00",
+    "notes": "LOSS. Final leg record: 2-1. The Rams beat the Giants 28\u20136 on September 21, 2026. New York lost by 22 points, so the Giants spread leg did not cover. All legs are final."
   }
-];
+]
