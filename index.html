@@ -140,7 +140,7 @@
     return `${prior.year}-${prior.month}-${prior.day}`;
   }
 
-  const isSettled = row => /\b(win|won|loss|lost|push|void|voided|graded|settled|final|completed|complete|cancelled|canceled)\b/i.test([
+  const isSettled = row => /\b(win|won|loss|lost|push|void|voided|graded|settled|final|completed|complete|cancelled|canceled|closed|expired|removed)\b/i.test([
     row && (row.Status || row.status || row['Release Status']), row && (row.Result || row.result || row.Outcome || row.outcome)
   ].join(' '));
 
