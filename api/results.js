@@ -1,6 +1,7 @@
 import reconstructedResults from '../data/reconstructed-results-2026-08-13-15.js'
 import results20260823 from '../data/results-2026-08-23.js'
 import results20260921, { pendingCards, cardReview } from '../data/results-2026-09-21.js'
+import results20261001 from '../data/results-2026-10-01.js'
 
 const LEGACY_URL = process.env.RESULTS_LEGACY_URL || 'https://mickspicks-vip.vercel.app/api/results-legacy'
 const text = value => String(value ?? '').trim()
@@ -27,7 +28,7 @@ function statsFor(rows=[]){
 export default async function handler(req,res){
  res.setHeader('Content-Type','application/json');res.setHeader('Cache-Control','no-store, no-cache, must-revalidate, max-age=0')
  const warnings=[];let legacy={};try{legacy=await fetchJson(LEGACY_URL)}catch(error){warnings.push(`Legacy results unavailable: ${error.message}`)}
- const results=dedupe([...rowsFrom(legacy).map(normalize),...reconstructedResults.map(normalize),...results20260823.map(normalize),...results20260921.map(normalize)]).sort((a,b)=>String(b.date).localeCompare(String(a.date))||String(b.settledAt||b.timestamp||'').localeCompare(String(a.settledAt||a.timestamp||'')))
+ const results=dedupe([...rowsFrom(legacy).map(normalize),...reconstructedResults.map(normalize),...results20260823.map(normalize),...results20260921.map(normalize),...results20261001.map(normalize)]).sort((a,b)=>String(b.date).localeCompare(String(a.date))||String(b.settledAt||b.timestamp||'').localeCompare(String(a.settledAt||a.timestamp||'')))
  const exact=name=>results.filter(r=>r.section===name),vipRows=exact('VIP'),freeRows=exact('Free'),propsRows=exact('Props Lab'),lottoRows=exact('Lotto Parlays'),longshotRows=exact('Longshots'),stats=statsFor(results)
  const straightRows=[...freeRows,...vipRows]
  const breakdown={overall:stats,vip:statsFor(vipRows),free:statsFor(freeRows),props:statsFor(propsRows),parlays:statsFor(lottoRows),lotto:statsFor(lottoRows),longshots:statsFor(longshotRows)}
