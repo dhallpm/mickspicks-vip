@@ -909,7 +909,7 @@ export default [
     "odds": "+250 (5-to-2 profit)",
     "sportsbook": "Delaware Sports Lottery \u2014 Teaser card",
     "grade": "TBD",
-    "units": "",
+    "units": "2",
     "status": "Graded",
     "officialBet": "No",
     "featured": "No",
