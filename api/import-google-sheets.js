@@ -1,4 +1,12 @@
-const DEFAULT_SPREADSHEET_ID = '1wber196DbbsSXwcITRXWbIF-IZzOJGwkIKPMIWv0AC4'
+import { assertSyncAuthorized } from '../lib/syncAuth.js'
+
+// The sheet ID must come from the GOOGLE_SHEET_ID env var (set in Vercel).
+// The old hardcoded fallback was removed so the ID no longer lives in the public repo.
+function spreadsheetId() {
+  const id = process.env.GOOGLE_SHEET_ID
+  if (!id) throw new Error('GOOGLE_SHEET_ID is not configured')
+  return id
+}
 
 const TABLES = {
   picks: { sheet: 'Master Picks' },
@@ -111,11 +119,14 @@ export default async function handler(req, res) {
       json(res, 200, {
         ok: true,
         message: 'POST { table:"picks", records:[...] } or { batches:[{table,records}] } to import into Google Sheets.',
-        tables: Object.keys(TABLES),
-        spreadsheetId: process.env.GOOGLE_SHEET_ID || DEFAULT_SPREADSHEET_ID
+        tables: Object.keys(TABLES)
       })
       return
     }
+
+    // All POSTs (imports and dry runs) require the sync secret,
+    // sent as the x-sync-secret header or Authorization: Bearer <secret>.
+    assertSyncAuthorized(req)
 
     const body = parseBody(req)
     const dryRun = body.dryRun === true || /^(1|true|yes|y|dryrun|preview)$/i.test(String(body.dryRun || body.preview || ''))
@@ -139,14 +150,14 @@ export default async function handler(req, res) {
       return
     }
 
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID || DEFAULT_SPREADSHEET_ID
+    const sheetId = spreadsheetId()
     const token = await getAccessToken()
     const results = []
     for (const [sheetName, rows] of grouped) {
-      results.push({ sheetName, count: rows.length, result: await appendRows({ spreadsheetId, sheetName, rows, token }) })
+      results.push({ sheetName, count: rows.length, result: await appendRows({ spreadsheetId: sheetId, sheetName, rows, token }) })
     }
     json(res, 200, { ok: true, created: items.length, results })
   } catch (error) {
-    json(res, 500, { ok: false, created: 0, error: error.message || String(error) })
+    json(res, error?.statusCode || 500, { ok: false, created: 0, error: error.message || String(error) })
   }
 }
